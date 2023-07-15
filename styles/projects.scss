@@ -1,0 +1,33 @@
+.projects {
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	.items {
+		& > .item {
+			padding: 10px 15px;
+			border-color: gainsboro;
+			border-width: 1px;
+			border-style: solid;
+		}
+
+		.item {
+			min-height: 620px;
+		}
+
+		// .description {
+		// 	min-height: 225px;
+		// }
+	}
+}
+
+@media (max-width: 768px) {
+	.projects {
+		.items {
+			.item {
+				margin: 20px 0;
+			}
+		}
+	}
+}

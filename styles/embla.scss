@@ -1,0 +1,9 @@
+.embla__container {
+	display: flex;
+}
+
+@media (min-width: 426px) {
+	.embla {
+		display: none;
+	}
+}

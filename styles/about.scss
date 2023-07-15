@@ -1,0 +1,43 @@
+.about-container {
+	background-color: rgb(232, 237, 255);
+	border-radius: 80% 10% 80% 0%;
+}
+
+.about-me {
+	// background-image: url('/profile.svg');
+	// background-color: rgb(204, 215, 207);
+
+	padding: 100px 0;
+
+	.intro {
+		font-size: 2.5rem;
+		line-height: 2.5rem;
+		letter-spacing: -0.016em;
+		font-weight: 300;
+	}
+
+	.gif {
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.about-container {
+		border-radius: 0;
+		background-image: linear-gradient(270deg, rgb(19, 173, 199) 0%, rgb(148, 93, 214) 100%);
+		color: $bg-gray-color
+	}
+
+	.about-me {
+		padding: 35px 0;
+		
+		.intro {
+			font-size: 1.6rem;
+		}
+
+		div {
+			padding: 10px 0;
+		}
+	}
+}
