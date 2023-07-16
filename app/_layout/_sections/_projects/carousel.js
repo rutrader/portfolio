@@ -27,9 +27,9 @@ export const Carousel = (props) => {
 
 				{projects.map((project, key) => {
 					return (
-						<div key={`embla-stack-item-${key}`} className="embla__slide" style={{ flex: '0 0 100%', minWidth: 0 }}>
+						<div key={`embla-stack-item-${key}`} className="embla__slide" style={{ flex: '0 0 90%', minWidth: 0 }}>
 
-							<div key={`project-item-${key}`} className="item col-lg-3 col-10 d-flex flex-column justify-content-between">
+							<div key={`project-item-${key}`} className="item col-lg-3 col-8 col-md-10 col-sm-10 d-flex flex-column justify-content-between">
 								<Image
 									src={project.image}
 									alt={`${project.title} screenshot`}
