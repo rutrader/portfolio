@@ -51,6 +51,16 @@
 	}
 }
 
+@media (min-width: 426px) {
+	
+	.stack {
+		.embla {
+			display: none;
+		}
+	}
+
+}
+
 @media (max-width: 425px) {
 	.stack {
 		.items {

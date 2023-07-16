@@ -2,10 +2,11 @@
 	img {
 		width: 100%;
 		height: auto;
+		max-height: 197px;
 	}
 
 	.items {
-		& > .item {
+		&>.item {
 			padding: 10px 15px;
 			border-color: gainsboro;
 			border-width: 1px;
@@ -28,6 +29,46 @@
 			.item {
 				margin: 20px 0;
 			}
+
+			display: none !important;
+		}
+
+		img {
+			max-height: unset;
+		}
+
+		.embla {
+			.item {
+				margin-left: auto;
+				margin-right: auto;
+			}
 		}
 	}
 }
+
+
+@media (min-width: 769px) {
+	
+	.projects {
+		.embla {
+			display: none;
+		}
+	}
+	
+}
+
+@media(min-width: 1024px) and (max-width: 1025px) {
+	.projects {
+		svg {
+			display: none;
+		}
+	}
+}
+
+// @media (max-width: 425px) {
+// 	.projects {
+// 		.items {
+// 			display: none !important;
+// 		}
+// 	}
+// }
