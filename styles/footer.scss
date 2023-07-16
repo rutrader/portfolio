@@ -6,9 +6,27 @@ footer {
 		font-weight: 300;
 	}
 
+	.link {
+		margin-bottom: 1rem;
+	}
+
 	.social {
-		// color: $bg-gray-color;
-		font-size: 1.2em;
+		font-size: .8em;
+		
+		a {
+			// text-decoration: none;
+			color: $body-color;
+			display: flex;
+			justify-content: start;
+			align-items: center;
+
+			// border: 1px solid;
+			padding: 0 15px;
+
+			span {
+				padding: 0 10px;
+			}
+		}
 	}
 }
 
@@ -17,4 +35,20 @@ footer {
 	.copyright {
 		padding: 25px 0;
 	}
+
+	footer {
+		.social {
+			font-size: 0.7em;
+		}
+
+		.link {
+			margin-bottom: .5rem;
+		}
+	}
 }
+
+// @media (min-width: 768px) {
+// 	.social {
+// 		font-size: 1em;
+// 	}
+// }
