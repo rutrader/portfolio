@@ -11,7 +11,7 @@ export const Carousel = (props) => {
 
 	const { projects } = props;
 
-	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+	const [emblaRefProjecs, emblaApi] = useEmblaCarousel({ loop: true })
 
 	const scrollPrev = useCallback(() => {
 		if (emblaApi) emblaApi.scrollPrev()
@@ -22,43 +22,42 @@ export const Carousel = (props) => {
 	}, [emblaApi])
 
 	return (
-		<div className="embla overflow-hidden" ref={emblaRef}>
+		<div className="embla overflow-hidden col-10" ref={emblaRefProjecs}>
 			<div className="embla__container">
 
 				{projects.map((project, key) => {
 					return (
-						<div key={`embla-stack-item-${key}`} className="embla__slide" style={{ flex: '0 0 90%', minWidth: 0 }}>
-
-							<div key={`project-item-${key}`} className="item col-lg-3 col-8 col-md-10 col-sm-10 d-flex flex-column justify-content-between">
+						<div key={`project-item-${key}`} className='px-2 embla__slide' style={{ flex: '0 0 100%', minWidth: 0 }}>
+							<div>
 								<Image
 									src={project.image}
 									alt={`${project.title} screenshot`}
 								/>
+
 								<div className='divider'></div>
-								<h3>
-									{project.title}
+								<span className='fw-medium title'>
 
 									<Link href={project.link} target='_blank'>
-										<FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2xs" className='mx-3' />
+										{project.title}
+										{/* <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2xs" className='mx-3' /> */}
 									</Link>
-								</h3>
+								</span>
+
 								<div className='py-2 description'>
-									<p>
+									<p className='fw-light'>
 										{project.description}
 									</p>
 								</div>
-
 								<div className='py-2'>
 									<h6>Stack</h6>
-									<div className='d-flex justify-content-lg-between justify-content-start align-items-center'>
+									<div className='d-flex justify-content-between align-items-center'>
 										<FontAwesomeIcon icon={faRectangleTerminal} />
-										<span className='fw-light mx-3'>
+										<span className='fw-light'>
 											{project.stacks}
 										</span>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					)
 				})}

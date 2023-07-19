@@ -41,7 +41,9 @@ export default function Projects() {
 	return (
 		<>
 			<div className="projects d-flex align-items-lg-start align-items-center flex-column">
-				<h2 className="gradient">Last projects</h2>
+				<h2 className="gradient">Latest projects</h2>
+
+				<Carousel projects={projects} />
 
 				<div className="items align-items-center align-items-lg-start d-flex flex-column flex-lg-row items justify-content-between">
 
@@ -53,11 +55,10 @@ export default function Projects() {
 									alt={`${project.title} screenshot`}
 								/>
 								<div className='divider'></div>
-								<h3>
-									{project.title}
-
+								<h3 className='fw-medium'>
 									<Link href={project.link} target='_blank'>
-										<FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2xs" className='mx-3' />
+										{project.title}
+										{/* <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2xs" className='mx-3' /> */}
 									</Link>
 								</h3>
 								<div className='py-2 description'>
@@ -78,9 +79,9 @@ export default function Projects() {
 							</div>
 						)
 					})}
+	
 				</div>
 
-				<Carousel projects={projects} />
 			</div>
 		</>
 	)
