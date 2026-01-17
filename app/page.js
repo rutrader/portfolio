@@ -30,7 +30,7 @@ function ExternalLink({ href, children, className, ariaLabel }) {
       aria-label={ariaLabel ? `${ariaLabel} (opens in new window)` : undefined}
     >
       {children}
-      <span className="sr-only"> (opens in new window)</span>
+      {!ariaLabel && <span className="sr-only"> (opens in new window)</span>}
     </Link>
   )
 }
