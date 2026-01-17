@@ -76,7 +76,6 @@ export const SKILLS = [
 
   { label: 'CI/CD' },
   { label: 'Design systems' },
-//   { label: 'Documentation' },
 ]
 
 export const HOBBIES = [
@@ -103,7 +102,7 @@ export const LINK_SECTIONS = [
     title: 'Contact',
     links: [
       { label: 'GitHub', href: 'https://github.com/rutrader' },
-      { label: 'LinkedIn', href: 'https://linkedin.com/ruslan.ishemgulov' },
+      { label: 'LinkedIn', href: 'https://linkedin.com/in/ruslan.ishemgulov' },
       { label: 'Instagram', href: 'https://instagram.com/ruslan.ishemgulov' },
     ],
   },

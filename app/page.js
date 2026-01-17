@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { HOBBIES, LINK_SECTIONS, NAV_ITEMS, PROJECTS, SKILLS } from './_home/homeData'
+import { HOBBIES, LINK_SECTIONS, PROJECTS, SKILLS } from './_home/homeData'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faSquareArrowUpRight } from '@fortawesome/pro-thin-svg-icons'
@@ -213,7 +213,6 @@ export default function Home() {
                 {getFlattenedLinks().map((l) => (
                   <ExternalLink key={l.href} href={l.href} className="homeLinkChip" ariaLabel={l.label}>
                     <FontAwesomeIcon icon={getLinkIcon(l.href)} className="homeLinkChipIcon" aria-hidden="true" />
-                    {/* <span className="homeLinkChipLabel">{l.label}</span> */}
                   </ExternalLink>
                 ))}
               </div>
