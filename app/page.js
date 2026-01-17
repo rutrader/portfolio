@@ -20,6 +20,8 @@ import {
   faWordpressSimple,
 } from '@fortawesome/free-brands-svg-icons'
 
+const EXTERNAL_LINK_TEXT = ' (opens in new window)'
+
 function ExternalLink({ href, children, className, ariaLabel }) {
   return (
     <Link 
@@ -27,10 +29,10 @@ function ExternalLink({ href, children, className, ariaLabel }) {
       target="_blank" 
       rel="noopener noreferrer" 
       className={className}
-      aria-label={ariaLabel ? `${ariaLabel} (opens in new window)` : undefined}
+      aria-label={ariaLabel ? `${ariaLabel}${EXTERNAL_LINK_TEXT}` : undefined}
     >
       {children}
-      {!ariaLabel && <span className="sr-only"> (opens in new window)</span>}
+      {!ariaLabel && <span className="sr-only">{EXTERNAL_LINK_TEXT}</span>}
     </Link>
   )
 }
