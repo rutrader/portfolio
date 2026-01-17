@@ -1,12 +1,14 @@
-export const NAV_ITEMS = [
+import type { NavItem, Project, Skill, Hobby, LinkSection } from '@/types';
+
+export const NAV_ITEMS: NavItem[] = [
   { id: 'top', label: 'Top' },
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'hobbies', label: 'Hobbies' },
   { id: 'links', label: 'Links' },
-]
+];
 
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
   {
     title: 'Czechonomics — Web',
     description:
@@ -44,8 +46,7 @@ export const PROJECTS = [
   },
   {
     title: 'Ewijobs.cz',
-    description:
-      'A streamlined job portal with job ads and a simple reply flow, built for speed and clarity.',
+    description: 'A streamlined job portal with job ads and a simple reply flow, built for speed and clarity.',
     stacks: ['Next.js', 'MongoDB', 'Netlify'],
     link: 'https://ewijobs.cz/',
     image: {
@@ -54,9 +55,9 @@ export const PROJECTS = [
     },
     highlights: ['Fast UX', 'Forms', 'Deploy pipeline'],
   },
-]
+];
 
-export const SKILLS = [
+export const SKILLS: Skill[] = [
   { label: 'Wordpress' },
   { label: 'Next.js' },
   { label: 'React' },
@@ -76,9 +77,9 @@ export const SKILLS = [
 
   { label: 'CI/CD' },
   { label: 'Design systems' },
-]
+];
 
-export const HOBBIES = [
+export const HOBBIES: Hobby[] = [
   {
     title: 'Economics & investing',
     description: 'I like turning noise into models: reading, tracking, and learning how systems behave.',
@@ -95,9 +96,9 @@ export const HOBBIES = [
     title: 'Outdoors',
     description: 'Walks, hikes, and long routes that help me reset.',
   },
-]
+];
 
-export const LINK_SECTIONS = [
+export const LINK_SECTIONS: LinkSection[] = [
   {
     title: 'Contact',
     links: [
@@ -106,4 +107,4 @@ export const LINK_SECTIONS = [
       { label: 'Instagram', href: 'https://instagram.com/ruslan.ishemgulov' },
     ],
   },
-]
+];

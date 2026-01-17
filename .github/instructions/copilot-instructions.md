@@ -6,7 +6,6 @@
 - Assume CLI commands are run from the repository root (do not hardcode absolute paths).
 - Don't change anything in the `ui/` folder, use it as a reference only.
 
-
 ## Commenting
 
 - Don't "overcomment", add comments only to complex code.

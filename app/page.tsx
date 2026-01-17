@@ -1,10 +1,13 @@
-import Link from 'next/link'
+import Link from 'next/link';
+import Image from 'next/image';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-import { HOBBIES, LINK_SECTIONS, PROJECTS, SKILLS } from './_home/homeData'
+import { HOBBIES, LINK_SECTIONS, PROJECTS, SKILLS } from './_home/homeData';
+import type { Link as LinkType } from '@/types';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare, faSquareArrowUpRight } from '@fortawesome/pro-thin-svg-icons'
-import { faCode, faDatabase, faEnvelope, faServer, faRoute } from '@fortawesome/pro-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare, faSquareArrowUpRight } from '@fortawesome/pro-thin-svg-icons';
+import { faCode, faDatabase, faEnvelope, faServer, faRoute } from '@fortawesome/pro-regular-svg-icons';
 import {
   faAppStoreIos,
   faBootstrap,
@@ -18,97 +21,113 @@ import {
   faReact,
   faSymfony,
   faWordpressSimple,
-} from '@fortawesome/free-brands-svg-icons'
+} from '@fortawesome/free-brands-svg-icons';
 
-function ExternalLink({ href, children, className, ariaLabel }) {
+interface ExternalLinkProps {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+  ariaLabel?: string;
+}
+
+const EXTERNAL_LINK_TEXT = ' (opens in new window)';
+
+function ExternalLink({ href, children, className, ariaLabel }: ExternalLinkProps) {
   return (
-    <Link href={href} target="_blank" rel="noopener noreferrer" className={className} aria-label={ariaLabel}>
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+      aria-label={ariaLabel ? `${ariaLabel}${EXTERNAL_LINK_TEXT}` : undefined}
+    >
       {children}
+      {!ariaLabel && <span className="sr-only">{EXTERNAL_LINK_TEXT}</span>}
     </Link>
-  )
+  );
 }
 
-function getLinkIcon(href) {
-  if (!href) return faArrowUpRightFromSquare
-  if (href.startsWith('mailto:')) return faEnvelope
-  if (href.includes('github.com')) return faGithub
-  if (href.includes('linkedin.com')) return faLinkedin
-  if (href.includes('instagram.com')) return faInstagram
-  if (href.includes('apps.apple.com')) return faAppStoreIos
-  return faArrowUpRightFromSquare
+function getLinkIcon(href: string): IconDefinition {
+  if (!href) return faArrowUpRightFromSquare;
+  if (href.startsWith('mailto:')) return faEnvelope;
+  if (href.includes('github.com')) return faGithub;
+  if (href.includes('linkedin.com')) return faLinkedin;
+  if (href.includes('instagram.com')) return faInstagram;
+  if (href.includes('apps.apple.com')) return faAppStoreIos;
+  return faArrowUpRightFromSquare;
 }
 
-function getStackIcon(tag) {
-  const normalized = String(tag || '').toLowerCase()
+function getStackIcon(tag: string): IconDefinition {
+  const normalized = String(tag || '').toLowerCase();
 
-  if (normalized.includes('react')) return faReact
-  if (normalized.includes('next')) return faCode
-  if (normalized.includes('node')) return faNodeJs
-  if (normalized.includes('php')) return faPhp
-  if (normalized.includes('symfony')) return faSymfony
-  if (normalized.includes('docker')) return faDocker
-  if (normalized.includes('bootstrap')) return faBootstrap
-  if (normalized.includes('mongo')) return faDatabase
-  if (normalized.includes('postgres')) return faDatabase
-  if (normalized.includes('mysql')) return faDatabase
-  if (normalized.includes('context')) return faCode
-  if (normalized.includes('netlify')) return faCode
-  if (normalized.includes('api')) return faServer
-  if (normalized.includes('app store')) return faAppStoreIos
-  if (normalized === 'ios') return faAppStoreIos
+  if (normalized.includes('react')) return faReact;
+  if (normalized.includes('next')) return faCode;
+  if (normalized.includes('node')) return faNodeJs;
+  if (normalized.includes('php')) return faPhp;
+  if (normalized.includes('symfony')) return faSymfony;
+  if (normalized.includes('docker')) return faDocker;
+  if (normalized.includes('bootstrap')) return faBootstrap;
+  if (normalized.includes('mongo')) return faDatabase;
+  if (normalized.includes('postgres')) return faDatabase;
+  if (normalized.includes('mysql')) return faDatabase;
+  if (normalized.includes('context')) return faCode;
+  if (normalized.includes('netlify')) return faCode;
+  if (normalized.includes('api')) return faServer;
+  if (normalized.includes('app store')) return faAppStoreIos;
+  if (normalized === 'ios') return faAppStoreIos;
 
-  return faCode
+  return faCode;
 }
 
-function getCustomStackIconSrc(tag) {
-  const normalized = String(tag || '').toLowerCase()
+function getCustomStackIconSrc(tag: string): string | null {
+  const normalized = String(tag || '').toLowerCase();
 
-  if (normalized.includes('expo')) return '/icons/expo/logo-type-a.svg'
+  if (normalized.includes('expo')) return '/icons/expo/logo-type-a.svg';
 
-  return null
+  return null;
 }
 
-function getSkillIcon(label) {
-  const normalized = String(label || '').toLowerCase()
+function getSkillIcon(label: string): IconDefinition {
+  const normalized = String(label || '').toLowerCase();
 
-  if (normalized.includes('next')) return faCode
-  if (normalized.includes('react')) return faReact
-  if (normalized.includes('typescript')) return faCode
-  if (normalized.includes('javascript')) return faJs
+  if (normalized.includes('next')) return faCode;
+  if (normalized.includes('react')) return faReact;
+  if (normalized.includes('typescript')) return faCode;
+  if (normalized.includes('javascript')) return faJs;
 
-  if (normalized === 'php') return faPhp
-  if (normalized.includes('symfony')) return faSymfony
-  if (normalized.includes('node')) return faNodeJs
-  if (normalized.includes('rest')) return faServer
-  if (normalized.includes('docker')) return faDocker
+  if (normalized === 'php') return faPhp;
+  if (normalized.includes('symfony')) return faSymfony;
+  if (normalized.includes('node')) return faNodeJs;
+  if (normalized.includes('rest')) return faServer;
+  if (normalized.includes('docker')) return faDocker;
 
-  if (normalized.includes('postgres')) return faDatabase
-  if (normalized.includes('mysql')) return faDatabase
-  if (normalized.includes('mongo')) return faDatabase
-  if (normalized.includes('migration')) return faDatabase
+  if (normalized.includes('postgres')) return faDatabase;
+  if (normalized.includes('mysql')) return faDatabase;
+  if (normalized.includes('mongo')) return faDatabase;
+  if (normalized.includes('migration')) return faDatabase;
 
-  if (normalized.includes('ci/cd')) return faServer
-  if (normalized.includes('observ')) return faServer
-  if (normalized.includes('design')) return faRoute
-  if (normalized.includes('doc')) return faCode
-  if (normalized.includes('wordpress')) return faWordpressSimple
+  if (normalized.includes('ci/cd')) return faServer;
+  if (normalized.includes('observ')) return faServer;
+  if (normalized.includes('design')) return faRoute;
+  if (normalized.includes('doc')) return faCode;
+  if (normalized.includes('wordpress')) return faWordpressSimple;
 
-  return faCode
+  return faCode;
 }
 
-function getFlattenedLinks() {
-  const seen = new Set()
-  const flattened = []
+function getFlattenedLinks(): LinkType[] {
+  const seen = new Set<string>();
+  const flattened: LinkType[] = [];
 
   for (const section of LINK_SECTIONS || []) {
     for (const link of section?.links || []) {
-      if (!link?.href || seen.has(link.href)) continue
-      seen.add(link.href)
-      flattened.push(link)
+      if (!link?.href || seen.has(link.href)) continue;
+      seen.add(link.href);
+      flattened.push(link);
     }
   }
 
-  return flattened
+  return flattened;
 }
 
 export default function Home() {
@@ -117,9 +136,10 @@ export default function Home() {
       <div className="homeShell">
         <main className="homeMain">
           <section className="homeHero" aria-label="Greeting">
-            <h1 className="homeHeroTitle">Hi, I’m Ruslan</h1>
+            <h1 className="homeHeroTitle">Hi, I'm Ruslan</h1>
             <p className="homeHeroSubtitle">
-              Software engineer. I enjoy learning new things, building useful products, and exploring economics & investing.
+              Software engineer. I enjoy learning new things, building useful products, and exploring economics &
+              investing.
             </p>
           </section>
 
@@ -144,12 +164,12 @@ export default function Home() {
                       {project.stacks.slice(0, 3).map((tag) => (
                         <span key={tag} className="homeProjectTag">
                           {getCustomStackIconSrc(tag) ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              src={getCustomStackIconSrc(tag)}
+                            <Image
+                              src={getCustomStackIconSrc(tag)!}
                               alt=""
+                              width={13}
+                              height={12}
                               className="homeProjectTagCustomIcon"
-                              loading="lazy"
                               aria-hidden="true"
                             />
                           ) : (
@@ -157,7 +177,7 @@ export default function Home() {
                               icon={getStackIcon(tag)}
                               className="homeProjectTagIcon"
                               size="xl"
-                              style={{ color: '#FFD43B' }}
+                              style={{ color: 'var(--home-icon-color)' }}
                             />
                           )}
                           <span className="homeProjectTagLabel">{tag}</span>
@@ -180,7 +200,11 @@ export default function Home() {
               {SKILLS.map((skill) => (
                 <div key={skill.label} className="homeSkillItem">
                   <div className="homeSkillIcon">
-                    <FontAwesomeIcon icon={getSkillIcon(skill.label)} size="xl" style={{ color: '#FFD43B' }} />
+                    <FontAwesomeIcon
+                      icon={getSkillIcon(skill.label)}
+                      size="xl"
+                      style={{ color: 'var(--home-icon-color)' }}
+                    />
                   </div>
                   <div className="homeSkillLabel">{skill.label}</div>
                 </div>
@@ -191,7 +215,7 @@ export default function Home() {
           <section className="homeSection" id="hobbies" aria-label="Hobbies">
             <header className="homeSectionHeader">
               <h2 className="homeSectionTitle">Hobbies</h2>
-              <p className="homeSectionDesc">Stuff I do when I’m not coding.</p>
+              <p className="homeSectionDesc">Stuff I do when I'm not coding.</p>
             </header>
 
             <div className="homeHobbyGrid">
@@ -230,5 +254,5 @@ export default function Home() {
         </main>
       </div>
     </div>
-  )
+  );
 }

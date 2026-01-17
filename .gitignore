@@ -33,3 +33,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+UI_IDEAS.md
+ui/
+
+# Temp
+.playwright-mcp/
