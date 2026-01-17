@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { HOBBIES, LINK_SECTIONS, NAV_ITEMS, PROJECTS, SKILLS } from './_home/homeData'
 
@@ -144,12 +145,12 @@ export default function Home() {
                       {project.stacks.slice(0, 3).map((tag) => (
                         <span key={tag} className="homeProjectTag">
                           {getCustomStackIconSrc(tag) ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
+                            <Image
                               src={getCustomStackIconSrc(tag)}
                               alt=""
+                              width={24}
+                              height={12}
                               className="homeProjectTagCustomIcon"
-                              loading="lazy"
                               aria-hidden="true"
                             />
                           ) : (
