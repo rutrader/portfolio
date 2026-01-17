@@ -22,8 +22,15 @@ import {
 
 function ExternalLink({ href, children, className, ariaLabel }) {
   return (
-    <Link href={href} target="_blank" rel="noopener noreferrer" className={className} aria-label={ariaLabel}>
+    <Link 
+      href={href} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className={className}
+      aria-label={ariaLabel ? `${ariaLabel} (opens in new window)` : undefined}
+    >
       {children}
+      <span className="sr-only"> (opens in new window)</span>
     </Link>
   )
 }
