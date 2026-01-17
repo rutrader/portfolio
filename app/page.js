@@ -148,7 +148,7 @@ export default function Home() {
                             <Image
                               src={getCustomStackIconSrc(tag)}
                               alt=""
-                              width={24}
+                              width={13}
                               height={12}
                               className="homeProjectTagCustomIcon"
                               aria-hidden="true"
