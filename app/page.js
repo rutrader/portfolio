@@ -157,7 +157,7 @@ export default function Home() {
                               icon={getStackIcon(tag)}
                               className="homeProjectTagIcon"
                               size="xl"
-                              style={{ color: '#FFD43B' }}
+                              style={{ color: 'var(--home-icon-color)' }}
                             />
                           )}
                           <span className="homeProjectTagLabel">{tag}</span>
@@ -180,7 +180,7 @@ export default function Home() {
               {SKILLS.map((skill) => (
                 <div key={skill.label} className="homeSkillItem">
                   <div className="homeSkillIcon">
-                    <FontAwesomeIcon icon={getSkillIcon(skill.label)} size="xl" style={{ color: '#FFD43B' }} />
+                    <FontAwesomeIcon icon={getSkillIcon(skill.label)} size="xl" style={{ color: 'var(--home-icon-color)' }} />
                   </div>
                   <div className="homeSkillLabel">{skill.label}</div>
                 </div>
