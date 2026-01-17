@@ -3,6 +3,7 @@ name: layoutRedesign
 description: Transform website layout to match a reference design specification with new components and styling.
 argument-hint: A design specification document describing the target layout and design pattern (e.g., UI_IDEAS.md)
 ---
+
 # Layout Redesign Task
 
 You are tasked with transforming a website layout based on a design specification document.
@@ -10,7 +11,7 @@ You are tasked with transforming a website layout based on a design specificatio
 ## Instructions:
 
 1. **Review the Design Specification**
-   - Examine the provided design document (e.g., UI_IDEAS.md) 
+   - Examine the provided design document (e.g., UI_IDEAS.md)
    - Identify the target layout pattern (e.g., GitHub profile style, multi-column layout, etc.)
    - Note key structural changes and new components needed
 
@@ -41,6 +42,7 @@ You are tasked with transforming a website layout based on a design specificatio
    - Test all interactive elements (tabs, navigation, etc.)
 
 ## Tips:
+
 - Don't overcomment code; add comments only to complex logic
 - Follow the existing code style and naming conventions
 - Use existing components as reference for structure and patterns

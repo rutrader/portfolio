@@ -3,47 +3,61 @@ $bg-gray-color: rgb(251, 251, 251);
 
 html,
 body {
-	min-height: 100%;
+  min-height: 100%;
+  margin: 0;
 }
 
 main {
-	display: block;
+  display: block;
 }
 
 .general {
-	// background-color: rgb(232, 237, 255);
-	color: $body-color;
-	// border-radius: 80% 0 0 0%;
-	background-color: rgba(251, 251, 251);
-	// background-size: 40%;
+  // background-color: rgb(232, 237, 255);
+  color: $body-color;
+  // border-radius: 80% 0 0 0%;
+  background-color: rgba(251, 251, 251);
+  // background-size: 40%;
 }
 
 .gradient {
-	background-image: linear-gradient(121.57deg, rgb(203, 105, 193) 18.77%, rgb(108, 114, 203) 60.15%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+  background-image: linear-gradient(121.57deg, rgb(203, 105, 193) 18.77%, rgb(108, 114, 203) 60.15%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .divider {
-	width: 25%;
-	height: 6px;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-	border-bottom-left-radius: 10px;
-	background-image: linear-gradient(270deg, rgb(19, 173, 199) 0%, rgb(148, 93, 214) 100%);
-	margin: 30px 0;
-	// margin-right: 0px;
+  width: 25%;
+  height: 6px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-image: linear-gradient(270deg, rgb(19, 173, 199) 0%, rgb(148, 93, 214) 100%);
+  margin: 30px 0;
+  // margin-right: 0px;
 }
 
 h2 {
-	// font-weight: 600;
-	font-size: 45px;
-	line-height: 56px;
-	width: max-content;
-	max-width: 100%;
-	margin-bottom: 16px;
-	padding-top: 0px;
+  // font-weight: 600;
+  font-size: 45px;
+  line-height: 56px;
+  width: max-content;
+  max-width: 100%;
+  margin-bottom: 16px;
+  padding-top: 0px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 @import '../styles/home.scss';
