@@ -1,14 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import './globals.scss'
-import { Inter, Roboto, Poppins } from 'next/font/google'
+import { Poppins } from 'next/font/google'
+import { GeistMono } from 'geist/font/mono'
 
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
-
-const inter = Poppins({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700'] })
+const poppins = Poppins({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700'] })
 
 export const metadata = {
   title: 'Home | Ruslan Ishemgulov',
@@ -19,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${poppins.className} ${GeistMono.variable}`}>
         <div className='general'>
           <main>
             <div>

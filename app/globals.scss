@@ -1,14 +1,13 @@
 $body-color: rgb(55, 55, 55);
 $bg-gray-color: rgb(251, 251, 251);
 
-main {
-	display: block;
+html,
+body {
+	min-height: 100%;
 }
 
-.sections {
-	.container {
-		padding: 25px 0;
-	}
+main {
+	display: block;
 }
 
 .general {
@@ -47,12 +46,4 @@ h2 {
 	padding-top: 0px;
 }
 
-
-@import '../styles/header.scss';
-@import '../styles/footer.scss';
-
-@import '../styles/about.scss';
-@import '../styles/stack.scss';
-@import '../styles/projects.scss';
-
-@import '../styles/embla.scss';
+@import '../styles/home.scss';

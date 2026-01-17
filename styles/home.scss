@@ -1,0 +1,570 @@
+.home {
+  --home-bg: #030917;
+  --home-surface: rgba(255, 255, 255, 0.06);
+  --home-surface-2: rgba(255, 255, 255, 0.09);
+  --home-border: rgba(255, 255, 255, 0.12);
+  --home-text: rgba(255, 255, 255, 0.92);
+  --home-muted: rgba(255, 255, 255, 0.68);
+  --home-faint: rgba(255, 255, 255, 0.52);
+  --home-accent: #75a9ff;
+  --home-accent-2: #b27cff;
+
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  color: var(--home-text);
+  background: 
+    radial-gradient(900px 600px at 15% 10%, rgb(14 69 155 / 28%), transparent 60%), 
+    radial-gradient(800px 520px at 80% 15%, rgb(27 45 236 / 26%), transparent 55%), 
+    radial-gradient(520px 520px at 65% 80%, rgb(103 14 80 / 12%), #b1353500 60%), 
+    var(--home-bg);
+
+  min-height: 100vh;
+}
+
+.homeShell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 22px 18px 44px;
+}
+
+.homeTopbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  position: sticky;
+  top: 14px;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.homeBrand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.homeMonogram {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.92);
+  background: radial-gradient(circle at 30% 30%, rgba(117, 169, 255, 0.55), rgba(178, 124, 255, 0.28) 60%, rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.homeName {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.homeRole {
+  font-size: 12px;
+  color: var(--home-muted);
+  margin-top: 2px;
+}
+
+.homeTopbarLeft {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.homeTopbarText {
+  min-width: 0;
+}
+
+.homeTopbarNav {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.homeTopbarNavLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--home-text);
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.homeTopbarNavLink:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.homeTopbarRight {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.homePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--home-text);
+  text-decoration: none;
+  font-size: 12px;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.homePill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.homeMain {
+  min-width: 0;
+  margin-top: 14px;
+}
+
+.homeHero {
+  padding: 18px;
+}
+
+.homeHeroTitle {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.12;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.homeHeroSubtitle {
+  margin: 10px 0 0;
+  color: var(--home-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
+.homeSection {
+  margin-top: 18px;
+  padding: 18px;
+}
+
+.homeSectionHeader {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.homeSectionTitle {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.homeSectionDesc {
+  margin: 0;
+  color: var(--home-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.homeProjectList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.homeProjectCard {
+  display: block;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  color: var(--home-text);
+  position: relative;
+  outline: none;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.homeProjectCard:hover,
+.homeProjectCard:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+.homeProjectHead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18px;
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 6px;
+}
+
+.homeProjectIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.homeProjectTitleRow {
+  min-width: 0;
+}
+
+.homeProjectTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.homeProjectTags {
+  margin-top: 15px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.homeProjectTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 4px 7px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.homeProjectTagCustomIcon {
+  height: 12px;
+  width: auto;
+  display: block;
+}
+
+.homeProjectTagIcon {
+  color: rgba(255, 255, 255, 0.78);
+  width: 12px;
+  height: 12px;
+}
+
+.homeProjectTagLabel {
+  line-height: 1;
+}
+
+.homeProjectLinkIcon {
+  color: rgba(255, 255, 255, 0.55);
+  transition: opacity 140ms ease;
+  margin-top: 2px;
+}
+
+.homeProjectCard:hover .homeProjectLinkIcon,
+.homeProjectCard:focus-visible .homeProjectLinkIcon {
+  opacity: 1;
+}
+
+.homeProjectDesc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--home-muted);
+}
+
+.homeSkills {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.homeSkillItem {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.homeSkillItem:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.homeSkillIcon {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  display: grid;
+  place-items: center;
+}
+
+.homeSkillIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.homeSkillLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.86);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.homeHobbyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.homeHobbyCard {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.homeHobbyCard:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+.homeHobbyTitle {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.homeHobbyText {
+  color: var(--home-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.homeLinksCompactGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.homeLinksBlock {
+  padding: 4px 0;
+}
+
+.homeLinksKicker {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+  margin-bottom: 10px;
+}
+
+.homeLinksText {
+  font-size: 18px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 16px;
+}
+
+.homeLinkChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.homeLinkChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  transition: background 140ms ease;
+}
+
+.homeLinkChip:hover,
+.homeLinkChip:focus-visible {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.homeLinkChipIcon {
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.homeLinkChipLabel {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.homeLinksCompactSection {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px;
+}
+
+.homeLinksCompactTitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.86);
+  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.homeLinksCompactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.homeLinksCompactCard {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--home-text);
+  text-decoration: none;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.homeLinksCompactCard:hover,
+.homeLinksCompactCard:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.homeLinksCompactHead {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) 18px;
+  gap: 10px;
+  align-items: center;
+}
+
+.homeLinksCompactIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.homeLinksCompactIcon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.homeLinksCompactLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.86);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.homeLinksCompactRight {
+  color: rgba(255, 255, 255, 0.55);
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+
+.homeLinksCompactCard:hover .homeLinksCompactRight,
+.homeLinksCompactCard:focus-visible .homeLinksCompactRight {
+  opacity: 1;
+}
+
+
+.homeFooter {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.homeFooterLine {
+  font-size: 12px;
+  color: var(--home-muted);
+}
+
+.homeFooterAnchor {
+  color: var(--home-text);
+  text-decoration: none;
+}
+
+.homeFooterAnchor:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 980px) {
+  .homeTopbar {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .homeTopbarNav {
+    justify-content: flex-start;
+  }
+
+  .homeTopbarRight {
+    justify-content: flex-start;
+  }
+
+  .homeProjectList {
+    grid-template-columns: 1fr;
+  }
+
+  .homeSkills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .homeHobbyGrid,
+  .homeLinksCompactGrid {
+    grid-template-columns: 1fr;
+  }
+}
