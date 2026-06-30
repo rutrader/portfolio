@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
@@ -22,6 +24,7 @@ import {
   faSymfony,
   faWordpressSimple,
 } from '@fortawesome/free-brands-svg-icons';
+import { track } from '@vercel/analytics';
 
 interface ExternalLinkProps {
   href: string;
@@ -37,6 +40,7 @@ function ExternalLink({ href, children, className, ariaLabel }: ExternalLinkProp
     <Link
       href={href}
       target="_blank"
+      onClick={() => track('external_link_click', { href })}
       rel="noopener noreferrer"
       className={className}
       aria-label={ariaLabel ? `${ariaLabel}${EXTERNAL_LINK_TEXT}` : undefined}
