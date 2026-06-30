@@ -24,6 +24,7 @@
     "@fortawesome/sharp-light-svg-icons": "^6.4.0",
     "@fortawesome/sharp-regular-svg-icons": "^6.4.0",
     "@fortawesome/sharp-solid-svg-icons": "^6.4.0",
+    "@vercel/analytics": "^2.0.1",
     "date-fns": "^2.30.0",
     "embla-carousel-react": "^8.0.0-rc11",
     "geist": "^1.5.1",

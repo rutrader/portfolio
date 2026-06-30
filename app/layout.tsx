@@ -1,4 +1,5 @@
 import './globals.scss';
+import { Analytics } from '@vercel/analytics/next';
 import { Poppins } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
 import type { Metadata } from 'next';
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <div className="general">
           <main>
             <div>{children}</div>
+            <Analytics />
           </main>
         </div>
       </body>
