@@ -169,8 +169,12 @@ export default function Home() {
                   <h3 className="homeSkillGroupTitle">{group.title}</h3>
                   <ul className="homeSkillGroupList">
                     {group.skills.map((skill) => (
-                      <li key={skill} className="homeSkillItem">
-                        <span className="homeSkillLabel">{skill}</span>
+                      <li
+                        key={skill.name}
+                        className={`homeSkillItem${skill.primary ? ' homeSkillItem--primary' : ''}`}
+                      >
+                        <span className="homeSkillDot" aria-hidden="true" />
+                        <span className="homeSkillLabel">{skill.name}</span>
                       </li>
                     ))}
                   </ul>

@@ -26,22 +26,43 @@ export const PROJECTS: Project[] = [
   },
 ];
 
+// `primary: true` = core skill (bright accent dot); the rest render muted.
 export const SKILL_GROUPS: SkillGroup[] = [
   {
     title: 'Frontend',
-    skills: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'React Native'],
+    skills: [
+      { name: 'Next.js', primary: true },
+      { name: 'React', primary: true },
+      { name: 'TypeScript', primary: true },
+      { name: 'JavaScript' },
+      { name: 'React Native' },
+    ],
+  },
+  {
+    title: 'AI',
+    skills: [
+      { name: 'AI-assisted development', primary: true },
+      { name: 'Agentic workflows', primary: true },
+      { name: 'LLM integration', primary: true },
+      { name: 'AI architecture', primary: true },
+    ],
   },
   {
     title: 'Backend',
-    skills: ['Node.js', 'PHP', 'Symfony', 'REST APIs'],
+    skills: [{ name: 'Node.js', primary: true }, { name: 'PHP' }],
   },
   {
     title: 'Databases',
-    skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
+    skills: [{ name: 'PostgreSQL', primary: true }, { name: 'MySQL' }],
   },
   {
     title: 'Tooling & platforms',
-    skills: ['Docker', 'CI/CD', 'Design systems', 'WordPress'],
+    skills: [
+      { name: 'Design systems', primary: true },
+      { name: 'WordPress', primary: true },
+      { name: 'Docker' },
+      { name: 'CI/CD' },
+    ],
   },
 ];
 

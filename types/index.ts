@@ -6,9 +6,14 @@ export interface Project {
   highlights: string[];
 }
 
+export interface Skill {
+  name: string;
+  primary?: boolean;
+}
+
 export interface SkillGroup {
   title: string;
-  skills: string[];
+  skills: Skill[];
 }
 
 export interface Hobby {
