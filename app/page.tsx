@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-import { HOBBIES, LINK_SECTIONS, PROJECTS, SKILLS } from './_home/homeData';
+import { HOBBIES, LINK_SECTIONS, PROJECTS, SKILL_GROUPS } from './_home/homeData';
 import type { Link as LinkType } from '@/types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -164,6 +164,15 @@ export default function Home() {
                       <FontAwesomeIcon icon={faSquareArrowUpRight} className="homeProjectLinkIcon" />
                     </div>
                     <p className="homeProjectDesc">{project.description}</p>
+                    {project.highlights.length > 0 && (
+                      <ul className="homeProjectHighlights" aria-label="Highlights">
+                        {project.highlights.map((highlight) => (
+                          <li key={highlight} className="homeProjectHighlight">
+                            {highlight}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                     <div className="homeProjectTags" aria-label="Tech stack">
                       {project.stacks.slice(0, 3).map((tag) => (
                         <span key={tag} className="homeProjectTag">
@@ -200,17 +209,24 @@ export default function Home() {
               <p className="homeSectionDesc">A toolbox I reach for most often.</p>
             </header>
 
-            <ul className="homeSkills">
-              {SKILLS.map((skill) => (
-                <li key={skill.label} className="homeSkillItem">
-                  <div className="homeSkillIcon">
-                    <FontAwesomeIcon
-                      icon={getSkillIcon(skill.label)}
-                      size="xl"
-                      style={{ color: 'var(--home-icon-color)' }}
-                    />
-                  </div>
-                  <div className="homeSkillLabel">{skill.label}</div>
+            <ul className="homeSkillGroups">
+              {SKILL_GROUPS.map((group) => (
+                <li key={group.title} className="homeSkillGroup">
+                  <h3 className="homeSkillGroupTitle">{group.title}</h3>
+                  <ul className="homeSkillGroupList">
+                    {group.skills.map((skill) => (
+                      <li key={skill} className="homeSkillItem">
+                        <div className="homeSkillIcon">
+                          <FontAwesomeIcon
+                            icon={getSkillIcon(skill)}
+                            size="xl"
+                            style={{ color: 'var(--home-icon-color)' }}
+                          />
+                        </div>
+                        <div className="homeSkillLabel">{skill}</div>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>
@@ -241,6 +257,7 @@ export default function Home() {
                 {getFlattenedLinks().map((l) => (
                   <ExternalLink key={l.href} href={l.href} className="homeLinkChip" ariaLabel={l.label}>
                     <FontAwesomeIcon icon={getLinkIcon(l.href)} className="homeLinkChipIcon" aria-hidden="true" />
+                    <span className="homeLinkChipLabel">{l.label}</span>
                   </ExternalLink>
                 ))}
               </div>

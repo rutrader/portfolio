@@ -182,13 +182,59 @@
   color: var(--home-muted);
 }
 
-.homeSkills {
+.homeProjectHighlights {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+
+.homeProjectHighlight {
+  position: relative;
+  padding-left: 14px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.homeProjectHighlight::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--home-accent);
+}
+
+.homeSkillGroups {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  gap: 20px 16px;
+}
+
+.homeSkillGroupTitle {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--home-faint);
+}
+
+.homeSkillGroupList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .homeSkillItem {
@@ -319,6 +365,12 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
+.homeLinkChipLabel {
+  font-size: 13px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .homeFooter {
   margin-top: 30px;
   padding-top: 14px;
@@ -348,7 +400,7 @@
     grid-template-columns: 1fr;
   }
 
-  .homeSkills {
+  .homeSkillGroups {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

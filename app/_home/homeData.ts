@@ -1,4 +1,4 @@
-import type { Project, Skill, Hobby, LinkSection } from '@/types';
+import type { Project, SkillGroup, Hobby, LinkSection } from '@/types';
 
 export const PROJECTS: Project[] = [
   {
@@ -26,26 +26,23 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export const SKILLS: Skill[] = [
-  { label: 'Wordpress' },
-  { label: 'Next.js' },
-  { label: 'React' },
-  { label: 'TypeScript' },
-  { label: 'JavaScript' },
-  { label: 'React Native' },
-
-  { label: 'PHP' },
-  { label: 'Symfony' },
-  { label: 'Node.js' },
-  { label: 'REST APIs' },
-  { label: 'Docker' },
-
-  { label: 'PostgreSQL' },
-  { label: 'MySQL' },
-  { label: 'MongoDB' },
-
-  { label: 'CI/CD' },
-  { label: 'Design systems' },
+export const SKILL_GROUPS: SkillGroup[] = [
+  {
+    title: 'Frontend',
+    skills: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'React Native'],
+  },
+  {
+    title: 'Backend',
+    skills: ['Node.js', 'PHP', 'Symfony', 'REST APIs'],
+  },
+  {
+    title: 'Databases',
+    skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
+  },
+  {
+    title: 'Tooling & platforms',
+    skills: ['Docker', 'CI/CD', 'Design systems', 'WordPress'],
+  },
 ];
 
 export const HOBBIES: Hobby[] = [

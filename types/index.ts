@@ -6,8 +6,9 @@ export interface Project {
   highlights: string[];
 }
 
-export interface Skill {
-  label: string;
+export interface SkillGroup {
+  title: string;
+  skills: string[];
 }
 
 export interface Hobby {
