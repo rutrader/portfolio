@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
     title: 'Czechonomics — iOS',
     description: 'An iOS companion app for Czechonomics — key indicators and stats on the go.',
     stacks: ['iOS', 'App Store'],
-    link: 'https://apps.apple.com/cz/app/czech-stats/id1669200005',
+    link: 'https://apps.apple.com/cz/app/czechonomics/id1669200005',
     image: {
       src: '/images/projects/czechonomics.png',
       alt: 'Czechonomics iOS app',
@@ -33,27 +33,16 @@ export const PROJECTS: Project[] = [
     highlights: ['Mobile companion', 'Quick stats', 'Side project'],
   },
   {
-    title: 'Workmarket.eu',
+    title: 'Assumio',
     description:
-      'A job portal connecting non‑EU residents with EU opportunities, helping companies hire internationally.',
-    stacks: ['PHP', 'Symfony', 'PostgreSQL'],
-    link: 'https://workmarket.eu/',
+      'A private ledger of investment reasoning, not returns — track why you own each position and grade the thesis against reality over time.',
+    stacks: ['Astro', 'TypeScript', 'AI-assisted'],
+    link: 'https://assumio.com/',
     image: {
-      src: '/images/projects/workmarket.png',
-      alt: 'Workmarket.eu website screenshot',
+      src: '/images/projects/assumio.png',
+      alt: 'Assumio website screenshot',
     },
-    highlights: ['Marketplace flows', 'Admin tooling', 'SEO pages'],
-  },
-  {
-    title: 'Ewijobs.cz',
-    description: 'A streamlined job portal with job ads and a simple reply flow, built for speed and clarity.',
-    stacks: ['Next.js', 'MongoDB', 'Netlify'],
-    link: 'https://ewijobs.cz/',
-    image: {
-      src: '/images/projects/ewijobs.png',
-      alt: 'Ewijobs.cz website screenshot',
-    },
-    highlights: ['Fast UX', 'Forms', 'Deploy pipeline'],
+    highlights: ['Investing + AI', 'Static-site output', 'Own product'],
   },
 ];
 
