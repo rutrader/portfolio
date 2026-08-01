@@ -8,18 +8,19 @@ with projects, skills, and links, built with the Next.js App Router.
 - **Next.js** (App Router) + **React**
 - **TypeScript** (strict)
 - **Sass** for styling (`app/globals.scss`, `styles/home.scss`)
-- **FontAwesome Pro** for icons — requires a license token
+- **Icons**: [lucide-react](https://lucide.dev) (UI) + [simple-icons](https://simpleicons.org) (brand logos)
 - **Vercel Analytics**
 
 ## Getting started
 
 ```bash
-yarn install   # needs FONTAWESOME_NPM_AUTH_TOKEN set (see .env.example)
+yarn install
 yarn dev       # http://localhost:3000
 ```
 
-Content lives in [`app/_home/homeData.ts`](app/_home/homeData.ts); the page is
-rendered by [`app/page.tsx`](app/page.tsx).
+No license tokens or private registries required. Content lives in
+[`app/_home/homeData.ts`](app/_home/homeData.ts); the page is rendered by
+[`app/page.tsx`](app/page.tsx).
 
 ## Scripts
 
@@ -31,11 +32,6 @@ rendered by [`app/page.tsx`](app/page.tsx).
 | `yarn lint` | ESLint |
 | `yarn type-check` | `tsc --noEmit` |
 | `yarn prettify` / `yarn prettier` | Write / check formatting |
-
-## Environment
-
-FontAwesome Pro requires `FONTAWESOME_NPM_AUTH_TOKEN` (get it from
-<https://fontawesome.com/account>). Copy `.env.example` to `.env` and fill it in.
 
 ## Deployment
 

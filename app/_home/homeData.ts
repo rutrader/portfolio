@@ -1,4 +1,4 @@
-import type { Project, SkillGroup, Hobby, LinkSection } from '@/types';
+import type { Project, SkillGroup, Hobby, Writing, LinkSection } from '@/types';
 
 export const PROJECTS: Project[] = [
   {
@@ -61,6 +61,28 @@ export const HOBBIES: Hobby[] = [
   {
     title: 'Outdoors',
     description: 'Walks, hikes, and long routes that help me reset.',
+  },
+];
+
+export const WRITINGS: Writing[] = [
+  {
+    title: 'AI Infrastructure: Discipline Under Pressure',
+    source: 'LinkedIn',
+    href: 'https://www.linkedin.com/pulse/ai-infrastructure-discipline-pressure-ruslan-ishemgulov-tuyxf',
+    langs: ['EN'],
+  },
+  {
+    title: 'AI Infrastructure: Discipline Under Pressure — Part 2',
+    source: 'LinkedIn',
+    href: 'https://www.linkedin.com/pulse/ai-infrastructure-discipline-pressure-part-2-ruslan-ishemgulov-82krf',
+    langs: ['EN'],
+  },
+  {
+    title: 'Investment Quest',
+    source: 'Blog',
+    href: 'https://www.rutrader.eu/',
+    langs: ['EN', 'RU'],
+    description: 'Report breakdowns, investment ideas, and market notes.',
   },
 ];
 

@@ -4,10 +4,6 @@ import { Poppins } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
 import type { Metadata } from 'next';
 
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-config.autoAddCss = false;
-
 const poppins = Poppins({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700'] });
 
 const SITE_URL = 'https://ishemgulov.com';

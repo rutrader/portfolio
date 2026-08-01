@@ -148,12 +148,6 @@
   background: rgba(255, 255, 255, 0.02);
 }
 
-.homeProjectTagCustomIcon {
-  height: 12px;
-  width: auto;
-  display: block;
-}
-
 .homeProjectTagIcon {
   color: rgba(255, 255, 255, 0.78);
   width: 12px;
@@ -258,25 +252,97 @@
   transform: translateY(-1px);
 }
 
-.homeSkillIcon {
-  width: 28px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.03);
-  display: grid;
-  place-items: center;
-}
-
-.homeSkillIcon svg {
-  width: 20px;
-  height: 20px;
-}
-
 .homeSkillLabel {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.86);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.homeWritingList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.homeWritingCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  color: var(--home-text);
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    transform 140ms ease;
+}
+
+.homeWritingCard:hover,
+.homeWritingCard:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+.homeWritingMain {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.homeWritingTitle {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.homeWritingDesc {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--home-muted);
+}
+
+.homeWritingSource {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--home-faint);
+}
+
+.homeWritingLangs {
+  display: inline-flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.homeWritingLang {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.homeWritingLang--en {
+  color: var(--home-accent);
+  border-color: rgba(117, 169, 255, 0.4);
+}
+
+.homeWritingLang--ru {
+  color: var(--home-accent-2);
+  border-color: rgba(178, 124, 255, 0.4);
 }
 
 .homeHobbyGrid {

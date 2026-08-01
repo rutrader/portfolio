@@ -16,6 +16,16 @@ export interface Hobby {
   description: string;
 }
 
+export type WritingLang = 'EN' | 'RU';
+
+export interface Writing {
+  title: string;
+  source: string;
+  href: string;
+  langs: WritingLang[];
+  description?: string;
+}
+
 export interface Link {
   label: string;
   href: string;
