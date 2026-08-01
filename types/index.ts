@@ -1,19 +1,8 @@
-export interface NavItem {
-  id: string;
-  label: string;
-}
-
-export interface ProjectImage {
-  src: string;
-  alt: string;
-}
-
 export interface Project {
   title: string;
   description: string;
   stacks: string[];
   link: string;
-  image: ProjectImage;
   highlights: string[];
 }
 

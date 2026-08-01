@@ -1,12 +1,4 @@
-import type { NavItem, Project, Skill, Hobby, LinkSection } from '@/types';
-
-export const NAV_ITEMS: NavItem[] = [
-  { id: 'top', label: 'Top' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'hobbies', label: 'Hobbies' },
-  { id: 'links', label: 'Links' },
-];
+import type { Project, Skill, Hobby, LinkSection } from '@/types';
 
 export const PROJECTS: Project[] = [
   {
@@ -15,10 +7,6 @@ export const PROJECTS: Project[] = [
       'A side project with a focused overview of the Czech economy: key indicators, financial data, and government stats.',
     stacks: ['React', 'Node.js', 'Context API'],
     link: 'https://czechonomics.com/',
-    image: {
-      src: '/images/projects/czechonomics.png',
-      alt: 'Czechonomics website screenshot',
-    },
     highlights: ['Data-heavy UI', 'Charts & indicators', 'Side project'],
   },
   {
@@ -26,10 +14,6 @@ export const PROJECTS: Project[] = [
     description: 'An iOS companion app for Czechonomics — key indicators and stats on the go.',
     stacks: ['iOS', 'App Store'],
     link: 'https://apps.apple.com/cz/app/czechonomics/id1669200005',
-    image: {
-      src: '/images/projects/czechonomics.png',
-      alt: 'Czechonomics iOS app',
-    },
     highlights: ['Mobile companion', 'Quick stats', 'Side project'],
   },
   {
@@ -38,10 +22,6 @@ export const PROJECTS: Project[] = [
       'A private ledger of investment reasoning, not returns — track why you own each position and grade the thesis against reality over time.',
     stacks: ['Astro', 'TypeScript', 'AI-assisted'],
     link: 'https://assumio.com/',
-    image: {
-      src: '/images/projects/assumio.png',
-      alt: 'Assumio website screenshot',
-    },
     highlights: ['Investing + AI', 'Static-site output', 'Own product'],
   },
 ];

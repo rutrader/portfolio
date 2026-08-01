@@ -200,9 +200,9 @@ export default function Home() {
               <p className="homeSectionDesc">A toolbox I reach for most often.</p>
             </header>
 
-            <div className="homeSkills">
+            <ul className="homeSkills">
               {SKILLS.map((skill) => (
-                <div key={skill.label} className="homeSkillItem">
+                <li key={skill.label} className="homeSkillItem">
                   <div className="homeSkillIcon">
                     <FontAwesomeIcon
                       icon={getSkillIcon(skill.label)}
@@ -211,9 +211,9 @@ export default function Home() {
                     />
                   </div>
                   <div className="homeSkillLabel">{skill.label}</div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           <section className="homeSection" id="hobbies" aria-label="Hobbies">
@@ -222,14 +222,14 @@ export default function Home() {
               <p className="homeSectionDesc">Stuff I do when I'm not coding.</p>
             </header>
 
-            <div className="homeHobbyGrid">
+            <ul className="homeHobbyGrid">
               {HOBBIES.map((hobby) => (
-                <div key={hobby.title} className="homeHobbyCard">
+                <li key={hobby.title} className="homeHobbyCard">
                   <div className="homeHobbyTitle">{hobby.title}</div>
                   <div className="homeHobbyText">{hobby.description}</div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           <section className="homeSection" id="links" aria-label="Links">
