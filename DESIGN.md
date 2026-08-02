@@ -68,7 +68,7 @@ spacing:
   row-gap: "22px"
   skill-row: "20px"
   section: "34px"
-  row: "28px"
+  row: "28px 0 28px 10px"
   shell: "40px"
   shell-mobile: "24px"
 components:
@@ -175,7 +175,7 @@ A single centered column, `1020px` maximum, with `40px` side padding that tighte
 The page is a stack of sections, each separated by a hairline and padded `34px` vertically, each opening with a two-part head: a mono uppercase label on the left, a mono note on the right (a caption, or a zero-padded count derived from the data rather than typed by hand).
 
 Three row grammars carry all content:
-- **Content rows** (projects, writing): a three-column grid of `1.1rem` marker / `1fr` body / `auto` meta with `22px` gaps and `28px` vertical padding, hairline-separated, first row unruled.
+- **Content rows** (projects, writing): a three-column grid of `1.1rem` marker / `1fr` body / `auto` meta with `22px` gaps and `28px 0 28px 10px` padding, hairline-separated, first row unruled. The `10px` left inset sets the marker in from the section label above it, so the rows read as entries beneath a heading rather than as a second flush column.
 - **Skill rows**: a two-column grid of a `9.5rem` mono group label and a wrapping flex list of names, `20px` padding, hairline-separated.
 - **Hero**: a flex column at `min-height: 72vh`, vertically centered, `40px` padding.
 
