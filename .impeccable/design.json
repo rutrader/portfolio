@@ -147,6 +147,14 @@
       "css": ".ds-row { display: grid; grid-template-columns: 1.1rem 1fr auto; gap: 22px; align-items: start; padding: 28px 0 28px 10px; border-top: 1px solid rgba(180,200,230,0.06); color: #e7eaef; text-decoration: none; font-family: 'Geist Sans', ui-sans-serif, system-ui, sans-serif; transition: background 0.2s ease; } .ds-row-marker { width: 8px; height: 8px; border-radius: 100px; background: #6fb3a6; box-shadow: 0 0 0 3px rgba(111,179,166,0.1); margin: 9px 0 0 3px; transition: box-shadow 0.18s ease; } .ds-row-title { display: block; font-size: 20px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; } .ds-row-desc { display: block; font-size: 14.5px; font-weight: 300; line-height: 1.6; color: #a2a9b4; max-width: 58ch; margin-bottom: 14px; } .ds-row-tags { display: flex; gap: 8px; flex-wrap: wrap; } .ds-row-meta { display: inline-flex; align-items: center; color: #7f8792; margin-top: 6px; } .ds-row-meta svg { transition: color 0.18s ease, transform 0.18s ease; } .ds-row:hover { background: linear-gradient(90deg, rgba(180,200,230,0.03), transparent 70%); } .ds-row:hover .ds-row-marker { box-shadow: 0 0 0 4px rgba(111,179,166,0.16); } .ds-row:hover .ds-row-meta { color: #e7eaef; } .ds-row:hover .ds-row-meta svg { transform: translate(1px, -1px); } .ds-row:focus-visible { outline: 1px solid #6fb3a6; outline-offset: 4px; }"
     },
     {
+      "name": "Site Mark",
+      "kind": "custom",
+      "refersTo": "signal-teal",
+      "description": "Favicon and app icon: an R knocked out of a Signal Teal tile. The system's only filled tile, and it never appears on the page.",
+      "html": "<span class=\"ds-mark\">R</span>",
+      "css": ".ds-mark { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 11px; background: #6fb3a6; color: #14161c; font-family: 'Geist Sans', ui-sans-serif, system-ui, sans-serif; font-size: 34px; font-weight: 600; line-height: 1; }"
+    },
+    {
       "name": "Tag",
       "kind": "chip",
       "refersTo": "tag",
@@ -224,7 +232,7 @@
       { "name": "The One Column Rule", "body": "Content is never placed side by side. If two things compete for the same horizontal band, one of them is not important enough to be on the page.", "section": "layout" },
       { "name": "The Air-First Rule", "body": "The first viewport commits roughly 72vh to the hero and never fills the remainder with a card, a metric strip, or a scroll cue. Emptiness above the fold is the argument.", "section": "layout" },
       { "name": "The No-Shadow Rule", "body": "No box-shadow in this system draws a shadow. Spread-only rings in the accent color are permitted; blurred dark shadows are not. Depth comes from hairlines and text tiers.", "section": "elevation" },
-      { "name": "The No-Box Rule", "body": "Content is never enclosed. No filled cards, no bordered panels, no background-tinted containers. A hairline above a row is the entire container vocabulary.", "section": "shapes" }
+      { "name": "The No-Box Rule", "body": "Content is never enclosed. No filled cards, no bordered panels, no background-tinted containers. A hairline above a row is the entire container vocabulary. The one exception is the site mark, which is a filled tile because it competes in a browser tab strip rather than on the page.", "section": "shapes" }
     ],
     "dos": [
       "Do spend Signal Teal sparingly — markers, the LED, the wordmark period, hover borders. If it appears more than a handful of times per viewport, it has stopped signalling.",

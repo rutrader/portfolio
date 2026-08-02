@@ -208,7 +208,7 @@ Borders are hairlines only: `1px` at the two hairline alpha values, used as sepa
 
 ### Named Rules
 
-**The No-Box Rule.** Content is never enclosed. No filled cards, no bordered panels, no background-tinted containers. A hairline above a row is the entire container vocabulary.
+**The No-Box Rule.** Content is never enclosed. No filled cards, no bordered panels, no background-tinted containers. A hairline above a row is the entire container vocabulary. The one exception is the site mark (see Components), which is a filled tile because it competes in a browser tab strip rather than on the page.
 
 ## Components
 
@@ -244,6 +244,15 @@ The system's core unit, shared by projects and writing.
 - **Ranking:** primary skills sit in Cool White at 400; the rest stay in Cool Muted at 300. Emphasis is the only distinction — there are no bars, levels, percentages, or years.
 - **Wrapping:** each name is `nowrap` and carries its own trailing separator, so a multi-word name never breaks mid-name and a wrapped line never opens on a dangling middot.
 
+### Site Mark
+The favicon and app icon: an **R knocked out of a Signal Teal tile**, Geist SemiBold at 70% of the tile, corners rounded to 22% of the tile (`7px` at 32, `40px` at 180).
+- **Why inverted:** at 16px an outlined or hairline mark loses its shape entirely. The filled tile is the only treatment with presence in a crowded tab strip, on light and dark browser chrome alike.
+- **Generated, not drawn:** `app/icon.tsx` and `app/apple-icon.tsx` render it through `next/og` with the real Geist file, so the letterform matches the wordmark rather than approximating it.
+- **Scope:** this is the only filled tile in the system. It never appears on the page.
+
+### Open Graph Image
+1200×630, generated from the same tokens: slate ground with the teal radial, the mono eyebrow, the hero's exact two-tone headline, and a hairline above a mono footer line led by the teal LED. It is a restatement of the first viewport, not a separate poster.
+
 ## Do's and Don'ts
 
 ### Do:
@@ -262,5 +271,6 @@ The system's core unit, shared by projects and writing.
 - **Don't** add motion beyond hover — no entrance animation, no scroll-triggered reveals, no parallax, no marquee. The static quality is a committed decision, not an omission.
 - **Don't** set prose in Geist Mono, and don't set labels or tags in Geist Sans.
 - **Don't** add filled buttons or a "hire me" call to action. The hero's two underlined text links are the strongest affordance the system permits.
-- **Don't** add brand icons, logos, avatars, stock imagery, or illustration. The page has no images by design.
+- **Don't** add brand icons, logos, avatars, stock imagery, or illustration. The page has no images by design — the site mark and the OG image are generated assets that never appear in the layout.
+- **Don't** "fix" the site mark's filled tile to match the No-Box Rule. The inversion is deliberate and is the rule's only carve-out.
 - **Don't** invent metrics, testimonials, client logos, or years-of-experience claims to fill space. Cut the section instead.
