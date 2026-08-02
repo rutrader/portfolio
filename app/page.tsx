@@ -1,30 +1,14 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { ArrowUpRight, ArrowUp } from 'lucide-react';
 
-import { HOBBIES, LINK_SECTIONS, PROJECTS, SKILLS } from './_home/homeData';
+import { LINK_SECTIONS, PROJECTS, SKILL_GROUPS, WRITINGS } from './_home/homeData';
 import type { Link as LinkType } from '@/types';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare, faSquareArrowUpRight } from '@fortawesome/pro-thin-svg-icons';
-import { faCode, faDatabase, faEnvelope, faServer, faRoute } from '@fortawesome/pro-regular-svg-icons';
-import {
-  faAppStoreIos,
-  faBootstrap,
-  faDocker,
-  faGithub,
-  faInstagram,
-  faJs,
-  faLinkedin,
-  faNodeJs,
-  faPhp,
-  faReact,
-  faSymfony,
-  faWordpressSimple,
-} from '@fortawesome/free-brands-svg-icons';
 import { track } from '@vercel/analytics';
+
+const EXTERNAL_LINK_TEXT = ' (opens in new window)';
 
 interface ExternalLinkProps {
   href: string;
@@ -32,8 +16,6 @@ interface ExternalLinkProps {
   className?: string;
   ariaLabel?: string;
 }
-
-const EXTERNAL_LINK_TEXT = ' (opens in new window)';
 
 function ExternalLink({ href, children, className, ariaLabel }: ExternalLinkProps) {
   return (
@@ -51,78 +33,9 @@ function ExternalLink({ href, children, className, ariaLabel }: ExternalLinkProp
   );
 }
 
-function getLinkIcon(href: string): IconDefinition {
-  if (!href) return faArrowUpRightFromSquare;
-  if (href.startsWith('mailto:')) return faEnvelope;
-  if (href.includes('github.com')) return faGithub;
-  if (href.includes('linkedin.com')) return faLinkedin;
-  if (href.includes('instagram.com')) return faInstagram;
-  if (href.includes('apps.apple.com')) return faAppStoreIos;
-  return faArrowUpRightFromSquare;
-}
-
-function getStackIcon(tag: string): IconDefinition {
-  const normalized = String(tag || '').toLowerCase();
-
-  if (normalized.includes('react')) return faReact;
-  if (normalized.includes('next')) return faCode;
-  if (normalized.includes('node')) return faNodeJs;
-  if (normalized.includes('php')) return faPhp;
-  if (normalized.includes('symfony')) return faSymfony;
-  if (normalized.includes('docker')) return faDocker;
-  if (normalized.includes('bootstrap')) return faBootstrap;
-  if (normalized.includes('mongo')) return faDatabase;
-  if (normalized.includes('postgres')) return faDatabase;
-  if (normalized.includes('mysql')) return faDatabase;
-  if (normalized.includes('context')) return faCode;
-  if (normalized.includes('netlify')) return faCode;
-  if (normalized.includes('api')) return faServer;
-  if (normalized.includes('app store')) return faAppStoreIos;
-  if (normalized === 'ios') return faAppStoreIos;
-
-  return faCode;
-}
-
-function getCustomStackIconSrc(tag: string): string | null {
-  const normalized = String(tag || '').toLowerCase();
-
-  if (normalized.includes('expo')) return '/icons/expo/logo-type-a.svg';
-
-  return null;
-}
-
-function getSkillIcon(label: string): IconDefinition {
-  const normalized = String(label || '').toLowerCase();
-
-  if (normalized.includes('next')) return faCode;
-  if (normalized.includes('react')) return faReact;
-  if (normalized.includes('typescript')) return faCode;
-  if (normalized.includes('javascript')) return faJs;
-
-  if (normalized === 'php') return faPhp;
-  if (normalized.includes('symfony')) return faSymfony;
-  if (normalized.includes('node')) return faNodeJs;
-  if (normalized.includes('rest')) return faServer;
-  if (normalized.includes('docker')) return faDocker;
-
-  if (normalized.includes('postgres')) return faDatabase;
-  if (normalized.includes('mysql')) return faDatabase;
-  if (normalized.includes('mongo')) return faDatabase;
-  if (normalized.includes('migration')) return faDatabase;
-
-  if (normalized.includes('ci/cd')) return faServer;
-  if (normalized.includes('observ')) return faServer;
-  if (normalized.includes('design')) return faRoute;
-  if (normalized.includes('doc')) return faCode;
-  if (normalized.includes('wordpress')) return faWordpressSimple;
-
-  return faCode;
-}
-
 function getFlattenedLinks(): LinkType[] {
   const seen = new Set<string>();
   const flattened: LinkType[] = [];
-
   for (const section of LINK_SECTIONS || []) {
     for (const link of section?.links || []) {
       if (!link?.href || seen.has(link.href)) continue;
@@ -130,131 +43,163 @@ function getFlattenedLinks(): LinkType[] {
       flattened.push(link);
     }
   }
-
   return flattened;
+}
+
+function langLabel(lang: string): string {
+  return lang === 'RU' ? 'Russian' : 'English';
 }
 
 export default function Home() {
   return (
     <div className="home" id="top">
       <div className="homeShell">
+
+        <nav className="homeNav" aria-label="Primary">
+          <span className="homeWordmark">
+            Ruslan Ishemgulov<span className="dot">.</span>
+          </span>
+          <div className="homeNavLinks">
+            <a href="#projects">projects</a>
+            <a href="#skills">skills</a>
+            <a href="#writing">writing</a>
+            <a href="#contact">contact</a>
+          </div>
+        </nav>
+
         <main className="homeMain">
-          <section className="homeHero" aria-label="Greeting">
-            <h1 className="homeHeroTitle">Hi, I'm Ruslan</h1>
-            <p className="homeHeroSubtitle">
-              Software engineer. I enjoy learning new things, building useful products, and exploring economics &
-              investing.
+
+          <header className="homeHero" aria-label="Introduction">
+            <p className="homeKicker">Software Engineer &middot; Web / AI / Investing</p>
+            <h1 className="homeTitle">
+              Building useful products, <span className="soft">and studying the systems behind them.</span>
+            </h1>
+            <p className="homeLede">
+              I&rsquo;m Ruslan &mdash; a software engineer. I like learning new things, shipping small products with
+              real users, and turning market noise into models.
             </p>
-          </section>
+            <div className="homeActions">
+              <ExternalLink href="https://github.com/rutrader" className="homeAction">
+                GitHub <ArrowUpRight className="homeActionIcon" size={16} aria-hidden="true" />
+              </ExternalLink>
+              <ExternalLink href="https://linkedin.com/in/ruslan.ishemgulov" className="homeAction">
+                LinkedIn <ArrowUpRight className="homeActionIcon" size={16} aria-hidden="true" />
+              </ExternalLink>
+              <span className="homeMeta">
+                <span className="led" aria-hidden="true" />
+                Based in Czechia &middot; EN / RU
+              </span>
+            </div>
+          </header>
 
           <section className="homeSection" id="projects" aria-label="Projects">
-            <header className="homeSectionHeader">
-              <h2 className="homeSectionTitle">Projects</h2>
-              <p className="homeSectionDesc">Small, focused projects with real users and real constraints.</p>
-            </header>
-
-            <ul className="homeProjectList">
+            <div className="homeSectionHead">
+              <h2 className="homeSectionLabel">Projects</h2>
+              <span className="homeSectionDesc">{String(PROJECTS.length).padStart(2, '0')}</span>
+            </div>
+            <div className="homeRows">
               {PROJECTS.map((project) => (
-                <li key={project.title}>
-                  <ExternalLink href={project.link} className="homeProjectCard">
-                    <div className="homeProjectHead">
-                      <div className="homeProjectTitleRow">
-                        <h3 className="homeProjectTitle">{project.title}</h3>
-                      </div>
-                      <FontAwesomeIcon icon={faSquareArrowUpRight} className="homeProjectLinkIcon" />
-                    </div>
-                    <p className="homeProjectDesc">{project.description}</p>
-                    <div className="homeProjectTags" aria-label="Tech stack">
-                      {project.stacks.slice(0, 3).map((tag) => (
-                        <span key={tag} className="homeProjectTag">
-                          {getCustomStackIconSrc(tag) ? (
-                            <Image
-                              src={getCustomStackIconSrc(tag)!}
-                              alt=""
-                              width={13}
-                              height={12}
-                              className="homeProjectTagCustomIcon"
-                              aria-hidden="true"
-                            />
-                          ) : (
-                            <FontAwesomeIcon
-                              icon={getStackIcon(tag)}
-                              className="homeProjectTagIcon"
-                              size="xl"
-                              style={{ color: 'var(--home-icon-color)' }}
-                            />
-                          )}
-                          <span className="homeProjectTagLabel">{tag}</span>
+                <ExternalLink key={project.title} href={project.link} className="homeRow">
+                  <span className="homeRowMarker" aria-hidden="true" />
+                  <span className="homeRowBody">
+                    <span className="homeRowTitle">{project.title}</span>
+                    <span className="homeRowDesc">{project.description}</span>
+                    <span className="homeRowTags">
+                      {project.stacks.map((tag) => (
+                        <span key={tag} className="homeRowTag">
+                          {tag}
                         </span>
                       ))}
-                    </div>
-                  </ExternalLink>
-                </li>
+                    </span>
+                  </span>
+                  <span className="homeRowMeta" aria-hidden="true">
+                    <ArrowUpRight className="homeRowIcon" size={16} />
+                  </span>
+                </ExternalLink>
               ))}
-            </ul>
+            </div>
           </section>
 
           <section className="homeSection" id="skills" aria-label="Skills">
-            <header className="homeSectionHeader">
-              <h2 className="homeSectionTitle">Skills</h2>
-              <p className="homeSectionDesc">A toolbox I reach for most often.</p>
-            </header>
-
+            <div className="homeSectionHead">
+              <h2 className="homeSectionLabel">Skills</h2>
+              <span className="homeSectionDesc">A toolbox I reach for</span>
+            </div>
             <div className="homeSkills">
-              {SKILLS.map((skill) => (
-                <div key={skill.label} className="homeSkillItem">
-                  <div className="homeSkillIcon">
-                    <FontAwesomeIcon
-                      icon={getSkillIcon(skill.label)}
-                      size="xl"
-                      style={{ color: 'var(--home-icon-color)' }}
-                    />
-                  </div>
-                  <div className="homeSkillLabel">{skill.label}</div>
+              {SKILL_GROUPS.map((group) => (
+                <div key={group.title} className="homeSkill">
+                  <span className="homeSkillGrp">{group.title}</span>
+                  <span className="homeSkillItems">
+                    {group.skills.map((skill, i) => (
+                      // The separator trails its own item, so a wrapped line always
+                      // starts on a name and the left edge stays flush.
+                      <span key={skill.name} className="homeSkillItem">
+                        <span className={skill.primary ? 'k' : undefined}>{skill.name}</span>
+                        {i < group.skills.length - 1 && (
+                          <span className="sep" aria-hidden="true">&middot;</span>
+                        )}
+                      </span>
+                    ))}
+                  </span>
                 </div>
               ))}
             </div>
           </section>
 
-          <section className="homeSection" id="hobbies" aria-label="Hobbies">
-            <header className="homeSectionHeader">
-              <h2 className="homeSectionTitle">Hobbies</h2>
-              <p className="homeSectionDesc">Stuff I do when I'm not coding.</p>
-            </header>
-
-            <div className="homeHobbyGrid">
-              {HOBBIES.map((hobby) => (
-                <div key={hobby.title} className="homeHobbyCard">
-                  <div className="homeHobbyTitle">{hobby.title}</div>
-                  <div className="homeHobbyText">{hobby.description}</div>
-                </div>
+          <section className="homeSection" id="writing" aria-label="Writing">
+            <div className="homeSectionHead">
+              <h2 className="homeSectionLabel">Writing</h2>
+              <span className="homeSectionDesc">Markets &middot; investing &middot; AI</span>
+            </div>
+            <div className="homeRows">
+              {WRITINGS.map((writing) => (
+                <ExternalLink
+                  key={writing.href}
+                  href={writing.href}
+                  className="homeRow homeRow--compact"
+                  ariaLabel={`${writing.title} — ${writing.source}, ${writing.langs.map(langLabel).join(' and ')}`}
+                >
+                  <span className="homeRowMarker" aria-hidden="true" />
+                  <span className="homeRowBody">
+                    <span className="homeRowTitle">{writing.title}</span>
+                    {writing.description && <span className="homeRowDesc">{writing.description}</span>}
+                    <span className="homeRowTags">
+                      <span className="homeRowTag">{writing.source}</span>
+                      {writing.langs.map((lang) => (
+                        <span key={lang} className="homeRowTag">
+                          {lang}
+                        </span>
+                      ))}
+                    </span>
+                  </span>
+                  <span className="homeRowMeta" aria-hidden="true">
+                    <ArrowUpRight className="homeRowIcon" size={16} />
+                  </span>
+                </ExternalLink>
               ))}
             </div>
           </section>
 
-          <section className="homeSection" id="links" aria-label="Links">
-            <div className="homeLinksBlock">
-              <div className="homeLinksKicker">AROUND THE WEB</div>
-              <div className="homeLinksText">Profiles & places where I post updates:</div>
-
-              <div className="homeLinkChips" aria-label="Social links">
-                {getFlattenedLinks().map((l) => (
-                  <ExternalLink key={l.href} href={l.href} className="homeLinkChip" ariaLabel={l.label}>
-                    <FontAwesomeIcon icon={getLinkIcon(l.href)} className="homeLinkChipIcon" aria-hidden="true" />
-                  </ExternalLink>
-                ))}
-              </div>
+          <section className="homeContact" id="contact" aria-label="Contact">
+            <h2 className="homeContactTitle">
+              Open to interesting problems <span className="soft">&mdash; and good conversation.</span>
+            </h2>
+            <div className="homeChips">
+              {getFlattenedLinks().map((l) => (
+                <ExternalLink key={l.href} href={l.href} className="homeChip" ariaLabel={l.label}>
+                  {l.label}
+                </ExternalLink>
+              ))}
             </div>
-
-            <footer className="homeFooter">
-              <div className="homeFooterLine">© {new Date().getFullYear()} ishemgulov.com</div>
-              <div className="homeFooterLine">
-                <a className="homeFooterAnchor" href="#top">
-                  Back to top
-                </a>
-              </div>
-            </footer>
           </section>
+
+          <footer className="homeFooter">
+            <span>&copy; {new Date().getFullYear()} ishemgulov.com</span>
+            <a className="homeFooterAnchor" href="#top">
+              Back to top <ArrowUp size={13} aria-hidden="true" />
+            </a>
+          </footer>
+
         </main>
       </div>
     </div>

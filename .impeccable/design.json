@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-02T00:00:00.000Z",
+  "title": "Design System: ishemgulov.com",
+  "extensions": {
+    "colorMeta": {
+      "signal-teal": {
+        "role": "primary",
+        "displayName": "Signal Teal",
+        "canonical": "oklch(70% 0.06 170)",
+        "tonalRamp": [
+          "oklch(15% 0.06 170)",
+          "oklch(26% 0.06 170)",
+          "oklch(37% 0.06 170)",
+          "oklch(48% 0.06 170)",
+          "oklch(59% 0.06 170)",
+          "oklch(70% 0.06 170)",
+          "oklch(81% 0.06 170)",
+          "oklch(92% 0.06 170)"
+        ]
+      },
+      "slate-ground": {
+        "role": "neutral",
+        "displayName": "Slate Ground",
+        "canonical": "oklch(19% 0.012 265)",
+        "tonalRamp": [
+          "oklch(15% 0.012 265)",
+          "oklch(26% 0.012 265)",
+          "oklch(37% 0.012 265)",
+          "oklch(48% 0.012 265)",
+          "oklch(59% 0.012 265)",
+          "oklch(70% 0.012 265)",
+          "oklch(81% 0.012 265)",
+          "oklch(92% 0.012 265)"
+        ]
+      },
+      "slate-raised": {
+        "role": "neutral",
+        "displayName": "Slate Raised",
+        "canonical": "oklch(24% 0.014 265)",
+        "tonalRamp": [
+          "oklch(15% 0.014 265)",
+          "oklch(26% 0.014 265)",
+          "oklch(37% 0.014 265)",
+          "oklch(48% 0.014 265)",
+          "oklch(59% 0.014 265)",
+          "oklch(70% 0.014 265)",
+          "oklch(81% 0.014 265)",
+          "oklch(92% 0.014 265)"
+        ]
+      },
+      "cool-white": {
+        "role": "neutral",
+        "displayName": "Cool White",
+        "canonical": "oklch(93% 0.006 265)",
+        "tonalRamp": [
+          "oklch(15% 0.006 265)",
+          "oklch(26% 0.006 265)",
+          "oklch(37% 0.006 265)",
+          "oklch(48% 0.006 265)",
+          "oklch(59% 0.006 265)",
+          "oklch(70% 0.006 265)",
+          "oklch(81% 0.006 265)",
+          "oklch(93% 0.006 265)"
+        ]
+      },
+      "cool-muted": {
+        "role": "neutral",
+        "displayName": "Cool Muted",
+        "canonical": "oklch(72% 0.012 260)",
+        "tonalRamp": [
+          "oklch(15% 0.012 260)",
+          "oklch(26% 0.012 260)",
+          "oklch(37% 0.012 260)",
+          "oklch(48% 0.012 260)",
+          "oklch(59% 0.012 260)",
+          "oklch(72% 0.012 260)",
+          "oklch(81% 0.012 260)",
+          "oklch(92% 0.012 260)"
+        ]
+      },
+      "cool-faint": {
+        "role": "neutral",
+        "displayName": "Cool Faint",
+        "canonical": "oklch(60% 0.014 260)",
+        "tonalRamp": [
+          "oklch(15% 0.014 260)",
+          "oklch(26% 0.014 260)",
+          "oklch(37% 0.014 260)",
+          "oklch(48% 0.014 260)",
+          "oklch(60% 0.014 260)",
+          "oklch(70% 0.014 260)",
+          "oklch(81% 0.014 260)",
+          "oklch(92% 0.014 260)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(180, 200, 230, 0.11)"
+      },
+      "hairline-quiet": {
+        "role": "neutral",
+        "displayName": "Hairline Quiet",
+        "canonical": "rgba(180, 200, 230, 0.06)"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The single page headline. Capped at 16ch so it always breaks to three or four lines." },
+      "headline": { "displayName": "Headline", "purpose": "The contact section's closing line. Capped at 20ch." },
+      "title": { "displayName": "Title", "purpose": "Project row titles." },
+      "title-compact": { "displayName": "Title Compact", "purpose": "Writing row titles. One step down from Title is how the system ranks a section without changing its structure." },
+      "body": { "displayName": "Body", "purpose": "The hero lede, capped at 52ch. Light weight at large size is what makes the first viewport read as prose." },
+      "body-small": { "displayName": "Body Small", "purpose": "Row descriptions, capped at 58ch." },
+      "label": { "displayName": "Label", "purpose": "Mono uppercase section labels; the hero eyebrow opens the tracking to 0.16em." },
+      "meta": { "displayName": "Meta", "purpose": "Mono sentence-case metadata — the hero meta line and the footer." }
+    },
+    "shadows": [
+      {
+        "name": "marker-halo",
+        "value": "0 0 0 3px rgba(111, 179, 166, 0.1)",
+        "purpose": "The resting ring around a row marker. Spread-only, accent-colored: it makes an 8px dot legible, it does not lift it."
+      },
+      {
+        "name": "marker-halo-hover",
+        "value": "0 0 0 4px rgba(111, 179, 166, 0.16)",
+        "purpose": "The same ring widened on row hover. The only elevation change in the system."
+      }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "ease", "purpose": "The only easing curve in the system. No custom cubic-beziers." },
+      { "name": "duration-fast", "value": "0.15s", "purpose": "Nav link color transitions." },
+      { "name": "duration-base", "value": "0.18s", "purpose": "Border, color, and box-shadow transitions on links, chips, and markers." },
+      { "name": "duration-slow", "value": "0.2s", "purpose": "The row hover background wash." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "680px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Content Row",
+      "kind": "custom",
+      "refersTo": "row-marker",
+      "description": "The system's core unit, shared by projects and writing: teal marker, title, optional description, tag list, and a trailing arrow.",
+      "html": "<a class=\"ds-row\" href=\"#\"><span class=\"ds-row-marker\" aria-hidden=\"true\"></span><span class=\"ds-row-body\"><span class=\"ds-row-title\">Assumio</span><span class=\"ds-row-desc\">A private ledger of investment reasoning, not returns — track why you own each position and grade the thesis against reality over time.</span><span class=\"ds-row-tags\"><span class=\"ds-tag\">Astro</span><span class=\"ds-tag\">TypeScript</span><span class=\"ds-tag\">AI-assisted</span></span></span><span class=\"ds-row-meta\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></span></a>",
+      "css": ".ds-row { display: grid; grid-template-columns: 1.1rem 1fr auto; gap: 22px; align-items: start; padding: 28px 0 28px 10px; border-top: 1px solid rgba(180,200,230,0.06); color: #e7eaef; text-decoration: none; font-family: 'Geist Sans', ui-sans-serif, system-ui, sans-serif; transition: background 0.2s ease; } .ds-row-marker { width: 8px; height: 8px; border-radius: 100px; background: #6fb3a6; box-shadow: 0 0 0 3px rgba(111,179,166,0.1); margin: 9px 0 0 3px; transition: box-shadow 0.18s ease; } .ds-row-title { display: block; font-size: 20px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; } .ds-row-desc { display: block; font-size: 14.5px; font-weight: 300; line-height: 1.6; color: #a2a9b4; max-width: 58ch; margin-bottom: 14px; } .ds-row-tags { display: flex; gap: 8px; flex-wrap: wrap; } .ds-row-meta { display: inline-flex; align-items: center; color: #7f8792; margin-top: 6px; } .ds-row-meta svg { transition: color 0.18s ease, transform 0.18s ease; } .ds-row:hover { background: linear-gradient(90deg, rgba(180,200,230,0.03), transparent 70%); } .ds-row:hover .ds-row-marker { box-shadow: 0 0 0 4px rgba(111,179,166,0.16); } .ds-row:hover .ds-row-meta { color: #e7eaef; } .ds-row:hover .ds-row-meta svg { transform: translate(1px, -1px); } .ds-row:focus-visible { outline: 1px solid #6fb3a6; outline-offset: 4px; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Non-interactive mono pill labeling a row's stack, source, or language.",
+      "html": "<span class=\"ds-tag\">TypeScript</span>",
+      "css": ".ds-tag { font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: #7f8792; border: 1px solid rgba(180,200,230,0.06); padding: 3px 9px; border-radius: 100px; }"
+    },
+    {
+      "name": "Contact Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Text-only mono pill linking to an external profile. Never carries a brand icon.",
+      "html": "<a class=\"ds-chip\" href=\"#\">GitHub</a>",
+      "css": ".ds-chip { font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #a2a9b4; border: 1px solid rgba(180,200,230,0.11); padding: 9px 16px; border-radius: 100px; display: inline-flex; align-items: center; text-decoration: none; transition: border-color 0.18s ease, color 0.18s ease; } .ds-chip:hover { border-color: #6fb3a6; color: #e7eaef; } .ds-chip:focus-visible { outline: 1px solid #6fb3a6; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "action-link",
+      "description": "The hero's action affordance — underlined prose, not a button. The strongest call to action the system permits.",
+      "html": "<a class=\"ds-action\" href=\"#\">GitHub <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>",
+      "css": ".ds-action { display: inline-flex; align-items: center; gap: 7px; font-family: 'Geist Sans', ui-sans-serif, system-ui, sans-serif; font-size: 15px; color: #e7eaef; text-decoration: none; padding-bottom: 3px; border-bottom: 1px solid rgba(180,200,230,0.11); transition: border-color 0.18s ease; } .ds-action svg { color: #7f8792; transition: color 0.18s ease; } .ds-action:hover { border-color: #6fb3a6; } .ds-action:hover svg { color: #6fb3a6; } .ds-action:focus-visible { outline: 1px solid #6fb3a6; outline-offset: 4px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Wordmark with a teal period, four lowercase mono links, hairline rule beneath. Wraps to two rows below 680px; no hamburger.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-wordmark\">Ruslan Ishemgulov<span class=\"ds-wordmark-dot\">.</span></span><span class=\"ds-navlinks\"><a href=\"#\">projects</a><a href=\"#\">skills</a><a href=\"#\">writing</a><a href=\"#\">contact</a></span></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 30px 0 26px; border-bottom: 1px solid rgba(180,200,230,0.06); font-family: 'Geist Sans', ui-sans-serif, system-ui, sans-serif; } .ds-wordmark { font-size: 14px; font-weight: 500; color: #e7eaef; white-space: nowrap; } .ds-wordmark-dot { color: #6fb3a6; } .ds-navlinks { display: flex; gap: 30px; } .ds-navlinks a { font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: #a2a9b4; letter-spacing: 0.01em; text-decoration: none; transition: color 0.15s ease; } .ds-navlinks a:hover { color: #e7eaef; } .ds-navlinks a:focus-visible { outline: 1px solid #6fb3a6; outline-offset: 3px; }"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Every section opens the same way: a mono uppercase label left, a mono note or data-derived count right.",
+      "html": "<div class=\"ds-sechead\"><span class=\"ds-sechead-label\">Projects</span><span class=\"ds-sechead-meta\">03</span></div>",
+      "css": ".ds-sechead { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 26px; font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; } .ds-sechead-label { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #7f8792; } .ds-sechead-meta { font-size: 12px; color: #7f8792; }"
+    },
+    {
+      "name": "Skill Row",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "A mono group label beside a wrapping list of names; primary skills brighten, the rest recede. No bars, levels, or years.",
+      "html": "<div class=\"ds-skill\"><span class=\"ds-skill-grp\">Frontend</span><span class=\"ds-skill-items\"><span class=\"ds-skill-item\"><span class=\"ds-k\">Next.js</span><span class=\"ds-sep\">·</span></span><span class=\"ds-skill-item\"><span class=\"ds-k\">React</span><span class=\"ds-sep\">·</span></span><span class=\"ds-skill-item\"><span class=\"ds-k\">TypeScript</span><span class=\"ds-sep\">·</span></span><span class=\"ds-skill-item\"><span>JavaScript</span><span class=\"ds-sep\">·</span></span><span class=\"ds-skill-item\"><span>React Native</span></span></span></div>",
+      "css": ".ds-skill { display: grid; grid-template-columns: 9.5rem 1fr; gap: 28px; align-items: baseline; padding: 20px 0; border-top: 1px solid rgba(180,200,230,0.06); font-family: 'Geist Sans', ui-sans-serif, system-ui, sans-serif; } .ds-skill-grp { font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: #7f8792; padding-top: 2px; } .ds-skill-items { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 8px; min-width: 0; font-size: 15px; line-height: 1.9; font-weight: 300; color: #a2a9b4; } .ds-skill-item { white-space: nowrap; } .ds-k { color: #e7eaef; font-weight: 400; } .ds-sep { color: #7f8792; opacity: 0.55; margin-left: 8px; }"
+    },
+    {
+      "name": "Hero Meta Line",
+      "kind": "custom",
+      "refersTo": "meta",
+      "description": "Mono status line with the teal LED. The only place a filled teal dot appears outside a row marker.",
+      "html": "<span class=\"ds-meta\"><span class=\"ds-led\" aria-hidden=\"true\"></span>Based in Czechia · EN / RU</span>",
+      "css": ".ds-meta { font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; color: #7f8792; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 9px; } .ds-led { width: 6px; height: 6px; border-radius: 100px; background: #6fb3a6; opacity: 0.85; flex-shrink: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Reading Room",
+    "overview": "A dim, generous space built for one visitor at a time. Air is the primary material; the interface lowers its voice so the content can be read. The first viewport spends roughly 72% of its height on almost nothing — a mono eyebrow, a four-line headline, one paragraph in the owner's real voice, two underlined text links — because a visitor who is not on a deadline should feel invited to read rather than processed through a funnel.\n\nThe system earns credibility through calm. It is a single editorial column of ranked rows separated by hairlines, not a grid of cards; there are no panels, no filled buttons, no metric tiles, no logos, and no imagery. Every piece of chrome that a conventional portfolio would add — the hero card, the stat row, the \"hire me\" button — was considered and refused. What remains has to carry the weight, so the craft lives entirely in spacing, type scale, and restraint.\n\nTwo anti-references are confirmed and binding. The first is the neon-terminal developer default: GitHub's #0d1117 ground with a #58a6ff accent, which this system deliberately replaces with a cool slate charcoal and a muted teal. The second is the packed dashboard — density used as a proxy for substance. The palette is cool throughout, never warm-grey, and the accent appears only where it means something.",
+    "keyCharacteristics": [
+      "Dark, cool, and content-light; air is the primary material",
+      "One editorial column of hairline-separated rows, ranked top to bottom",
+      "Exactly one accent hue, spent sparingly on markers and hover states",
+      "Geist for reading, Geist Mono for labeling — a hard division of labor",
+      "Fully static: no entrance animation, no scroll effects, no motion beyond hover",
+      "Real content only; nothing decorative stands in for something unbuilt"
+    ],
+    "rules": [
+      { "name": "The One Hue Rule", "body": "Signal Teal is the only chromatic color in the system. There is no second accent, no semantic green/amber/red, no gradient between hues. If a new state needs distinguishing, reach for the text tiers or the hairlines first.", "section": "colors" },
+      { "name": "The Cool-Only Rule", "body": "Every neutral carries a blue-green cast — including the hairlines, which are rgba(180, 200, 230, …) rather than white at low alpha. A warm grey anywhere reads as a foreign body.", "section": "colors" },
+      { "name": "The Contrast Floor Rule", "body": "No text color falls below 4.5:1 on the ground, including the faintest metadata. Quietness comes from size, weight, and tracking — never from contrast that fails.", "section": "colors" },
+      { "name": "The Mono-Never-Reads Rule", "body": "Geist Mono is for labels, tags, counts, and metadata only. It never sets a sentence a visitor is meant to read. If a mono string runs past roughly four words, it belongs in Geist Sans.", "section": "typography" },
+      { "name": "The Two-Tone Sentence Rule", "body": "Both large headings split one sentence across Cool White and Cool Muted rather than splitting it into a heading plus a subheading. The system has no subheadings.", "section": "typography" },
+      { "name": "The Measure Rule", "body": "Every text block is capped in ch, not pixels — 16ch display, 20ch headline, 52ch lede, 58ch row description. Line length is a design decision, not a consequence of the container.", "section": "typography" },
+      { "name": "The One Column Rule", "body": "Content is never placed side by side. If two things compete for the same horizontal band, one of them is not important enough to be on the page.", "section": "layout" },
+      { "name": "The Air-First Rule", "body": "The first viewport commits roughly 72vh to the hero and never fills the remainder with a card, a metric strip, or a scroll cue. Emptiness above the fold is the argument.", "section": "layout" },
+      { "name": "The No-Shadow Rule", "body": "No box-shadow in this system draws a shadow. Spread-only rings in the accent color are permitted; blurred dark shadows are not. Depth comes from hairlines and text tiers.", "section": "elevation" },
+      { "name": "The No-Box Rule", "body": "Content is never enclosed. No filled cards, no bordered panels, no background-tinted containers. A hairline above a row is the entire container vocabulary.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do spend Signal Teal sparingly — markers, the LED, the wordmark period, hover borders. If it appears more than a handful of times per viewport, it has stopped signalling.",
+      "Do separate with hairlines (hairline-quiet between rows and sections, hairline for interactive underlines and chip outlines).",
+      "Do cap every text block with a ch measure.",
+      "Do derive counts and indices from the data (String(items.length).padStart(2, '0')), never type them in.",
+      "Do keep the two mono treatments distinct: uppercase and widely tracked for labels, sentence case and lightly tracked for metadata.",
+      "Do reorganize at 680px — wrap, stack, and reflow — rather than scaling the desktop layout down.",
+      "Do verify at 375px that document.documentElement.scrollWidth equals clientWidth; this layout has produced overflow twice."
+    ],
+    "donts": [
+      "Don't introduce a second accent hue, a semantic color set, or a warm neutral.",
+      "Don't use #0d1117 or #58a6ff, or any variation of the neon-terminal developer palette. It is a confirmed anti-reference.",
+      "Don't add blurred shadows, filled cards, bordered panels, or any mid-range corner radius. Structure is unrounded; small pills are 100px.",
+      "Don't add motion beyond hover — no entrance animation, no scroll-triggered reveals, no parallax, no marquee. The static quality is a committed decision, not an omission.",
+      "Don't set prose in Geist Mono, and don't set labels or tags in Geist Sans.",
+      "Don't add filled buttons or a \"hire me\" call to action. The hero's two underlined text links are the strongest affordance the system permits.",
+      "Don't add brand icons, logos, avatars, stock imagery, or illustration. The page has no images by design.",
+      "Don't invent metrics, testimonials, client logos, or years-of-experience claims to fill space. Cut the section instead."
+    ]
+  }
+}

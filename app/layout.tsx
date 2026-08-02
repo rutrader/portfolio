@@ -1,19 +1,77 @@
 import './globals.scss';
 import { Analytics } from '@vercel/analytics/next';
-import { Poppins } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import type { Metadata } from 'next';
 
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-config.autoAddCss = false;
+const SITE_URL = 'https://ishemgulov.com';
+const DESCRIPTION =
+  'Ruslan Ishemgulov — software engineer building products across web and mobile, with a focus on economics, investing, and AI.';
+const SAME_AS = [
+  'https://github.com/rutrader',
+  'https://linkedin.com/in/ruslan.ishemgulov',
+  'https://instagram.com/ruslan.ishemgulov',
+];
 
-const poppins = Poppins({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700'] });
+/*
+ * DIRECTION CONTRACT — ishemgulov.com [seed:bad72b0b · user-pinned]
+ *
+ * Source-only: this is the record of what the redesign committed to, kept in
+ * the repo and deliberately not shipped to the browser. DESIGN.md is the
+ * normative system; this is why it looks the way it does.
+ *
+ * THESIS: Earn credibility through calm. Dark, quiet, content-light — refusing
+ *   the packed dashboard and the neon-terminal dev default.
+ * OWN-WORLD: Cool slate-charcoal ground (#14161c), cool off-white text, one
+ *   muted teal accent (#6fb3a6) used sparingly. Geist + Geist Mono, hairline
+ *   rules, rows led by a small filled teal dot in a soft halo. No motion beyond
+ *   hover.
+ * STORY: A recruiter or peer reads "credible, senior, clear engineer across
+ *   web, AI and investing" in seconds, then reaches GitHub/LinkedIn or the
+ *   writing with zero friction.
+ * FIRST VIEWPORT: ~72vh of air. A mono eyebrow naming the three fields,
+ *   left-aligned headline, a lede in the real voice, two quiet text links, a
+ *   mono meta line. No hero card, no metric template.
+ * FORM: Editorial-dark single column of ranked rows. User-pinned over the roll
+ *   (assigned #4 split-flap declined after two re-rolls).
+ * FINISH: unreviewed and undocumented is unfinished; this build ended with the
+ *   finish review, the verdict, and DESIGN.md.
+ */
 
 export const metadata: Metadata = {
-  title: 'Home | Ruslan Ishemgulov',
-  description:
-    "Hi there! My name is Ruslan. I'm a software developer passionate about learning new skills, programming languages, economics & investing.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Ruslan Ishemgulov — Software Engineer',
+    template: '%s · Ruslan Ishemgulov',
+  },
+  description: DESCRIPTION,
+  keywords: ['Ruslan Ishemgulov', 'software engineer', 'web developer', 'investing', 'AI', 'Next.js', 'React'],
+  authors: [{ name: 'Ruslan Ishemgulov', url: SITE_URL }],
+  creator: 'Ruslan Ishemgulov',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: SITE_URL,
+    siteName: 'Ruslan Ishemgulov',
+    title: 'Ruslan Ishemgulov — Software Engineer',
+    description: DESCRIPTION,
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ruslan Ishemgulov — Software Engineer',
+    description: DESCRIPTION,
+  },
+};
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ruslan Ishemgulov',
+  url: SITE_URL,
+  jobTitle: 'Software Engineer',
+  description: DESCRIPTION,
+  sameAs: SAME_AS,
 };
 
 interface RootLayoutProps {
@@ -23,7 +81,11 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} ${GeistMono.variable}`}>
+      <body className={`${GeistSans.className} ${GeistSans.variable} ${GeistMono.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <div className="general">
           <main>
             <div>{children}</div>

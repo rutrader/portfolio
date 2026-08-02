@@ -1,29 +1,34 @@
-export interface NavItem {
-  id: string;
-  label: string;
-}
-
-export interface ProjectImage {
-  src: string;
-  alt: string;
-}
-
 export interface Project {
   title: string;
   description: string;
   stacks: string[];
   link: string;
-  image: ProjectImage;
   highlights: string[];
 }
 
 export interface Skill {
-  label: string;
+  name: string;
+  primary?: boolean;
+}
+
+export interface SkillGroup {
+  title: string;
+  skills: Skill[];
 }
 
 export interface Hobby {
   title: string;
   description: string;
+}
+
+export type WritingLang = 'EN' | 'RU';
+
+export interface Writing {
+  title: string;
+  source: string;
+  href: string;
+  langs: WritingLang[];
+  description?: string;
 }
 
 export interface Link {

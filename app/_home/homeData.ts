@@ -1,12 +1,4 @@
-import type { NavItem, Project, Skill, Hobby, LinkSection } from '@/types';
-
-export const NAV_ITEMS: NavItem[] = [
-  { id: 'top', label: 'Top' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'hobbies', label: 'Hobbies' },
-  { id: 'links', label: 'Links' },
-];
+import type { Project, SkillGroup, Hobby, Writing, LinkSection } from '@/types';
 
 export const PROJECTS: Project[] = [
   {
@@ -15,68 +7,63 @@ export const PROJECTS: Project[] = [
       'A side project with a focused overview of the Czech economy: key indicators, financial data, and government stats.',
     stacks: ['React', 'Node.js', 'Context API'],
     link: 'https://czechonomics.com/',
-    image: {
-      src: '/images/projects/czechonomics.png',
-      alt: 'Czechonomics website screenshot',
-    },
     highlights: ['Data-heavy UI', 'Charts & indicators', 'Side project'],
   },
   {
     title: 'Czechonomics — iOS',
     description: 'An iOS companion app for Czechonomics — key indicators and stats on the go.',
     stacks: ['iOS', 'App Store'],
-    link: 'https://apps.apple.com/cz/app/czech-stats/id1669200005',
-    image: {
-      src: '/images/projects/czechonomics.png',
-      alt: 'Czechonomics iOS app',
-    },
+    link: 'https://apps.apple.com/cz/app/czechonomics/id1669200005',
     highlights: ['Mobile companion', 'Quick stats', 'Side project'],
   },
   {
-    title: 'Workmarket.eu',
+    title: 'Assumio',
     description:
-      'A job portal connecting non‑EU residents with EU opportunities, helping companies hire internationally.',
-    stacks: ['PHP', 'Symfony', 'PostgreSQL'],
-    link: 'https://workmarket.eu/',
-    image: {
-      src: '/images/projects/workmarket.png',
-      alt: 'Workmarket.eu website screenshot',
-    },
-    highlights: ['Marketplace flows', 'Admin tooling', 'SEO pages'],
-  },
-  {
-    title: 'Ewijobs.cz',
-    description: 'A streamlined job portal with job ads and a simple reply flow, built for speed and clarity.',
-    stacks: ['Next.js', 'MongoDB', 'Netlify'],
-    link: 'https://ewijobs.cz/',
-    image: {
-      src: '/images/projects/ewijobs.png',
-      alt: 'Ewijobs.cz website screenshot',
-    },
-    highlights: ['Fast UX', 'Forms', 'Deploy pipeline'],
+      'A private ledger of investment reasoning, not returns — track why you own each position and grade the thesis against reality over time.',
+    stacks: ['Astro', 'TypeScript', 'AI-assisted'],
+    link: 'https://assumio.com/',
+    highlights: ['Investing + AI', 'Static-site output', 'Own product'],
   },
 ];
 
-export const SKILLS: Skill[] = [
-  { label: 'Wordpress' },
-  { label: 'Next.js' },
-  { label: 'React' },
-  { label: 'TypeScript' },
-  { label: 'JavaScript' },
-  { label: 'React Native' },
-
-  { label: 'PHP' },
-  { label: 'Symfony' },
-  { label: 'Node.js' },
-  { label: 'REST APIs' },
-  { label: 'Docker' },
-
-  { label: 'PostgreSQL' },
-  { label: 'MySQL' },
-  { label: 'MongoDB' },
-
-  { label: 'CI/CD' },
-  { label: 'Design systems' },
+// `primary: true` = core skill (bright accent dot); the rest render muted.
+export const SKILL_GROUPS: SkillGroup[] = [
+  {
+    title: 'Frontend',
+    skills: [
+      { name: 'Next.js', primary: true },
+      { name: 'React', primary: true },
+      { name: 'TypeScript', primary: true },
+      { name: 'JavaScript' },
+      { name: 'React Native' },
+    ],
+  },
+  {
+    title: 'AI',
+    skills: [
+      { name: 'AI-assisted development', primary: true },
+      { name: 'Agentic workflows', primary: true },
+      { name: 'LLM integration', primary: true },
+      { name: 'AI architecture', primary: true },
+    ],
+  },
+  {
+    title: 'Backend',
+    skills: [{ name: 'Node.js', primary: true }, { name: 'PHP' }],
+  },
+  {
+    title: 'Data',
+    skills: [{ name: 'PostgreSQL', primary: true }, { name: 'MySQL' }],
+  },
+  {
+    title: 'Platform',
+    skills: [
+      { name: 'Design systems', primary: true },
+      { name: 'WordPress', primary: true },
+      { name: 'Docker' },
+      { name: 'CI/CD' },
+    ],
+  },
 ];
 
 export const HOBBIES: Hobby[] = [
@@ -95,6 +82,28 @@ export const HOBBIES: Hobby[] = [
   {
     title: 'Outdoors',
     description: 'Walks, hikes, and long routes that help me reset.',
+  },
+];
+
+export const WRITINGS: Writing[] = [
+  {
+    title: 'AI Infrastructure: Discipline Under Pressure',
+    source: 'LinkedIn',
+    href: 'https://www.linkedin.com/pulse/ai-infrastructure-discipline-pressure-ruslan-ishemgulov-tuyxf',
+    langs: ['EN'],
+  },
+  {
+    title: 'AI Infrastructure: Discipline Under Pressure — Part 2',
+    source: 'LinkedIn',
+    href: 'https://www.linkedin.com/pulse/ai-infrastructure-discipline-pressure-part-2-ruslan-ishemgulov-82krf',
+    langs: ['EN'],
+  },
+  {
+    title: 'Investment Quest',
+    source: 'Blog',
+    href: 'https://www.rutrader.eu/',
+    langs: ['EN', 'RU'],
+    description: 'Report breakdowns, investment ideas, and market notes.',
   },
 ];
 
