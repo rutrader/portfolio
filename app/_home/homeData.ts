@@ -52,11 +52,11 @@ export const SKILL_GROUPS: SkillGroup[] = [
     skills: [{ name: 'Node.js', primary: true }, { name: 'PHP' }],
   },
   {
-    title: 'Databases',
+    title: 'Data',
     skills: [{ name: 'PostgreSQL', primary: true }, { name: 'MySQL' }],
   },
   {
-    title: 'Tooling & platforms',
+    title: 'Platform',
     skills: [
       { name: 'Design systems', primary: true },
       { name: 'WordPress', primary: true },

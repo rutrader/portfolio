@@ -1,471 +1,462 @@
 .home {
-  --home-bg: #030917;
-  --home-surface: rgba(255, 255, 255, 0.06);
-  --home-surface-2: rgba(255, 255, 255, 0.09);
-  --home-border: rgba(255, 255, 255, 0.12);
-  --home-text: rgba(255, 255, 255, 0.92);
-  --home-muted: rgba(255, 255, 255, 0.68);
-  --home-faint: rgba(255, 255, 255, 0.52);
-  --home-accent: #75a9ff;
-  --home-accent-2: #b27cff;
-  --home-icon-color: #ffd43b;
+  --bg: #14161c; // cool slate charcoal, lifted off pure black
+  --elev: #1b1e26;
+  --line: rgba(180, 200, 230, 0.11);
+  --line-2: rgba(180, 200, 230, 0.06);
+  --text: #e7eaef; // cool off-white
+  --muted: #a2a9b4; // secondary text (>= 4.5:1 on --bg)
+  --faint: #7f8792; // small labels / metadata (>= 4.5:1 on --bg)
+  --accent: #6fb3a6; // muted teal, used sparingly — deliberately not GitHub blue
 
-  font-family:
-    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  color: var(--home-text);
+  font-family: var(--font-sans);
+  color: var(--text);
+  line-height: 1.5;
+  letter-spacing: -0.006em;
+  -webkit-font-smoothing: antialiased;
+
   background:
-    radial-gradient(900px 600px at 15% 10%, rgb(14 69 155 / 28%), transparent 60%),
-    radial-gradient(800px 520px at 80% 15%, rgb(27 45 236 / 26%), transparent 55%),
-    radial-gradient(520px 520px at 65% 80%, rgb(103 14 80 / 12%), #b1353500 60%), var(--home-bg);
-
+    radial-gradient(900px 460px at 50% -10%, rgba(111, 179, 166, 0.06), transparent 62%),
+    var(--bg);
   min-height: 100vh;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  // One focus ring for the whole surface, in the accent, so keyboard users get
+  // the system's own vocabulary instead of the browser's off-palette default.
+  a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+  }
 }
 
 .homeShell {
-  max-width: 1120px;
+  max-width: 1020px;
   margin: 0 auto;
-  padding: 22px 18px 44px;
+  padding: 0 40px;
 }
 
-.homeMain {
-  min-width: 0;
-  margin-top: 14px;
+/* ---- Nav ---- */
+.homeNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0 26px;
+  border-bottom: 1px solid var(--line-2);
 }
 
-.homeHero {
-  padding: 18px;
-}
-
-.homeHeroTitle {
-  margin: 0;
-  font-size: 34px;
-  line-height: 1.12;
-  font-weight: 650;
-  letter-spacing: -0.02em;
-}
-
-.homeHeroSubtitle {
-  margin: 10px 0 0;
-  color: var(--home-muted);
+.homeWordmark {
   font-size: 14px;
-  line-height: 1.6;
-  max-width: 70ch;
+  font-weight: 500;
+
+  .dot {
+    color: var(--accent);
+  }
 }
 
+.homeNavLinks {
+  display: flex;
+  gap: 30px;
+
+  a {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.01em;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--text);
+    }
+  }
+}
+
+/* ---- Hero ---- */
+.homeHero {
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.homeKicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 34px;
+}
+
+.homeTitle {
+  font-size: clamp(38px, 5.6vw, 66px);
+  line-height: 1.06;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+  margin: 0 0 34px;
+
+  .soft {
+    color: var(--muted);
+  }
+}
+
+.homeLede {
+  font-size: clamp(16px, 1.7vw, 19px);
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 52ch;
+  margin: 0 0 44px;
+  font-weight: 300;
+}
+
+.homeActions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.homeAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  color: var(--text);
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.18s ease;
+
+  .homeActionIcon {
+    color: var(--faint);
+    transition: color 0.18s ease;
+  }
+
+  &:hover {
+    border-color: var(--accent);
+
+    .homeActionIcon {
+      color: var(--accent);
+    }
+  }
+}
+
+.homeMeta {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--faint);
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  .led {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.85;
+    flex-shrink: 0;
+  }
+}
+
+/* ---- Section scaffolding ---- */
 .homeSection {
-  margin-top: 18px;
-  padding: 18px;
+  padding: 34px 0;
+  border-top: 1px solid var(--line-2);
 }
 
-.homeSectionHeader {
-  display: grid;
-  gap: 6px;
-  margin-bottom: 14px;
+.homeSectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 26px;
 }
 
-.homeSectionTitle {
+.homeSectionLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
   margin: 0;
-  font-size: 18px;
-  letter-spacing: -0.01em;
 }
 
 .homeSectionDesc {
-  margin: 0;
-  color: var(--home-muted);
-  font-size: 13px;
-  line-height: 1.6;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--faint);
 }
 
-.homeProjectList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.homeProjectCard {
+/* ---- Project / writing rows ---- */
+.homeRows {
   display: block;
-  padding: 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
-  text-decoration: none;
-  color: var(--home-text);
-  position: relative;
-  outline: none;
-  transition:
-    background 140ms ease,
-    border-color 140ms ease,
-    transform 140ms ease;
 }
 
-.homeProjectCard:hover,
-.homeProjectCard:focus-visible {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.22);
-  transform: translateY(-1px);
-}
-
-.homeProjectHead {
+.homeRow {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 18px;
-  gap: 10px;
+  grid-template-columns: 1.1rem 1fr auto;
+  gap: 22px;
   align-items: start;
-  margin-bottom: 6px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line-2);
+  transition: background 0.2s ease;
+
+  &:first-of-type {
+    border-top: none;
+  }
+
+  &:hover {
+    background: linear-gradient(90deg, rgba(180, 200, 230, 0.03), transparent 70%);
+
+    .homeRowMarker {
+      box-shadow: 0 0 0 4px rgba(111, 179, 166, 0.16);
+    }
+
+    .homeRowIcon {
+      color: var(--text);
+      transform: translate(1px, -1px);
+    }
+  }
 }
 
-.homeProjectTitleRow {
+.homeRowMarker {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(111, 179, 166, 0.1);
+  margin: 9px 0 0 3px;
+  transition: box-shadow 0.18s ease;
+}
+
+.homeRowBody {
   min-width: 0;
 }
 
-.homeProjectTitle {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.homeProjectTags {
-  margin-top: 15px;
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.homeProjectTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.74);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  padding: 4px 7px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.homeProjectTagIcon {
-  color: rgba(255, 255, 255, 0.78);
-  width: 12px;
-  height: 12px;
-}
-
-.homeProjectTagLabel {
-  line-height: 1;
-}
-
-.homeProjectLinkIcon {
-  color: rgba(255, 255, 255, 0.55);
-  transition: opacity 140ms ease;
-  margin-top: 2px;
-}
-
-.homeProjectCard:hover .homeProjectLinkIcon,
-.homeProjectCard:focus-visible .homeProjectLinkIcon {
-  opacity: 1;
-}
-
-.homeProjectDesc {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--home-muted);
-}
-
-.homeProjectHighlights {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-}
-
-.homeProjectHighlight {
-  position: relative;
-  padding-left: 14px;
-  font-size: 12px;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.homeProjectHighlight::before {
-  content: '';
-  position: absolute;
-  left: 2px;
-  top: 7px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--home-accent);
-}
-
-.homeSkillGroups {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px 16px;
-}
-
-.homeSkillGroupTitle {
-  margin: 0 0 10px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--home-faint);
-}
-
-.homeSkillGroupList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.homeSkillItem {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-
-.homeSkillDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.homeSkillLabel {
-  font-size: 14px;
-  line-height: 1.3;
-  color: var(--home-faint);
-}
-
-.homeSkillItem--primary .homeSkillDot {
-  background: var(--home-accent);
-}
-
-.homeSkillItem--primary .homeSkillLabel {
-  color: var(--home-text);
-}
-
-.homeWritingList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 10px;
-}
-
-.homeWritingCard {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: center;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
-  text-decoration: none;
-  color: var(--home-text);
-  transition:
-    background 140ms ease,
-    border-color 140ms ease,
-    transform 140ms ease;
-}
-
-.homeWritingCard:hover,
-.homeWritingCard:focus-visible {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.22);
-  transform: translateY(-1px);
-}
-
-.homeWritingMain {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.homeWritingTitle {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.homeWritingDesc {
-  font-size: 12px;
-  line-height: 1.4;
-  color: var(--home-muted);
-}
-
-.homeWritingSource {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--home-faint);
-}
-
-.homeWritingLangs {
-  display: inline-flex;
-  gap: 6px;
-  flex-shrink: 0;
-}
-
-.homeWritingLang {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  padding: 3px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.homeWritingLang--en {
-  color: var(--home-accent);
-  border-color: rgba(117, 169, 255, 0.4);
-}
-
-.homeWritingLang--ru {
-  color: var(--home-accent-2);
-  border-color: rgba(178, 124, 255, 0.4);
-}
-
-.homeHobbyGrid {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.homeHobbyCard {
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 14px;
-  cursor: default;
-  transition:
-    background 140ms ease,
-    border-color 140ms ease,
-    transform 140ms ease;
-}
-
-.homeHobbyCard:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.22);
-  transform: translateY(-1px);
-}
-
-.homeHobbyTitle {
-  font-size: 15px;
+.homeRowTitle {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   margin-bottom: 8px;
 }
 
-.homeHobbyText {
-  color: var(--home-muted);
-  font-size: 13px;
+.homeRow--compact .homeRowTitle {
+  font-size: 17px;
+}
+
+.homeRowDesc {
+  display: block;
+  font-size: 14.5px;
+  color: var(--muted);
+  font-weight: 300;
   line-height: 1.6;
+  max-width: 58ch;
+  margin-bottom: 14px;
 }
 
-.homeLinksBlock {
-  padding: 4px 0;
-}
-
-.homeLinksKicker {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.58);
-  margin-bottom: 10px;
-}
-
-.homeLinksText {
-  font-size: 18px;
-  line-height: 1.3;
-  color: rgba(255, 255, 255, 0.92);
-  margin-bottom: 16px;
-}
-
-.homeLinkChips {
+.homeRowTags {
   display: flex;
+  gap: 8px;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
-.homeLinkChip {
+.homeRowTag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--faint);
+  border: 1px solid var(--line-2);
+  padding: 3px 9px;
+  border-radius: 100px;
+}
+
+.homeRowMeta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
-  transition: background 140ms ease;
+  color: var(--faint);
+  margin-top: 6px;
+
+  .homeRowIcon {
+    transition: color 0.18s ease, transform 0.18s ease;
+  }
 }
 
-.homeLinkChip:hover,
-.homeLinkChip:focus-visible {
-  background: rgba(255, 255, 255, 0.1);
+/* ---- Skills: calm grouped rows, not a dot cloud ---- */
+.homeSkill {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 28px;
+  align-items: baseline;
+  padding: 20px 0;
+  border-top: 1px solid var(--line-2);
+
+  &:first-of-type {
+    border-top: none;
+  }
 }
 
-.homeLinkChipIcon {
-  width: 18px;
-  height: 18px;
-  color: rgba(255, 255, 255, 0.9);
+.homeSkillGrp {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding-top: 2px;
 }
 
-.homeLinkChipLabel {
-  font-size: 13px;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.9);
-}
+.homeSkillItems {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--muted);
+  font-weight: 300;
 
-.homeFooter {
-  margin-top: 30px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  // The names and separators are adjacent elements with no whitespace between
+  // them, so inline layout offers no wrap points. Flex wraps between items, and
+  // nowrap keeps a multi-word name ("React Native") whole on one line.
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+  min-width: 0;
+
+  .homeSkillItem {
+    white-space: nowrap;
+  }
+
+  .k {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .sep {
+    color: var(--faint);
+    opacity: 0.55;
+    margin-left: 8px;
+  }
+}
+
+/* ---- Contact ---- */
+.homeContact {
+  padding: 44px 0 30px;
+  border-top: 1px solid var(--line-2);
+}
+
+.homeContactTitle {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 4px;
+  max-width: 20ch;
+
+  .soft {
+    color: var(--muted);
+  }
+}
+
+.homeChips {
+  display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  margin-top: 26px;
 }
 
-.homeFooterLine {
-  font-size: 12px;
-  color: var(--home-muted);
+.homeChip {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 9px 16px;
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  transition: border-color 0.18s ease, color 0.18s ease;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+}
+
+/* ---- Footer ---- */
+.homeFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0 56px;
+  margin-top: 40px;
+  border-top: 1px solid var(--line-2);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--faint);
 }
 
 .homeFooterAnchor {
-  color: var(--home-text);
-  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.18s ease;
+
+  &:hover {
+    color: var(--text);
+  }
 }
 
-.homeFooterAnchor:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 980px) {
-  .homeProjectList {
-    grid-template-columns: 1fr;
+/* ---- Responsive ---- */
+@media (max-width: 680px) {
+  .homeShell {
+    padding: 0 24px;
   }
 
-  .homeHobbyGrid {
+  // Below ~680px the wordmark and the four links no longer fit on one line;
+  // let the nav wrap so the links drop to their own row instead of colliding.
+  .homeNav {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .homeWordmark {
+    white-space: nowrap;
+  }
+
+  .homeNavLinks {
+    gap: 18px;
+  }
+
+  .homeActions {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .homeMeta {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .homeRow {
+    grid-template-columns: 0.9rem 1fr;
+  }
+
+  .homeRowMeta {
+    grid-column: 2;
+    margin-top: 8px;
+  }
+
+  .homeSkill {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  // Without a gutter the wrapped last item sits flush against the shell padding.
+  .homeSkillItems {
+    padding-right: 12px;
   }
 }
