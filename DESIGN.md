@@ -185,6 +185,8 @@ Below **680px** the system reorganizes rather than shrinking: the nav wraps so i
 
 **The One Column Rule.** Content is never placed side by side. If two things compete for the same horizontal band, one of them is not important enough to be on the page.
 
+The rule has one carve-out, in article figures only: a **control and its own output** may share a band, because they are one instrument rather than two contents competing — the break picker in `/writing/what-the-typechecker-cant-see` puts its chooser in a `17rem` column beside the panel it drives, divided by a hairline rather than boxed. Both halves open with a label on the same baseline, the choices are built from the content-row grammar, and the pair collapses to a single stack at 680px, where the rule applies with full force. This never extends to prose, rows, or sections.
+
 **The Air-First Rule.** The first viewport commits roughly 72vh to the hero and never fills the remainder with a card, a metric strip, or a scroll cue. Emptiness above the fold is the argument.
 
 ## Elevation & Depth

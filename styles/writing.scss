@@ -121,7 +121,15 @@ $measure: 68ch;
   > * {
     max-width: $measure;
   }
+}
 
+// Prose defaults, wrapped in :where() so they carry no specificity at all.
+//
+// Without it these element selectors score 0,1,1 and quietly outrank every
+// single-class component rule below — `.artCaption`'s margin would lose to
+// `.articleBody p` and never apply. Anything with a class now wins by default,
+// which is the behaviour you would assume from reading the file.
+:where(.articleBody) {
   p {
     margin: 0 0 26px;
   }
@@ -208,6 +216,512 @@ $measure: 68ch;
 .articleWide {
   max-width: none;
   margin: 48px 0;
+}
+
+// A mono caption under a figure. Sits at the reading measure even when the
+// figure above it runs the full column.
+.artCaption {
+  max-width: 58ch;
+  margin: 18px 0 0;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+}
+
+// A section label inside the body — the same mono uppercase treatment the
+// homepage uses on its section heads.
+.artLabel {
+  margin: 64px 0 18px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+
+  // A label always introduces the heading under it, so the heading drops its
+  // own top margin rather than compounding the two.
+  + h2 {
+    margin-top: 0;
+  }
+}
+
+/* ---- Numbered steps ---- */
+// The method, as ranked rows. Same grammar as a homepage content row: a narrow
+// index column, hairline separators, first row unruled.
+.artSteps {
+  list-style: none;
+  margin: 30px 0;
+  padding: 0;
+}
+
+.artStep {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line-2);
+  margin-bottom: 0;
+
+  &:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+.artStepIndex {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  padding-top: 2px;
+}
+
+/* ---- Fact list ---- */
+// The run's parameters. A hairline-separated definition list rather than the
+// bordered grid of cells the source used — The No-Box Rule.
+.artFacts {
+  margin: 30px 0;
+  border-top: 1px solid var(--line-2);
+}
+
+.artFact {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line-2);
+
+  // The block that follows opens with its own rule; two rules a margin apart
+  // read as a mistake rather than as structure.
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+.artFactLabel {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding-top: 3px;
+}
+
+.artFactValue {
+  color: var(--text);
+  font-size: 15px;
+
+  &.isPath {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    word-break: break-word;
+  }
+}
+
+/* ---- Tally ---- */
+// The three counts the experiment turned on. Numerals large enough to be the
+// finding, and the two that carry the argument take the accent — the one hue
+// is permitted to indicate.
+.artTally {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 34px 40px;
+  margin: 40px 0;
+  padding: 34px 0;
+  border-top: 1px solid var(--line-2);
+  border-bottom: 1px solid var(--line-2);
+}
+
+.artTallyNum {
+  display: block;
+  font-size: 46px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+
+  &.isHot {
+    color: var(--accent);
+  }
+
+  .unit {
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.artTallyNote {
+  max-width: 26ch;
+  margin: 14px 0 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ---- Ladder ---- */
+.artLadder {
+  margin: 34px 0;
+  border-top: 1px solid var(--line-2);
+}
+
+.artRung {
+  padding: 26px 0 26px 10px;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.artRungTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 20px;
+}
+
+.artRungName {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.artRungCost {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+
+  .isModel & {
+    color: var(--accent);
+  }
+}
+
+// The rail. A 2px hairline the accent fills from the left — no hatch fill and
+// no gradient, which the system reserves for the one radial on the ground.
+.artRail {
+  display: block;
+  position: relative;
+  height: 2px;
+  margin: 18px 0 14px;
+  background: var(--line);
+
+  i {
+    position: absolute;
+    inset: 0 auto 0 0;
+    display: block;
+    background: var(--accent);
+  }
+}
+
+.artRungScore {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+
+  b {
+    font-weight: 400;
+    color: var(--text);
+  }
+}
+
+.artRungGloss {
+  max-width: 62ch;
+  margin: 12px 0 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ---- Break picker ---- */
+// The chooser sits beside its own output, as the source explainer had it. The
+// two columns are divided by a hairline rather than boxed into panels, and the
+// whole thing collapses to one stack below 680px.
+.artPicker {
+  display: grid;
+  grid-template-columns: minmax(13rem, 17rem) 1fr;
+  gap: 0 44px;
+  margin: 34px 0;
+  border-top: 1px solid var(--line-2);
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.artPickerAside {
+  padding: 26px 0 0;
+}
+
+// Both columns open with a label on the same baseline, which is what makes the
+// pair read as one instrument rather than two stacked things.
+.artPickerLabel {
+  margin: 0 0 6px;
+}
+
+.artTabs {
+  display: grid;
+}
+
+// A choice, built as a content row: marker, then title. Same object as a row on
+// the homepage, doing a different job.
+.artTab {
+  display: grid;
+  grid-template-columns: 1.1rem 1fr;
+  gap: 14px;
+  align-items: start;
+  width: 100%;
+  padding: 15px 0 15px 4px;
+  font: inherit;
+  text-align: left;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--line-2);
+  cursor: pointer;
+
+  &:first-of-type {
+    border-top: none;
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  &:hover .artTabName {
+    color: var(--text);
+  }
+
+  &.isActive {
+    .artTabMarker {
+      background: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-ring-soft);
+    }
+
+    .artTabIndex {
+      color: var(--accent);
+    }
+
+    .artTabName {
+      color: var(--text);
+    }
+  }
+}
+
+// Empty at rest, filled and haloed when chosen — the system's row marker used
+// as the selected state, so nothing new had to be invented for it.
+.artTabMarker {
+  width: 8px;
+  height: 8px;
+  margin: 7px 0 0 3px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 0 1px var(--line);
+  transition:
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.artTabBody {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.artTabIndex {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+  transition: color 0.15s ease;
+}
+
+.artTabName {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.artPanel {
+  padding: 26px 0 0 44px;
+  border-left: 1px solid var(--line-2);
+  min-width: 0;
+
+  // Stacked, the vertical rule has nothing to divide and becomes a horizontal
+  // one between the choices and their result.
+  @media (max-width: 680px) {
+    padding: 26px 0 0;
+    border-left: none;
+    border-top: 1px solid var(--line-2);
+    margin-top: 26px;
+  }
+}
+
+.artPanelBlurb {
+  max-width: 62ch;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+// Inside the panel the labels sit closer than they would in running prose.
+.artPanelLabel {
+  margin: 30px 0 12px;
+}
+
+// The injected diff. A left hairline in the accent marks it as the thing that
+// changed; no filled block, and the mono face does the rest.
+.artMutation {
+  max-width: 62ch;
+  margin: 0;
+  padding: 4px 0 4px 18px;
+  border-left: 1px solid var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.artArms {
+  border-top: 1px solid var(--line-2);
+}
+
+.artArm {
+  display: grid;
+  // The score column sizes to its longest note rather than reserving a fixed
+  // width, because the panel is now the narrower of the two columns.
+  grid-template-columns: 7.5rem 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line-2);
+
+  // The tool that found everything is the finding — it takes the accent.
+  &.isHit {
+    .artArmName,
+    .artArmScore {
+      color: var(--accent);
+    }
+  }
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+// The rail carries its own vertical rhythm in the ladder; in a row it just
+// sits on the grid's centre line.
+.artArm .artRail {
+  margin: 0;
+}
+
+.artArmName {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.artArmScore {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+
+  @media (max-width: 680px) {
+    text-align: left;
+  }
+}
+
+.artVerdict {
+  max-width: 64ch;
+  margin: 22px 0 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--muted);
+
+  b {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-right: 6px;
+  }
+
+  &.isAlarm b {
+    color: var(--accent);
+  }
+}
+
+/* ---- Question and answer ---- */
+.artQA {
+  margin: 30px 0;
+  border-top: 1px solid var(--line-2);
+}
+
+.artQAItem {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line-2);
+
+  // The colophon below opens with its own rule. See .artFact.
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.artQAQuestion {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.artQAAnswer {
+  max-width: 64ch;
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ---- Closing note ---- */
+// The article's sign-off, set below a hairline in the metadata tier so it reads
+// as a note from the author rather than another section.
+.artColophon {
+  max-width: 62ch;
+  margin: 72px 0 0;
+  padding-top: 30px;
+  border-top: 1px solid var(--line-2);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--faint);
+
+  p {
+    margin: 0 0 14px;
+  }
 }
 
 /* ---- Footer ---- */
