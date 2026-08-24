@@ -19,9 +19,12 @@
   border-bottom: 1px solid var(--line-2);
 }
 
+// The masthead. Set in the reading face at full weight, the way a paper sets
+// its own name — the one place on the page the serif is allowed to shout.
 .homeWordmark {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 
   .dot {
     color: var(--accent);
@@ -46,8 +49,11 @@
 }
 
 /* ---- Hero ---- */
+// A serif headline at full weight carries more visual mass than the sans it
+// replaced, so it needs less air around it to feel deliberate. 72vh of cream
+// tipped from restraint into an unfinished page.
 .homeHero {
-  min-height: 72vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,13 +69,16 @@
   margin: 0 0 34px;
 }
 
+// Display. Full weight, because a masthead serif on cream is the whole
+// argument; the tracking opens up from the sans build's -0.03em, which a serif
+// at this size reads as cramped rather than as confident.
 .homeTitle {
-  font-size: clamp(38px, 5.6vw, 66px);
-  line-height: 1.06;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  max-width: 16ch;
-  margin: 0 0 34px;
+  font-size: clamp(36px, 4.6vw, 56px);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  max-width: 20ch;
+  margin: 0 0 32px;
 
   .soft {
     color: var(--muted);
@@ -77,12 +86,14 @@
 }
 
 .homeLede {
-  font-size: clamp(16px, 1.7vw, 19px);
-  line-height: 1.65;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.6;
   color: var(--muted);
-  max-width: 52ch;
-  margin: 0 0 44px;
-  font-weight: 300;
+  max-width: 50ch;
+  margin: 0 0 42px;
+  // 400, not 300. A light serif on paper reads as faded rather than as quiet;
+  // the sans build could afford 300 because light-on-dark gains weight.
+  font-weight: 400;
 }
 
 .homeActions {
@@ -95,7 +106,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text);
   padding-bottom: 3px;
   border-bottom: 1px solid var(--line);
@@ -136,9 +147,12 @@
 }
 
 /* ---- Section scaffolding ---- */
+// Two rule weights, two jobs: the stronger rule opens a section, the quiet one
+// divides the rows inside it. On paper that difference is legible in a way it
+// never was on charcoal, so the hierarchy is worth spending.
 .homeSection {
   padding: 34px 0;
-  border-top: 1px solid var(--line-2);
+  border-top: 1px solid var(--line);
 }
 
 .homeSectionHead {
@@ -213,21 +227,23 @@
 .homeRowTitle {
   display: block;
   font-size: 20px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   margin-bottom: 8px;
 }
 
+// Dropping one step is how the system ranks writing below projects without
+// changing the row's structure.
 .homeRow--compact .homeRowTitle {
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .homeRowDesc {
   display: block;
-  font-size: 14.5px;
+  font-size: 15.5px;
   color: var(--muted);
-  font-weight: 300;
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 1.55;
   max-width: 58ch;
   margin-bottom: 14px;
 }
@@ -238,11 +254,14 @@
   flex-wrap: wrap;
 }
 
+// Outlined in the stronger rule, not the quiet one. The quiet rule was legible
+// against charcoal; on cream it disappears and the tag reads as loose text
+// rather than as a pill.
 .homeRowTag {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--faint);
-  border: 1px solid var(--line-2);
+  border: 1px solid var(--line);
   padding: 3px 9px;
   border-radius: 100px;
 }
@@ -284,10 +303,10 @@
 }
 
 .homeSkillItems {
-  font-size: 15px;
-  line-height: 1.9;
+  font-size: 16px;
+  line-height: 1.85;
   color: var(--muted);
-  font-weight: 300;
+  font-weight: 400;
 
   // The names and separators are adjacent elements with no whitespace between
   // them, so inline layout offers no wrap points. Flex wraps between items, and
@@ -302,9 +321,11 @@
     white-space: nowrap;
   }
 
+  // Primary skills carry weight rather than a second colour — emphasis is the
+  // only distinction the system allows here.
   .k {
     color: var(--text);
-    font-weight: 400;
+    font-weight: 600;
   }
 
   .sep {
@@ -321,10 +342,10 @@
 }
 
 .homeContactTitle {
-  font-size: clamp(24px, 3vw, 34px);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-size: clamp(26px, 2.8vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.18;
   margin: 0 0 4px;
   max-width: 20ch;
 
