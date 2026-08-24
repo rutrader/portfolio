@@ -102,6 +102,8 @@ export default function Home() {
                   <span className="homeRowBody">
                     <span className="homeRowTitle">{project.title}</span>
                     <span className="homeRowDesc">{project.description}</span>
+                  </span>
+                  <span className="homeRowRail">
                     <span className="homeRowTags">
                       {project.stacks.map((tag) => (
                         <span key={tag} className="homeRowTag">
@@ -164,6 +166,8 @@ export default function Home() {
                     <span className="homeRowBody">
                       <span className="homeRowTitle">{writing.title}</span>
                       {writing.description && <span className="homeRowDesc">{writing.description}</span>}
+                    </span>
+                    <span className="homeRowRail">
                       <span className="homeRowTags">
                         <span className="homeRowTag">{writing.source}</span>
                         {writing.langs.map((lang) => (
