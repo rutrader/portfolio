@@ -2,7 +2,7 @@ import './globals.scss';
 import { Analytics } from '@vercel/analytics/next';
 import { Source_Serif_4 } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 
 /**
  * The reading voice. Source Serif 4 is variable, so one download covers the
@@ -77,6 +77,17 @@ export const metadata: Metadata = {
     title: 'Ruslan Ishemgulov — Software Engineer',
     description: DESCRIPTION,
   },
+};
+
+/**
+ * Paints the mobile browser's own chrome in the paper colour. Without it the
+ * address bar keeps its default — dark on most phones — and the page reads as
+ * a light document dropped into someone else's dark frame.
+ *
+ * Mirrors --bg in styles/_tokens.scss.
+ */
+export const viewport: Viewport = {
+  themeColor: '#fff1e5',
 };
 
 const personJsonLd = {
