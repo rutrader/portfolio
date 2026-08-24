@@ -17,8 +17,27 @@
   @include reading-surface;
 }
 
+// The article column is narrower than the homepage's 1020.
+//
+// A reading measure has to stay near 68ch whatever the canvas is, so on the
+// homepage's width a paragraph ran 683px inside a 1020px column and left a
+// third of every line's band empty. The homepage solved that by giving the
+// band to metadata; an article has no metadata to put there, so the canvas
+// comes to the text instead. This is what a paper does — the front page is
+// wide, the article page is not.
+//
+// 780px of content against a 683px measure leaves the slack a ragged right
+// edge actually needs, and the figures still get the full column.
+// 780 is the content box — the shell has no border-box, so the 40px padding
+// sits outside it and the column measures 860 on the page.
 .articleShell {
-  @include shell;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  @media (max-width: 680px) {
+    padding: 0 24px;
+  }
 }
 
 $measure: 68ch;
@@ -336,9 +355,11 @@ $measure: 68ch;
 // finding, and the two that carry the argument take the accent — the one hue
 // is permitted to indicate.
 .artTally {
+  // 13rem, not 15rem: on the narrower article column three counts must still
+  // sit on one line. Dropping to two would read as two findings and a stray.
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 34px 40px;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 34px 36px;
   margin: 40px 0;
   padding: 34px 0;
   border-top: 1px solid var(--line-2);
