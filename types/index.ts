@@ -29,6 +29,8 @@ export interface Writing {
   href: string;
   langs: WritingLang[];
   description?: string;
+  /** Hosted here. Opens in the same tab and takes a same-page arrow. */
+  internal?: boolean;
 }
 
 /**
@@ -46,6 +48,8 @@ export interface Article {
   kicker: string;
   /** The lede under the heading, in the author's voice. Also the meta description. */
   lede: string;
+  /** One line for the homepage row, where the lede would run past the 58ch measure. */
+  summary: string;
   /** ISO date. Rendered as the dateline and used for `lastModified` in the sitemap. */
   date: string;
   /** Mono meta line under the lede — where the work happened, what it ran on. */

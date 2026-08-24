@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowUpRight, ArrowUp } from 'lucide-react';
+import { ArrowUpRight, ArrowUp, ArrowRight } from 'lucide-react';
 
 import { LINK_SECTIONS, PROJECTS, SKILL_GROUPS, WRITINGS } from './_home/homeData';
 import type { Link as LinkType } from '@/types';
@@ -54,7 +54,6 @@ export default function Home() {
   return (
     <div className="home" id="top">
       <div className="homeShell">
-
         <nav className="homeNav" aria-label="Primary">
           <span className="homeWordmark">
             Ruslan Ishemgulov<span className="dot">.</span>
@@ -68,7 +67,6 @@ export default function Home() {
         </nav>
 
         <main className="homeMain">
-
           <header className="homeHero" aria-label="Introduction">
             <p className="homeKicker">Software Engineer &middot; Web / AI / Investing</p>
             <h1 className="homeTitle">
@@ -136,7 +134,9 @@ export default function Home() {
                       <span key={skill.name} className="homeSkillItem">
                         <span className={skill.primary ? 'k' : undefined}>{skill.name}</span>
                         {i < group.skills.length - 1 && (
-                          <span className="sep" aria-hidden="true">&middot;</span>
+                          <span className="sep" aria-hidden="true">
+                            &middot;
+                          </span>
                         )}
                       </span>
                     ))}
@@ -152,31 +152,48 @@ export default function Home() {
               <span className="homeSectionDesc">Markets &middot; investing &middot; AI</span>
             </div>
             <div className="homeRows">
-              {WRITINGS.map((writing) => (
-                <ExternalLink
-                  key={writing.href}
-                  href={writing.href}
-                  className="homeRow homeRow--compact"
-                  ariaLabel={`${writing.title} — ${writing.source}, ${writing.langs.map(langLabel).join(' and ')}`}
-                >
-                  <span className="homeRowMarker" aria-hidden="true" />
-                  <span className="homeRowBody">
-                    <span className="homeRowTitle">{writing.title}</span>
-                    {writing.description && <span className="homeRowDesc">{writing.description}</span>}
-                    <span className="homeRowTags">
-                      <span className="homeRowTag">{writing.source}</span>
-                      {writing.langs.map((lang) => (
-                        <span key={lang} className="homeRowTag">
-                          {lang}
-                        </span>
-                      ))}
+              {WRITINGS.map((writing) => {
+                const label = `${writing.title} — ${writing.source}, ${writing.langs.map(langLabel).join(' and ')}`;
+
+                // Pieces hosted here stay in the tab and take the same-page
+                // arrow; only the outbound ones announce a new window.
+                const Arrow = writing.internal ? ArrowRight : ArrowUpRight;
+                const body = (
+                  <>
+                    <span className="homeRowMarker" aria-hidden="true" />
+                    <span className="homeRowBody">
+                      <span className="homeRowTitle">{writing.title}</span>
+                      {writing.description && <span className="homeRowDesc">{writing.description}</span>}
+                      <span className="homeRowTags">
+                        <span className="homeRowTag">{writing.source}</span>
+                        {writing.langs.map((lang) => (
+                          <span key={lang} className="homeRowTag">
+                            {lang}
+                          </span>
+                        ))}
+                      </span>
                     </span>
-                  </span>
-                  <span className="homeRowMeta" aria-hidden="true">
-                    <ArrowUpRight className="homeRowIcon" size={16} />
-                  </span>
-                </ExternalLink>
-              ))}
+                    <span className="homeRowMeta" aria-hidden="true">
+                      <Arrow className="homeRowIcon" size={16} />
+                    </span>
+                  </>
+                );
+
+                return writing.internal ? (
+                  <Link key={writing.href} href={writing.href} className="homeRow homeRow--compact" aria-label={label}>
+                    {body}
+                  </Link>
+                ) : (
+                  <ExternalLink
+                    key={writing.href}
+                    href={writing.href}
+                    className="homeRow homeRow--compact"
+                    ariaLabel={label}
+                  >
+                    {body}
+                  </ExternalLink>
+                );
+              })}
             </div>
           </section>
 
@@ -199,7 +216,6 @@ export default function Home() {
               Back to top <ArrowUp size={13} aria-hidden="true" />
             </a>
           </footer>
-
         </main>
       </div>
     </div>

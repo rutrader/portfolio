@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import type { Article } from '@/types';
+import type { Article, Writing } from '@/types';
 
 /**
  * Every self-hosted piece, newest first.
@@ -15,12 +15,23 @@ export const ARTICLES: Article[] = [
     title: 'What the typechecker can’t see',
     kicker: 'Piecework · Explainer',
     lede: 'I broke a large open-source monorepo on purpose, seven times, to find where free tools run out and a paid model starts to earn its keep.',
+    summary: 'Seven breaks injected into WordPress/gutenberg, and what four tools found.',
     date: '2026-08-24',
     meta: ['WordPress/gutenberg', '102 packages', '7 injected breaks'],
   },
 ];
 
 export const ARTICLES_BY_SLUG = new Map(ARTICLES.map((a) => [a.slug, a]));
+
+/** The homepage Writing rows for self-hosted pieces, so nothing is typed twice. */
+export const ARTICLE_WRITINGS: Writing[] = ARTICLES.map((a) => ({
+  title: a.title,
+  source: 'Research',
+  href: `/writing/${a.slug}`,
+  langs: ['EN'],
+  description: a.summary,
+  internal: true,
+}));
 
 /** Throws rather than returning undefined: a missing slug is a build-time bug. */
 export function getArticle(slug: string): Article {

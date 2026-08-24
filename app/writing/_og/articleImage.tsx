@@ -1,13 +1,27 @@
 import { ImageResponse } from 'next/og';
 
-import { loadFonts } from './_og/fonts';
-import { OG } from './_og/palette';
+import { loadFonts } from '@/app/_og/fonts';
+import { OG } from '@/app/_og/palette';
+import { formatDate, getArticle } from '../_articles';
 
-export const alt = 'Ruslan Ishemgulov — Software Engineer';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default async function OpengraphImage() {
+/**
+ * The share card for an article — a restatement of the page's own header, the
+ * way the site card restates the first viewport: mono eyebrow, the title, a
+ * hairline, then a mono line led by the teal LED.
+ *
+ * Everything comes from the article's registry entry, so a card can never drift
+ * from the page it points at.
+ */
+export async function renderArticleImage(slug: string) {
+  const article = getArticle(slug);
+
+  // Satori has no clamp(): step the title down so a long one still sets on
+  // three lines inside the 1200×630 frame rather than running off it.
+  const fontSize = article.title.length > 46 ? 62 : 76;
+
   return new ImageResponse(
     <div
       style={{
@@ -33,22 +47,20 @@ export default async function OpengraphImage() {
           marginBottom: 38,
         }}
       >
-        Software Engineer · Web / AI / Investing
+        {article.kicker}
       </div>
 
       <div
         style={{
           display: 'flex',
-          flexWrap: 'wrap',
-          fontSize: 78,
+          fontSize,
           fontWeight: 500,
           lineHeight: 1.08,
           letterSpacing: -2.4,
-          maxWidth: 940,
+          maxWidth: 1000,
         }}
       >
-        <span>Building useful products,&nbsp;</span>
-        <span style={{ color: OG.muted }}>and studying the systems behind them.</span>
+        {article.title}
       </div>
 
       <div
@@ -73,7 +85,7 @@ export default async function OpengraphImage() {
             marginRight: 16,
           }}
         />
-        ishemgulov.com · Based in Czechia · EN / RU
+        ishemgulov.com &middot; {formatDate(article.date)}
       </div>
     </div>,
     { ...size, fonts: await loadFonts() }
