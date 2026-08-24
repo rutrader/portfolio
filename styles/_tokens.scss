@@ -1,0 +1,57 @@
+// ---------------------------------------------------------------------------
+// The palette, in one place.
+//
+// Everything visual on the site reads from these. The token names are
+// structural (--bg, --text, --line) rather than poetic, so a repaint is a
+// change of value and never a change of vocabulary; the world's own names for
+// them — Paper, Ink, Rule, Signal Teal — are noted against each below.
+//
+// One exception, and it is not fixable: `app/opengraph-image.tsx`, the article
+// share cards, and `app/_icon/mark.tsx` render through Satori (next/og), which
+// resolves no CSS custom properties. Those carry literal values in
+// `app/_og/palette.ts`, which mirrors this file and must be edited with it.
+// ---------------------------------------------------------------------------
+
+:root {
+  color-scheme: light;
+
+  // --- Ground -------------------------------------------------------------
+  // Paper. A warm off-white, not the Financial Times cream it started as —
+  // that read as costume at full-page scale. The warmth survives as a cast
+  // rather than as a colour, which is what lets the ink stay warm too.
+  // It is flat: paper has no glow on it, so the dark system's teal radial does
+  // not survive the repaint.
+  --bg: #faf7f3;
+  // Field. A single deeper tint held in reserve for any surface that must read
+  // as raised. Nothing ships using it yet; noted so a future surface takes
+  // this value rather than inventing one.
+  --elev: #f2ede6;
+
+  // --- Rules --------------------------------------------------------------
+  // Solid warm rules rather than tinted alpha. On paper a printed rule is an
+  // ink of its own, not a translucent film over the ground.
+  --line: #e4ddd3; // interactive underlines, chip and tag outlines
+  --line-2: #efe9e1; // separators between rows and sections
+  --wash: rgba(34, 32, 30, 0.03); // row-hover tint, a breath of ink
+
+  // --- Ink ----------------------------------------------------------------
+  // Warm near-black through warm greys. Never a cool grey and never pure
+  // black: both read as a foreign body on a warm ground. Measured on --bg:
+  --text: #22201e; // 15.2:1 — headlines, row titles, prose
+  --muted: #57514a; // 7.3:1  — ledes, descriptions, secondary text
+  --faint: #71695f; // 5.1:1  — labels, tags, datelines, footer
+
+  // --- Signal ------------------------------------------------------------
+  // Signal Teal, darkened for a light ground. The hue survives the repaint —
+  // it was chosen as the distance from developer blue and it still is — and
+  // it happens to be a Financial Times brand colour.
+  --accent: #0d7680; // 5.02:1 on --bg, so it may set text
+  --accent-ring: rgba(13, 118, 128, 0.18); // marker halo, hovered
+  --accent-ring-soft: rgba(13, 118, 128, 0.12); // marker halo, at rest
+
+  // --- Type ---------------------------------------------------------------
+  // Two families, two voices. The serif reads; the mono labels, indexes and
+  // timestamps. Neither does the other's job.
+  --font-serif: var(--font-source-serif), Charter, Georgia, 'Times New Roman', serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}

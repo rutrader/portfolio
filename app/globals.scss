@@ -1,3 +1,5 @@
+@import '../styles/tokens.scss';
+
 html,
 body {
   min-height: 100%;
@@ -5,7 +7,7 @@ body {
 }
 
 body {
-  background: #14161c; // matches .home ground — no flash before hydration
+  background: var(--bg); // matches the page ground — no flash before hydration
 }
 
 main {
@@ -13,8 +15,8 @@ main {
 }
 
 .general {
-  color: #e7eaef;
-  background-color: #14161c;
+  color: var(--text);
+  background-color: var(--bg);
 }
 
 .sr-only {
@@ -31,3 +33,4 @@ main {
 }
 
 @import '../styles/home.scss';
+@import '../styles/writing.scss';

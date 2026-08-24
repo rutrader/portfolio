@@ -1,8 +1,23 @@
 import './globals.scss';
 import { Analytics } from '@vercel/analytics/next';
-import { GeistSans } from 'geist/font/sans';
+import { Source_Serif_4 } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+
+/**
+ * The reading voice. Source Serif 4 is variable, so one download covers the
+ * whole weight range the type scale asks for — 400 for prose up to 600 for the
+ * display line — instead of a file per step.
+ *
+ * `latin-ext` is there for the Czech diacritics in project names; the site's
+ * Russian is signalled by a tag, not set in Cyrillic, so that subset is not
+ * paid for until there is Cyrillic text to render.
+ */
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-source-serif',
+});
 
 const SITE_URL = 'https://ishemgulov.com';
 const DESCRIPTION =
@@ -20,20 +35,26 @@ const SAME_AS = [
  * the repo and deliberately not shipped to the browser. DESIGN.md is the
  * normative system; this is why it looks the way it does.
  *
- * THESIS: Earn credibility through calm. Dark, quiet, content-light — refusing
+ * THESIS: Earn credibility through calm. Light, quiet, content-light — refusing
  *   the packed dashboard and the neon-terminal dev default.
- * OWN-WORLD: Cool slate-charcoal ground (#14161c), cool off-white text, one
- *   muted teal accent (#6fb3a6) used sparingly. Geist + Geist Mono, hairline
- *   rules, rows led by a small filled teal dot in a soft halo. No motion beyond
- *   hover.
+ * OWN-WORLD: Warm off-white paper (#faf7f3), warm near-black ink, one
+ *   desaturated teal (#0d7680) used sparingly. Source Serif 4 reads, Geist Mono
+ *   labels. Solid warm rules, rows led by a small filled teal dot in a soft
+ *   halo. Flat ground: no gradients, no shadows. No motion beyond hover.
  * STORY: A recruiter or peer reads "credible, senior, clear engineer across
  *   web, AI and investing" in seconds, then reaches GitHub/LinkedIn or the
  *   writing with zero friction.
- * FIRST VIEWPORT: ~72vh of air. A mono eyebrow naming the three fields,
+ * FIRST VIEWPORT: ~60vh of air. A mono eyebrow naming the three fields,
  *   left-aligned headline, a lede in the real voice, two quiet text links, a
  *   mono meta line. No hero card, no metric template.
- * FORM: Editorial-dark single column of ranked rows. User-pinned over the roll
- *   (assigned #4 split-flap declined after two re-rolls).
+ * FORM: Editorial single column of ranked rows, metadata in a right rail.
+ *   Homepage 1020 wide; an article narrows to 780 to meet its own measure.
+ * HISTORY: Built dark (cool slate charcoal, Geist Sans) in Aug 2026, repainted
+ *   to paper the same month at the owner's direction — Financial Times as the
+ *   reference, pulled back from FT's own cream, which read as costume at
+ *   full-page scale. The repaint taught two things now written into DESIGN.md:
+ *   a ground change is a re-weighting, not just a re-colouring, and a light
+ *   ground exposes empty space a dark one conceals.
  * FINISH: unreviewed and undocumented is unfinished; this build ended with the
  *   finish review, the verdict, and DESIGN.md.
  */
@@ -64,6 +85,17 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Paints the mobile browser's own chrome in the paper colour. Without it the
+ * address bar keeps its default — dark on most phones — and the page reads as
+ * a light document dropped into someone else's dark frame.
+ *
+ * Mirrors --bg in styles/_tokens.scss.
+ */
+export const viewport: Viewport = {
+  themeColor: '#faf7f3',
+};
+
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -81,11 +113,8 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} ${GeistSans.variable} ${GeistMono.variable}`}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
+      <body className={`${sourceSerif.className} ${sourceSerif.variable} ${GeistMono.variable}`}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <div className="general">
           <main>
             <div>{children}</div>

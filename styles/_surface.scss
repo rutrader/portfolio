@@ -1,0 +1,42 @@
+// The ground both top-level surfaces stand on — the homepage and any article.
+//
+// Extracted as a mixin rather than a shared class so neither page has to carry
+// two class names.
+@mixin reading-surface {
+  font-family: var(--font-serif);
+  color: var(--text);
+  line-height: 1.5;
+  background: var(--bg);
+  min-height: 100vh;
+
+  // No font-smoothing override. `antialiased` thins glyphs, which rescues
+  // light text on a dark ground and ruins dark text on a light one. The dark
+  // build needed it; this one wants the platform's own subpixel rendering.
+
+  // The serif sets its own width. Negative tracking belongs to display sizes,
+  // where it is applied per step, never to running text.
+  letter-spacing: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  // One focus ring for the whole surface, in the accent, so keyboard users get
+  // the system's own vocabulary instead of the browser's off-palette default.
+  a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+  }
+}
+
+// The single centered column. 1020px, tightening below 680px.
+@mixin shell {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  @media (max-width: 680px) {
+    padding: 0 24px;
+  }
+}

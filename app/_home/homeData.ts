@@ -1,4 +1,5 @@
 import type { Project, SkillGroup, Hobby, Writing, LinkSection } from '@/types';
+import { ARTICLE_WRITINGS } from '@/app/writing/_articles';
 
 export const PROJECTS: Project[] = [
   {
@@ -85,7 +86,9 @@ export const HOBBIES: Hobby[] = [
   },
 ];
 
+// Self-hosted pieces lead, then the places I write elsewhere.
 export const WRITINGS: Writing[] = [
+  ...ARTICLE_WRITINGS,
   {
     title: 'AI Infrastructure: Discipline Under Pressure',
     source: 'LinkedIn',
