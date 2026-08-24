@@ -2,79 +2,69 @@
      width="1200" height="420" viewBox="0 0 1200 420"
      role="img" aria-labelledby="hero-title hero-desc">
   <title id="hero-title">ishemgulov.com</title>
-  <desc id="hero-desc">A single dark page built to be read, with its design system written down. Built with the Next.js App Router, TypeScript, and Sass. On the right, a specimen of the site's signature content row: a teal marker dot, a project title, a description, and three tag pills, above a skill row.</desc>
+  <desc id="hero-desc">A single page built to be read, with its design system written down. Built with the Next.js App Router, TypeScript, and Sass. On the right, a specimen of the site's signature content row: a teal marker dot, a project title and description on the left, its tags right-aligned in a metadata rail, and an outbound arrow — above a skill row.</desc>
 
-  <defs>
-    <radialGradient id="glow" cx="50%" cy="0%" r="62%">
-      <stop offset="0%" stop-color="#6fb3a6" stop-opacity="0.10"/>
-      <stop offset="100%" stop-color="#6fb3a6" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
+  <rect width="1200" height="420" fill="#faf7f3"/>
 
-  <rect width="1200" height="420" fill="#14161c"/>
-  <rect width="1200" height="420" fill="url(#glow)"/>
-
-  <g id="title-block"
-     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <g id="title-block" font-family="Georgia, 'Times New Roman', serif">
 
     <text x="64" y="96"
           font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-          font-size="18" letter-spacing="2.9" fill="#7f8792">NEXT.JS APP ROUTER · PERSONAL SITE</text>
+          font-size="18" letter-spacing="2.6" fill="#71695f">NEXT.JS APP ROUTER</text>
 
-    <text x="64" y="180" font-size="60" font-weight="500" letter-spacing="-1.8" fill="#e7eaef"
-      >ishemgulov<tspan fill="#6fb3a6">.</tspan>com</text>
+    <text x="64" y="178" font-size="52" font-weight="700" letter-spacing="-1.2" fill="#22201e"
+      >ishemgulov<tspan fill="#0d7680">.</tspan>com</text>
 
-    <text x="64" y="246" font-size="26" font-weight="300" letter-spacing="-0.2" fill="#e7eaef">A single dark page, built to be read —</text>
-    <text x="64" y="284" font-size="26" font-weight="300" letter-spacing="-0.2" fill="#a2a9b4">and a design system written down.</text>
+    <text x="64" y="244" font-size="26" letter-spacing="-0.2" fill="#22201e">A single page, built to be read &#8212;</text>
+    <text x="64" y="282" font-size="26" letter-spacing="-0.2" fill="#57514a">and a design system written down.</text>
 
-    <circle cx="68" cy="338" r="5.5" fill="none" stroke="#6fb3a6" stroke-opacity="0.16" stroke-width="3"/>
-    <circle cx="68" cy="338" r="4" fill="#6fb3a6"/>
-    <text x="86" y="344"
+    <circle cx="68" cy="340" r="5.5" fill="none" stroke="#0d7680" stroke-opacity="0.18" stroke-width="3"/>
+    <circle cx="68" cy="340" r="4" fill="#0d7680"/>
+    <text x="88" y="346"
           font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-          font-size="17" letter-spacing="0.4" fill="#7f8792">TypeScript · Sass · fully static · deployed on Vercel</text>
+          font-size="18" letter-spacing="0.4" fill="#71695f">TypeScript &#183; Sass &#183; static &#183; Vercel</text>
   </g>
 
-  <g id="project-proof" transform="translate(700 0)"
-     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <g id="project-proof" transform="translate(552 0)"
+     font-family="Georgia, 'Times New Roman', serif">
 
     <text x="0" y="96"
           font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-          font-size="16" letter-spacing="2.6" fill="#7f8792">SIGNATURE COMPONENT</text>
+          font-size="18" letter-spacing="2.6" fill="#71695f">SIGNATURE COMPONENT</text>
 
-    <g id="content-row" transform="translate(0 124)">
-      <line x1="0" y1="0" x2="436" y2="0" stroke="#b4c8e6" stroke-opacity="0.11" stroke-width="1"/>
+    <g id="content-row" transform="translate(0 128)">
+      <line x1="0" y1="0" x2="584" y2="0" stroke="#e4ddd3" stroke-width="1"/>
 
-      <circle cx="8" cy="44" r="5.5" fill="none" stroke="#6fb3a6" stroke-opacity="0.14" stroke-width="3"/>
-      <circle cx="8" cy="44" r="4" fill="#6fb3a6"/>
+      <circle cx="8" cy="46" r="5.5" fill="none" stroke="#0d7680" stroke-opacity="0.12" stroke-width="3"/>
+      <circle cx="8" cy="46" r="4" fill="#0d7680"/>
 
-      <text x="34" y="52" font-size="24" font-weight="500" letter-spacing="-0.24" fill="#e7eaef">Assumio</text>
-      <text x="34" y="86" font-size="19" font-weight="300" letter-spacing="-0.11" fill="#a2a9b4">A private ledger of investment reasoning.</text>
+      <text x="34" y="54" font-size="22" font-weight="700" letter-spacing="-0.1" fill="#22201e">Czechonomics &#8212; iOS</text>
+      <text x="34" y="90" font-size="19" letter-spacing="-0.05" fill="#57514a">An iOS companion app for</text>
+      <text x="34" y="116" font-size="19" letter-spacing="-0.05" fill="#57514a">Czechonomics.</text>
 
-      <g id="tags" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" fill="#7f8792">
-        <rect x="34" y="104" width="73" height="30" rx="15" fill="none" stroke="#b4c8e6" stroke-opacity="0.09"/>
-        <text x="70.5" y="124" text-anchor="middle">Astro</text>
-        <rect x="117" y="104" width="124" height="30" rx="15" fill="none" stroke="#b4c8e6" stroke-opacity="0.09"/>
-        <text x="179" y="124" text-anchor="middle">TypeScript</text>
-        <rect x="251" y="104" width="134" height="30" rx="15" fill="none" stroke="#b4c8e6" stroke-opacity="0.09"/>
-        <text x="318" y="124" text-anchor="middle">AI-assisted</text>
+      <g id="metadata-rail" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#71695f">
+        <rect x="347" y="34" width="58" height="30" rx="15" fill="none" stroke="#e4ddd3"/>
+        <text x="376" y="54" text-anchor="middle">iOS</text>
+        <rect x="413" y="34" width="125" height="30" rx="15" fill="none" stroke="#e4ddd3"/>
+        <text x="475.5" y="54" text-anchor="middle">App Store</text>
       </g>
 
-      <g id="row-arrow" transform="translate(414 34)" stroke="#7f8792" stroke-width="1.6"
+      <g id="row-arrow" transform="translate(556 38)" stroke="#71695f" stroke-width="1.6"
          stroke-linecap="round" stroke-linejoin="round" fill="none">
         <path d="M0 13 L13 0"/>
         <path d="M3.5 0 H13 V9.5"/>
       </g>
     </g>
 
-    <g id="skill-row" transform="translate(0 282)">
-      <line x1="0" y1="0" x2="436" y2="0" stroke="#b4c8e6" stroke-opacity="0.11" stroke-width="1"/>
+    <g id="skill-row" transform="translate(0 292)">
+      <line x1="0" y1="0" x2="584" y2="0" stroke="#e4ddd3" stroke-width="1"/>
 
-      <text x="0" y="44"
+      <text x="0" y="46"
             font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-            font-size="17" letter-spacing="2.2" fill="#7f8792">FRONTEND</text>
+            font-size="18" letter-spacing="2.2" fill="#71695f">FRONTEND</text>
 
-      <text x="130" y="44" font-size="19" letter-spacing="-0.11">
-        <tspan font-weight="400" fill="#e7eaef">Next.js</tspan><tspan fill="#7f8792" fill-opacity="0.55"> · </tspan><tspan font-weight="400" fill="#e7eaef">React</tspan><tspan fill="#7f8792" fill-opacity="0.55"> · </tspan><tspan font-weight="400" fill="#e7eaef">TypeScript</tspan>
+      <text x="140" y="46" font-size="19" letter-spacing="-0.05">
+        <tspan font-weight="700" fill="#22201e">Next.js</tspan><tspan fill="#71695f" fill-opacity="0.55"> &#183; </tspan><tspan font-weight="700" fill="#22201e">React</tspan><tspan fill="#71695f" fill-opacity="0.55"> &#183; </tspan><tspan font-weight="700" fill="#22201e">TypeScript</tspan>
       </text>
     </g>
   </g>
