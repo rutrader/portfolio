@@ -19,7 +19,7 @@ export default async function OpengraphImage() {
         padding: '84px 90px',
         backgroundColor: OG.bg,
         color: OG.text,
-        fontFamily: 'Geist Sans',
+        fontFamily: 'Source Serif 4',
       }}
     >
       <div
@@ -39,11 +39,14 @@ export default async function OpengraphImage() {
         style={{
           display: 'flex',
           flexWrap: 'wrap',
-          fontSize: 78,
-          fontWeight: 500,
-          lineHeight: 1.08,
-          letterSpacing: -2.4,
-          maxWidth: 940,
+          // The serif carries more mass than the sans it replaced, so the card
+          // headline comes down the same way the page's did, and the tracking
+          // opens from -2.4 to a figure a serif does not read as cramped.
+          fontSize: 68,
+          fontWeight: 700,
+          lineHeight: 1.1,
+          letterSpacing: -1.4,
+          maxWidth: 960,
         }}
       >
         <span>Building useful products,&nbsp;</span>

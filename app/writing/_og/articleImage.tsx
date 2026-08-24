@@ -20,7 +20,7 @@ export async function renderArticleImage(slug: string) {
 
   // Satori has no clamp(): step the title down so a long one still sets on
   // three lines inside the 1200×630 frame rather than running off it.
-  const fontSize = article.title.length > 46 ? 62 : 76;
+  const fontSize = article.title.length > 46 ? 56 : 68;
 
   return new ImageResponse(
     <div
@@ -33,7 +33,7 @@ export async function renderArticleImage(slug: string) {
         padding: '84px 90px',
         backgroundColor: OG.bg,
         color: OG.text,
-        fontFamily: 'Geist Sans',
+        fontFamily: 'Source Serif 4',
       }}
     >
       <div
@@ -53,9 +53,9 @@ export async function renderArticleImage(slug: string) {
         style={{
           display: 'flex',
           fontSize,
-          fontWeight: 500,
-          lineHeight: 1.08,
-          letterSpacing: -2.4,
+          fontWeight: 700,
+          lineHeight: 1.1,
+          letterSpacing: -1.4,
           maxWidth: 1000,
         }}
       >
