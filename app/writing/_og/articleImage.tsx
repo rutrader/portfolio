@@ -32,7 +32,6 @@ export async function renderArticleImage(slug: string) {
         justifyContent: 'center',
         padding: '84px 90px',
         backgroundColor: OG.bg,
-        backgroundImage: OG.glow,
         color: OG.text,
         fontFamily: 'Geist Sans',
       }}

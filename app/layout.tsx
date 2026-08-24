@@ -1,8 +1,23 @@
 import './globals.scss';
 import { Analytics } from '@vercel/analytics/next';
-import { GeistSans } from 'geist/font/sans';
+import { Source_Serif_4 } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
 import type { Metadata } from 'next';
+
+/**
+ * The reading voice. Source Serif 4 is variable, so one download covers the
+ * whole weight range the type scale asks for — 400 for prose up to 600 for the
+ * display line — instead of a file per step.
+ *
+ * `latin-ext` is there for the Czech diacritics in project names; the site's
+ * Russian is signalled by a tag, not set in Cyrillic, so that subset is not
+ * paid for until there is Cyrillic text to render.
+ */
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-source-serif',
+});
 
 const SITE_URL = 'https://ishemgulov.com';
 const DESCRIPTION =
@@ -81,11 +96,8 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} ${GeistSans.variable} ${GeistMono.variable}`}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
+      <body className={`${sourceSerif.className} ${sourceSerif.variable} ${GeistMono.variable}`}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <div className="general">
           <main>
             <div>{children}</div>
