@@ -1,37 +1,55 @@
 // ---------------------------------------------------------------------------
 // The palette, in one place.
 //
-// Everything visual on the site reads from these. Repainting the site — the
-// planned move to a light, FT/Economist-style ground — should mean editing this
-// block and nothing else. So: no raw hex anywhere else in the stylesheets.
+// Everything visual on the site reads from these. The token names are
+// structural (--bg, --text, --line) rather than poetic, so a repaint is a
+// change of value and never a change of vocabulary; the world's own names for
+// them — Paper, Ink, Rule, Signal Teal — are noted against each below.
 //
-// One exception, and it is not fixable: `app/opengraph-image.tsx` and
-// `app/_icon/mark.tsx` render through Satori (next/og), which resolves no CSS
-// custom properties. Those two files carry literal hex and must be updated by
-// hand alongside this file.
+// One exception, and it is not fixable: `app/opengraph-image.tsx`, the article
+// share cards, and `app/_icon/mark.tsx` render through Satori (next/og), which
+// resolves no CSS custom properties. Those carry literal values in
+// `app/_og/palette.ts`, which mirrors this file and must be edited with it.
 // ---------------------------------------------------------------------------
 
 :root {
-  // Ground and surfaces
-  --bg: #14161c; // cool slate charcoal, lifted off pure black
-  --elev: #1b1e26;
+  color-scheme: light;
 
-  // Hairlines. Cool tint rather than plain white so rules sit in the palette.
-  --line: rgba(180, 200, 230, 0.11);
-  --line-2: rgba(180, 200, 230, 0.06);
-  --wash: rgba(180, 200, 230, 0.03); // row-hover gradient, barely there
+  // --- Ground -------------------------------------------------------------
+  // Paper. The Financial Times cream — the one colour that says financial
+  // press before a word is read. It is flat: paper has no glow on it, so the
+  // dark system's teal radial does not survive the repaint.
+  --bg: #fff1e5;
+  // Field. A single deeper cream held in reserve for any surface that must
+  // read as tinted. Nothing ships using it yet; noted so a future surface
+  // takes this value rather than inventing one.
+  --elev: #f6e7d8;
 
-  // Text, three steps down
-  --text: #e7eaef; // cool off-white
-  --muted: #a2a9b4; // secondary text (>= 4.5:1 on --bg)
-  --faint: #7f8792; // small labels / metadata (>= 4.5:1 on --bg)
+  // --- Rules --------------------------------------------------------------
+  // Solid warm rules rather than tinted alpha. On paper a printed rule is an
+  // ink of its own, not a translucent film over the ground.
+  --line: #e3d5c6; // interactive underlines, chip outlines
+  --line-2: #efe1d3; // separators between rows and sections
+  --wash: rgba(38, 34, 32, 0.035); // row-hover tint, a breath of ink
 
-  // One accent, used sparingly — deliberately not GitHub blue
-  --accent: #6fb3a6; // muted teal
-  --accent-glow: rgba(111, 179, 166, 0.06); // page-top radial
-  --accent-ring: rgba(111, 179, 166, 0.16); // marker halo, hovered
-  --accent-ring-soft: rgba(111, 179, 166, 0.1); // marker halo, at rest
+  // --- Ink ----------------------------------------------------------------
+  // Warm near-black through warm greys. Never a cool grey and never pure
+  // black: both read as a foreign body on cream. Measured on --bg:
+  --text: #262220; // 14.2:1 — headlines, row titles, prose
+  --muted: #5c534b; // 6.8:1  — ledes, descriptions, secondary text
+  --faint: #766a5f; // 4.7:1  — labels, tags, datelines, footer
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  // --- Signal ------------------------------------------------------------
+  // Signal Teal, darkened for a light ground. The hue survives the repaint —
+  // it was chosen as the distance from developer blue and it still is — and
+  // it happens to be a Financial Times brand colour.
+  --accent: #0d7680; // 4.84:1 on --bg, so it may set text
+  --accent-ring: rgba(13, 118, 128, 0.18); // marker halo, hovered
+  --accent-ring-soft: rgba(13, 118, 128, 0.12); // marker halo, at rest
+
+  // --- Type ---------------------------------------------------------------
+  // Two families, two voices. The serif reads; the mono labels, indexes and
+  // timestamps. Neither does the other's job.
+  --font-serif: var(--font-source-serif), Charter, Georgia, 'Times New Roman', serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }

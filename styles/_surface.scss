@@ -1,17 +1,21 @@
 // The ground both top-level surfaces stand on — the homepage and any article.
 //
 // Extracted as a mixin rather than a shared class so neither page has to carry
-// two class names, and so the radial glow (DESIGN.md: the only gradient in the
-// system) is declared exactly once.
+// two class names.
 @mixin reading-surface {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   color: var(--text);
   line-height: 1.5;
-  letter-spacing: -0.006em;
-  -webkit-font-smoothing: antialiased;
-
-  background: radial-gradient(900px 460px at 50% -10%, var(--accent-glow), transparent 62%), var(--bg);
+  background: var(--bg);
   min-height: 100vh;
+
+  // No font-smoothing override. `antialiased` thins glyphs, which rescues
+  // light text on a dark ground and ruins dark text on a light one. The dark
+  // build needed it; this one wants the platform's own subpixel rendering.
+
+  // The serif sets its own width. Negative tracking belongs to display sizes,
+  // where it is applied per step, never to running text.
+  letter-spacing: 0;
 
   a {
     color: inherit;
