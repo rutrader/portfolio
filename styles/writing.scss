@@ -34,8 +34,9 @@ $measure: 68ch;
 }
 
 .articleWordmark {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   white-space: nowrap;
   transition: color 0.15s ease;
 
@@ -77,20 +78,20 @@ $measure: 68ch;
 }
 
 .articleTitle {
-  font-size: clamp(34px, 4.6vw, 54px);
-  line-height: 1.06;
-  font-weight: 500;
-  letter-spacing: -0.03em;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.018em;
   max-width: 18ch;
   margin: 0 0 30px;
 }
 
 .articleLede {
-  font-size: clamp(16px, 1.7vw, 19px);
-  line-height: 1.65;
-  font-weight: 300;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.6;
+  font-weight: 400;
   color: var(--muted);
-  max-width: 52ch;
+  max-width: 50ch;
   margin: 0 0 40px;
 }
 
@@ -113,10 +114,14 @@ $measure: 68ch;
 /* ---- Body ---- */
 .articleBody {
   padding: 54px 0 0;
-  font-size: clamp(16px, 1.7vw, 18px);
-  line-height: 1.7;
-  font-weight: 300;
-  color: var(--muted);
+  font-size: clamp(17px, 1.6vw, 19px);
+  line-height: 1.65;
+  font-weight: 400;
+  // Prose is set in ink, not in the muted tier. On charcoal the body could sit
+  // one step back and still read as the main event; on paper that same step
+  // back reads as a caption. The muted tier now belongs to what annotates the
+  // argument — glosses, notes, captions — not to the argument itself.
+  color: var(--text);
 
   > * {
     max-width: $measure;
@@ -139,25 +144,25 @@ $measure: 68ch;
   h2 {
     max-width: 26ch;
     margin: 64px 0 22px;
-    font-size: clamp(22px, 2.4vw, 28px);
-    line-height: 1.2;
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    font-size: clamp(21px, 2.1vw, 26px);
+    line-height: 1.22;
+    font-weight: 700;
+    letter-spacing: -0.012em;
     color: var(--text);
   }
 
   h3 {
     max-width: 34ch;
     margin: 44px 0 16px;
-    font-size: 17px;
-    line-height: 1.5;
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-size: 18px;
+    line-height: 1.45;
+    font-weight: 600;
+    letter-spacing: -0.005em;
     color: var(--text);
   }
 
   strong {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text);
   }
 
@@ -317,7 +322,7 @@ $measure: 68ch;
 
 .artFactValue {
   color: var(--text);
-  font-size: 15px;
+  font-size: 16px;
 
   &.isPath {
     font-family: var(--font-mono);
@@ -342,10 +347,10 @@ $measure: 68ch;
 
 .artTallyNum {
   display: block;
-  font-size: 46px;
-  font-weight: 500;
+  font-size: 50px;
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
   color: var(--text);
 
@@ -362,8 +367,8 @@ $measure: 68ch;
 .artTallyNote {
   max-width: 26ch;
   margin: 14px 0 0;
-  font-size: 14.5px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.55;
   color: var(--muted);
 }
 
@@ -387,9 +392,9 @@ $measure: 68ch;
 }
 
 .artRungName {
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   color: var(--text);
 }
 
@@ -438,8 +443,8 @@ $measure: 68ch;
 .artRungGloss {
   max-width: 62ch;
   margin: 12px 0 0;
-  font-size: 14.5px;
-  line-height: 1.6;
+  font-size: 15.5px;
+  line-height: 1.55;
   color: var(--muted);
 }
 
@@ -549,10 +554,10 @@ $measure: 68ch;
 }
 
 .artTabName {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
   color: var(--muted);
   transition: color 0.15s ease;
 }
@@ -575,8 +580,8 @@ $measure: 68ch;
 .artPanelBlurb {
   max-width: 62ch;
   margin: 0;
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--muted);
 }
 
@@ -656,8 +661,8 @@ $measure: 68ch;
 .artVerdict {
   max-width: 64ch;
   margin: 22px 0 0;
-  font-size: 14.5px;
-  line-height: 1.65;
+  font-size: 15.5px;
+  line-height: 1.6;
   color: var(--muted);
 
   b {
@@ -692,18 +697,18 @@ $measure: 68ch;
 
 .artQAQuestion {
   margin: 0;
-  font-size: 17px;
-  line-height: 1.5;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   color: var(--text);
 }
 
 .artQAAnswer {
   max-width: 64ch;
   margin: 10px 0 0;
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--muted);
 }
 
@@ -715,9 +720,11 @@ $measure: 68ch;
   margin: 72px 0 0;
   padding-top: 30px;
   border-top: 1px solid var(--line-2);
-  font-size: 14.5px;
-  line-height: 1.65;
-  color: var(--faint);
+  font-size: 15.5px;
+  line-height: 1.6;
+  // Muted, not faint. These are two paragraphs of closing argument, not a
+  // label — the faint tier reads as washed at this length on paper.
+  color: var(--muted);
 
   p {
     margin: 0 0 14px;
