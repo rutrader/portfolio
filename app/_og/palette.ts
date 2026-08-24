@@ -9,12 +9,12 @@
  * site means editing both, and the two must agree.
  */
 export const OG = {
-  bg: '#fff1e5', // Paper
-  elev: '#f6e7d8', // Field
-  text: '#262220', // Ink
-  muted: '#5c534b',
-  faint: '#766a5f',
+  bg: '#faf7f3', // Paper
+  elev: '#f2ede6', // Field
+  text: '#22201e', // Ink
+  muted: '#57514a',
+  faint: '#71695f',
   accent: '#0d7680', // Signal Teal
-  line: '#e3d5c6',
-  line2: '#efe1d3',
+  line: '#e4ddd3',
+  line2: '#efe9e1',
 } as const;

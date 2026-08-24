@@ -183,9 +183,19 @@
   display: block;
 }
 
+// Four columns: marker, body, metadata rail, arrow.
+//
+// The tags used to sit under the description inside the body column, which
+// left the right half of every row empty — 52% of the band at 1020px. On
+// charcoal that read as air; on paper it reads as a page that stopped early.
+// Moving the metadata into its own right-aligned rail is what a newspaper does
+// with a dateline, and it turns the dead space into structure.
+//
+// The rail and arrow columns are fixed rather than `auto` so the arrows line
+// up down the page instead of tracking each row's tag widths.
 .homeRow {
   display: grid;
-  grid-template-columns: 1.1rem 1fr auto;
+  grid-template-columns: 1.1rem 1fr 12rem 1.1rem;
   gap: 22px;
   align-items: start;
   padding: 28px 0 28px 10px;
@@ -244,14 +254,25 @@
   color: var(--muted);
   font-weight: 400;
   line-height: 1.55;
-  max-width: 58ch;
-  margin-bottom: 14px;
+  // Opened from 58ch now that the body column is the narrower of the two
+  // halves. Still inside the reading band, and it stops the description from
+  // ending well short of its own column.
+  max-width: 62ch;
+}
+
+// The metadata rail. Right-aligned so it reads as a margin note against the
+// body rather than as a second, weaker column of content.
+.homeRowRail {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 3px;
 }
 
 .homeRowTags {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 // Outlined in the stronger rule, not the quiet one. The quiet rule was legible
@@ -266,11 +287,13 @@
   border-radius: 100px;
 }
 
+// Sits on the title's line, not under the tags — it points at the row, so it
+// belongs level with the row's name.
 .homeRowMeta {
   display: inline-flex;
   align-items: center;
   color: var(--faint);
-  margin-top: 6px;
+  margin-top: 5px;
 
   .homeRowIcon {
     transition:
@@ -432,13 +455,32 @@
     width: 100%;
   }
 
+  // The rail has nowhere to go on a phone: it stacks back under the body, left
+  // aligned, which is where the tags lived before there was a rail at all.
   .homeRow {
     grid-template-columns: 0.9rem 1fr;
+    gap: 14px 22px;
+  }
+
+  // Rail and arrow share one cell so the arrow doesn't orphan onto a line of
+  // its own: tags run from the left, the arrow pins to the right, and the
+  // padding reserves its space so a long tag list wraps instead of colliding.
+  .homeRowRail {
+    grid-row: 2;
+    grid-column: 2;
+    justify-content: flex-start;
+    padding: 0 28px 0 0;
+  }
+
+  .homeRowTags {
+    justify-content: flex-start;
   }
 
   .homeRowMeta {
+    grid-row: 2;
     grid-column: 2;
-    margin-top: 8px;
+    justify-self: end;
+    margin-top: 0;
   }
 
   .homeSkill {

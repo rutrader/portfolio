@@ -87,7 +87,7 @@ export const metadata: Metadata = {
  * Mirrors --bg in styles/_tokens.scss.
  */
 export const viewport: Viewport = {
-  themeColor: '#fff1e5',
+  themeColor: '#faf7f3',
 };
 
 const personJsonLd = {
