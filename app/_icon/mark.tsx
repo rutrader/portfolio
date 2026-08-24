@@ -2,6 +2,8 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
 
+import { OG } from '../_og/palette';
+
 const GEIST_SEMIBOLD = join(process.cwd(), 'node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf');
 
 /**
@@ -13,27 +15,25 @@ const GEIST_SEMIBOLD = join(process.cwd(), 'node_modules/geist/dist/fonts/geist-
  */
 export async function renderMark(px: number) {
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#6fb3a6',
-          borderRadius: Math.round(px * 0.22),
-          color: '#14161c',
-          fontFamily: 'Geist Sans',
-          fontSize: Math.round(px * 0.7),
-          fontWeight: 600,
-          // The R sits optically high on its own; nudge it back onto centre.
-          paddingTop: Math.round(px * 0.03),
-        }}
-      >
-        R
-      </div>
-    ),
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: OG.accent,
+        borderRadius: Math.round(px * 0.22),
+        color: OG.bg,
+        fontFamily: 'Geist Sans',
+        fontSize: Math.round(px * 0.7),
+        fontWeight: 600,
+        // The R sits optically high on its own; nudge it back onto centre.
+        paddingTop: Math.round(px * 0.03),
+      }}
+    >
+      R
+    </div>,
     {
       width: px,
       height: px,
@@ -45,6 +45,6 @@ export async function renderMark(px: number) {
           style: 'normal',
         },
       ],
-    },
+    }
   );
 }

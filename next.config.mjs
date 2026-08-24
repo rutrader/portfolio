@@ -10,6 +10,12 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+
+  // There is no /writing index page yet — the homepage section is the index.
+  // Someone who truncates an article URL should land there, not on a 404.
+  async redirects() {
+    return [{ source: '/writing', destination: '/#writing', permanent: false }];
+  },
 };
 
 export default nextConfig;

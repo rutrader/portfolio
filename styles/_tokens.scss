@@ -1,0 +1,37 @@
+// ---------------------------------------------------------------------------
+// The palette, in one place.
+//
+// Everything visual on the site reads from these. Repainting the site — the
+// planned move to a light, FT/Economist-style ground — should mean editing this
+// block and nothing else. So: no raw hex anywhere else in the stylesheets.
+//
+// One exception, and it is not fixable: `app/opengraph-image.tsx` and
+// `app/_icon/mark.tsx` render through Satori (next/og), which resolves no CSS
+// custom properties. Those two files carry literal hex and must be updated by
+// hand alongside this file.
+// ---------------------------------------------------------------------------
+
+:root {
+  // Ground and surfaces
+  --bg: #14161c; // cool slate charcoal, lifted off pure black
+  --elev: #1b1e26;
+
+  // Hairlines. Cool tint rather than plain white so rules sit in the palette.
+  --line: rgba(180, 200, 230, 0.11);
+  --line-2: rgba(180, 200, 230, 0.06);
+  --wash: rgba(180, 200, 230, 0.03); // row-hover gradient, barely there
+
+  // Text, three steps down
+  --text: #e7eaef; // cool off-white
+  --muted: #a2a9b4; // secondary text (>= 4.5:1 on --bg)
+  --faint: #7f8792; // small labels / metadata (>= 4.5:1 on --bg)
+
+  // One accent, used sparingly — deliberately not GitHub blue
+  --accent: #6fb3a6; // muted teal
+  --accent-glow: rgba(111, 179, 166, 0.06); // page-top radial
+  --accent-ring: rgba(111, 179, 166, 0.16); // marker halo, hovered
+  --accent-ring-soft: rgba(111, 179, 166, 0.1); // marker halo, at rest
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}

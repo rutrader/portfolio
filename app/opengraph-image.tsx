@@ -2,6 +2,8 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
 
+import { OG } from './_og/palette';
+
 export const alt = 'Ruslan Ishemgulov — Software Engineer';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
@@ -24,76 +26,73 @@ async function loadFonts() {
 
 export default async function OpengraphImage() {
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '84px 90px',
+        backgroundColor: OG.bg,
+        backgroundImage: OG.glow,
+        color: OG.text,
+        fontFamily: 'Geist Sans',
+      }}
+    >
       <div
         style={{
-          width: '100%',
-          height: '100%',
+          fontFamily: 'Geist Mono',
+          fontSize: 22,
+          letterSpacing: 3.5,
+          textTransform: 'uppercase',
+          color: OG.faint,
+          marginBottom: 38,
+        }}
+      >
+        Software Engineer · Web / AI / Investing
+      </div>
+
+      <div
+        style={{
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: '84px 90px',
-          backgroundColor: '#14161c',
-          backgroundImage:
-            'radial-gradient(900px 460px at 50% -10%, rgba(111, 179, 166, 0.10), rgba(20, 22, 28, 0) 62%)',
-          color: '#e7eaef',
-          fontFamily: 'Geist Sans',
+          flexWrap: 'wrap',
+          fontSize: 78,
+          fontWeight: 500,
+          lineHeight: 1.08,
+          letterSpacing: -2.4,
+          maxWidth: 940,
+        }}
+      >
+        <span>Building useful products,&nbsp;</span>
+        <span style={{ color: OG.muted }}>and studying the systems behind them.</span>
+      </div>
+
+      <div
+        style={{
+          marginTop: 46,
+          paddingTop: 34,
+          borderTop: `1px solid ${OG.line}`,
+          display: 'flex',
+          alignItems: 'center',
+          fontFamily: 'Geist Mono',
+          fontSize: 21,
+          letterSpacing: 0.4,
+          color: OG.faint,
         }}
       >
         <div
           style={{
-            fontFamily: 'Geist Mono',
-            fontSize: 22,
-            letterSpacing: 3.5,
-            textTransform: 'uppercase',
-            color: '#7f8792',
-            marginBottom: 38,
+            width: 9,
+            height: 9,
+            borderRadius: 9,
+            backgroundColor: OG.accent,
+            marginRight: 16,
           }}
-        >
-          Software Engineer · Web / AI / Investing
-        </div>
-
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            fontSize: 78,
-            fontWeight: 500,
-            lineHeight: 1.08,
-            letterSpacing: -2.4,
-            maxWidth: 940,
-          }}
-        >
-          <span>Building useful products,&nbsp;</span>
-          <span style={{ color: '#a2a9b4' }}>and studying the systems behind them.</span>
-        </div>
-
-        <div
-          style={{
-            marginTop: 46,
-            paddingTop: 34,
-            borderTop: '1px solid rgba(180, 200, 230, 0.11)',
-            display: 'flex',
-            alignItems: 'center',
-            fontFamily: 'Geist Mono',
-            fontSize: 21,
-            letterSpacing: 0.4,
-            color: '#7f8792',
-          }}
-        >
-          <div
-            style={{
-              width: 9,
-              height: 9,
-              borderRadius: 9,
-              backgroundColor: '#6fb3a6',
-              marginRight: 16,
-            }}
-          />
-          ishemgulov.com · Based in Czechia · EN / RU
-        </div>
+        />
+        ishemgulov.com · Based in Czechia · EN / RU
       </div>
-    ),
-    { ...size, fonts: await loadFonts() },
+    </div>,
+    { ...size, fonts: await loadFonts() }
   );
 }
