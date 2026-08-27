@@ -54,6 +54,10 @@ export interface Article {
   date: string;
   /** Mono meta line under the lede — where the work happened, what it ran on. */
   meta: string[];
+  /** ISO date of the last substantive revision. Set only when figures moved. */
+  revised?: string;
+  /** One paragraph under the dateline saying what the revision changed. */
+  revisionNote?: string;
 }
 
 export interface Link {

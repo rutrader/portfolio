@@ -87,10 +87,11 @@ export const STRATA: Stratum[] = [
       { name: 'tsc --build', got: 0, note: 'strings are opaque' },
       { name: 'parser', got: 8 },
       { name: 'parser + AST', got: 8 },
-      { name: 'model', got: 6, note: 'found the recursion' },
+      { name: 'model (clean)', got: 5, note: 'prompt construction' },
+      { name: 'model (hinted)', got: 5, note: '+ recursion bug' },
     ],
     verdict:
-      'The typechecker sees none of it. A parser taught about string channels sees all of it for nothing. The model found fewer connections, then worked out that one of the renames drives the system into infinite recursion.',
+      'The typechecker sees none of it. A parser taught about string channels sees all of it for nothing. The model found fewer connections because its prompt listed the wrong consumer files — a prompt construction defect, not a model limit. With the answer leaked in, it additionally found an infinite-recursion bug, the one finding no other arm reaches.',
   },
   {
     id: 'S5a',
@@ -120,10 +121,11 @@ export const STRATA: Stratum[] = [
       { name: 'tsc --build', got: 0 },
       { name: 'parser', got: 0 },
       { name: 'parser + AST', got: 0, note: 'nothing to compare' },
-      { name: 'model', got: 4, note: 'read the code' },
+      { name: 'model (clean)', got: 2 },
+      { name: 'model (hinted)', got: 4, note: 'answer in prompt' },
     ],
     verdict:
-      'The one category where you need a language model. No name went missing, no key vanished, no default changed. Arithmetic has nothing to catch. Someone or something has to read the code and understand it.',
+      'The one category where you need a language model. With a clean prompt it caught two of four — it misread two consumers as unaffected. With the answer baked into the prompt it caught all four. The gap between those two numbers is the cost of the leak.',
     alarm: true,
   },
 ];
@@ -167,13 +169,58 @@ export const LADDER: Rung[] = [
       'Adds changed default values by reading them out of the function signature. Still free, though it flags two callers that never broke.',
   },
   {
-    name: 'A language model',
-    cost: '192,000 tokens',
-    got: 19,
-    pct: 86,
+    name: 'A language model (clean prompt)',
+    cost: '247,000 tokens',
+    got: 16,
+    pct: 73,
     model: true,
     gloss:
-      'Buys one thing nothing below it reaches at any price: changes where the shape holds still and the meaning moves. It clears the two false alarms and explains consequences.',
+      'Catches two semantic changes the parser cannot see, but misses three hook consumers the parser found — because its prompt did not include the right files. Below the parser in total recall.',
+  },
+  {
+    name: 'A language model (hinted prompt)',
+    cost: '87,000 tokens',
+    got: 18,
+    pct: 82,
+    model: true,
+    gloss:
+      'With the answer baked into the prompt, the model scores higher — but two of those points came from a leaked framing, not from reading the code. The gap between these two rows is the finding.',
+  },
+];
+
+export interface Revision {
+  /** ISO date. Rendered in the mono column. */
+  date: string;
+  /** The change in a few words, set in ink. */
+  headline: string;
+  /** What moved, and why. */
+  detail: string;
+}
+
+/**
+ * Every revision since publication, newest first.
+ *
+ * This page is a record of runs, so a re-run rewrites it. Revisions stay listed
+ * rather than being quietly absorbed into the figures above.
+ */
+export const REVISIONS: Revision[] = [
+  {
+    date: '2026-08-27',
+    headline: 'The model arm split in two.',
+    detail:
+      'A clean prompt and a hinted prompt now score separately, because two of the model’s four semantic detections turned out to be confirmation rather than discovery. 19 of 22 at 192,000 tokens became 16 of 22 clean and 18 of 22 hinted.',
+  },
+  {
+    date: '2026-08-27',
+    headline: 'The split-agent design was measured on the last two categories.',
+    detail:
+      'It scored zero for seven: its inventory carries neither defaults nor body-level logic, so the join has nothing to collide. The earlier draft declined to guess. Now there is a number.',
+  },
+  {
+    date: '2026-08-24',
+    headline: 'The toolchain baseline was corrected.',
+    detail:
+      'The repository’s own typechecker had been run in a mode that never writes the files letting one package see into another, which scored it at zero. Corrected, it catches 3 of the 7 export-rename breaks. The section above tells that story in full.',
   },
 ];
 

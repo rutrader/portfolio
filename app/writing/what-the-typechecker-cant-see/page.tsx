@@ -1,7 +1,7 @@
 import ArticleShell from '../_components/ArticleShell';
-import { articleMetadata } from '../_articles';
+import { articleMetadata, formatDate } from '../_articles';
 import BreakPicker from './_components/BreakPicker';
-import { FACTS, LADDER, LIMITS, TALLY, TOTAL_BROKEN } from './_data';
+import { FACTS, LADDER, LIMITS, REVISIONS, TALLY, TOTAL_BROKEN } from './_data';
 
 const SLUG = 'what-the-typechecker-cant-see';
 
@@ -148,8 +148,9 @@ export default function Page() {
         ))}
       </div>
       <p className="artCaption">
-        Read it top to bottom and you find no redundancy anywhere. Each rung reaches damage the rung above it cannot
-        see, so none of them replaces another.
+        Read it top to bottom and the shape is unusual: <strong>nothing here is redundant.</strong> Each rung reaches a
+        class of damage the rung above it structurally cannot. That is a far more useful result than one tool beating
+        another.
       </p>
 
       <h2>The design I built this to test</h2>
@@ -160,12 +161,10 @@ export default function Page() {
       <p>I like that design, and it happens to be the fashionable answer.</p>
       <p>
         It lost every round I measured. On the breaks it could reach it matched the free parser&rsquo;s recall, raised
-        two false alarms the parser did not raise, and spent 133,000 tokens getting there.
-      </p>
-      <p>
-        I never ran it on the last two categories. My reason for expecting nothing: comparing inventories cannot surface
-        a change of meaning, because both inventories come back identical. That reasoning has no measurement behind it,
-        and I would rather say so than let the table imply one.
+        two false alarms the parser did not raise, and spent 133,000 tokens getting there. On the last two categories
+        &mdash; defaults and semantics &mdash; I ran the seat agents and they scored zero for seven, because their
+        inventory does not carry defaults or body-level logic. The inventories before and after the mutation are
+        identical. There is nothing for the join to collide.
       </p>
       <p>
         One defence remained. Splitting should win at scale, once a codebase stops fitting inside a single request. So I
@@ -173,25 +172,35 @@ export default function Page() {
         the affected packages from what it already knew about the codebase. Precision dropped to 4 of 6.
       </p>
       <blockquote>
-        <strong>133,000 tokens</strong> for the split-agent design. <strong>192,000</strong> for one model reading the
-        whole change. <strong>Zero</strong> for the parser that matched both of them on three categories out of four.
+        <strong>133,000 tokens</strong> for the split-agent design. <strong>247,000</strong> for one model with a clean
+        prompt. <strong>Zero</strong> for the parser that beat both of them in total recall.
       </blockquote>
 
       <h2>Where the model earns its money</h2>
-      <p>Once, and the once matters.</p>
+      <p>Once, and less cleanly than expected.</p>
       <p>
         A parser costing nothing handles three of the four categories. The fourth will never fall to one. A function
         used to return <code>http://</code> and now returns <code>https://</code>. A guard used to accept a number and
         now rejects it. No signature moved. No name went missing, no key vanished, no default changed. You have to read
         the code to see it.
       </p>
-      <p>The model caught all four of those. Nothing else caught one.</p>
       <p>
-        It did something a list comparison cannot reach, too. On one string rename it reported the broken connection,
-        then worked out that this particular rename drives the system into infinite recursion, because a guard and the
-        thing it guards no longer share a name. Three free tools already tell you what broke. The model tells you what
-        the breakage does.
+        With a clean prompt, the model caught two of the four semantic breaks. It missed two consumers of the protocol
+        change, judging them unaffected. With the answer baked into the prompt &mdash; &ldquo;all consumers expect this
+        function to add <code>http://</code>&rdquo; &mdash; it caught all four. That delta is itself a finding: two of
+        the model&rsquo;s four semantic detections were confirmation, not discovery.
       </p>
+      <p>
+        It also did something no list comparison can reach. On one string rename &mdash; but only when the prompt
+        described the guard logic &mdash; it worked out that the rename drives the system into infinite recursion,
+        because the guard and the thing it guards no longer share a name. Without the hint, it found the same broken
+        consumers but missed the consequence.
+      </p>
+      <blockquote>
+        The model isn&rsquo;t worth paying to find out <em>what broke</em>. It may be worth paying to find out{' '}
+        <em>what happens next</em> &mdash; but only if the prompt gives it enough to reason from, and that prompt is
+        itself a source of error.
+      </blockquote>
 
       <h2>The mistake, and why it stays in</h2>
       <p>
@@ -217,6 +226,24 @@ export default function Page() {
           </div>
         ))}
       </div>
+
+      <h2 id="revisions">What changed since publication</h2>
+      <p>
+        This page is a record of runs, so a re-run rewrites it. Each revision stays listed rather than being quietly
+        absorbed into the figures above.
+      </p>
+      <ol className="artLog articleWide">
+        {REVISIONS.map((rev) => (
+          <li key={rev.headline} className="artLogItem">
+            <time className="artLogDate" dateTime={rev.date}>
+              {formatDate(rev.date)}
+            </time>
+            <p className="artLogBody">
+              <b>{rev.headline}</b> {rev.detail}
+            </p>
+          </li>
+        ))}
+      </ol>
 
       <div className="artColophon">
         <p>
