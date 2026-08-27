@@ -130,6 +130,32 @@ $measure: 68ch;
   opacity: 0.55;
 }
 
+// The revision note. A teal rule down its left edge is the whole marking — the
+// One Hue Rule leaves no second colour for "changed", and a box would be the
+// system's first panel. Only rendered when an article carries a revision.
+.articleRevision {
+  margin: 26px 0 0;
+  padding: 2px 0 2px 16px;
+  border-left: 2px solid var(--accent);
+}
+
+.articleRevisionLabel {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.articleRevisionNote {
+  max-width: 58ch;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
 /* ---- Body ---- */
 .articleBody {
   padding: 54px 0 0;
@@ -731,6 +757,59 @@ $measure: 68ch;
   font-size: 16px;
   line-height: 1.6;
   color: var(--muted);
+}
+
+/* ---- Revision log ---- */
+// The record of re-runs. Rows on the quiet rule like every other list in the
+// system; the date takes the rail width so the entries read as a column of
+// changes rather than as prose with a date stuck on the front.
+.artLog {
+  margin: 30px 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line-2);
+  counter-reset: none;
+}
+
+.artLogItem {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line-2);
+
+  // The colophon below opens with its own rule. See .artQAItem.
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+.artLogDate {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  // Sits on the first line of the body beside it, not on the grid's baseline.
+  padding-top: 4px;
+}
+
+.artLogBody {
+  max-width: 64ch;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+
+  b {
+    font-weight: 600;
+    color: var(--text);
+  }
 }
 
 /* ---- Closing note ---- */

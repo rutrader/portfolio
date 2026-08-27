@@ -47,6 +47,14 @@ export default function ArticleShell({ slug, children }: ArticleShellProps) {
                 </Fragment>
               ))}
             </p>
+            {article.revised && article.revisionNote && (
+              <aside className="articleRevision" aria-label="Revision note">
+                <p className="articleRevisionLabel">
+                  Revised <time dateTime={article.revised}>{formatDate(article.revised)}</time>
+                </p>
+                <p className="articleRevisionNote">{article.revisionNote}</p>
+              </aside>
+            )}
           </header>
 
           <article className="articleBody">{children}</article>

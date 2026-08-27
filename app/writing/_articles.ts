@@ -18,6 +18,9 @@ export const ARTICLES: Article[] = [
     summary: 'Seven breaks injected into WordPress/gutenberg, and what four tools found.',
     date: '2026-08-24',
     meta: ['WordPress/gutenberg', '102 packages', '7 injected breaks'],
+    revised: '2026-08-27',
+    revisionNote:
+      'The model was re-run twice — once with a clean prompt, once with the answer in the prompt — and the two now score separately. Every model figure below moved, and the ladder gained a row. What changed is listed at the foot of the piece.',
   },
 ];
 
@@ -60,6 +63,7 @@ export function articleMetadata(slug: string): Metadata {
       title: article.title,
       description: article.lede,
       publishedTime: article.date,
+      ...(article.revised && { modifiedTime: article.revised }),
       authors: ['Ruslan Ishemgulov'],
     },
     twitter: {
