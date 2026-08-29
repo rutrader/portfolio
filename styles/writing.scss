@@ -452,7 +452,8 @@ $measure: 68ch;
   color: var(--faint);
   font-variant-numeric: tabular-nums;
 
-  .isModel & {
+  .isModel &,
+  .isTest & {
     color: var(--accent);
   }
 }

@@ -11,6 +11,15 @@ import type { Article, Writing } from '@/types';
  */
 export const ARTICLES: Article[] = [
   {
+    slug: 'what-never-costs',
+    title: 'What ‘never’ costs',
+    kicker: 'Don’t · Explainer',
+    lede: 'A repo with 43,000 stars tells its AI assistant never to stack prose across comment lines. I rewrote that rule to say the same thing forwards, ran both versions 40 times, and counted which one got broken more.',
+    summary: 'One instruction rewritten forwards, 196 runs, and a result that failed to repeat.',
+    date: '2026-08-29',
+    meta: ['zod + remeda', '196 runs', '$137 on Sonnet'],
+  },
+  {
     slug: 'what-the-typechecker-cant-see',
     title: 'What the typechecker can’t see',
     kicker: 'Piecework · Explainer',
