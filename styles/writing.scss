@@ -856,3 +856,10 @@ $measure: 68ch;
     color: var(--text);
   }
 }
+
+// The words an excerpt is quoted for. Accent only, no weight change, so the
+// mono line keeps its rhythm.
+.artMutation strong {
+  font-weight: inherit;
+  color: var(--accent);
+}

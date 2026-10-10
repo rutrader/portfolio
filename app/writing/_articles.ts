@@ -11,6 +11,15 @@ import type { Article, Writing } from '@/types';
  */
 export const ARTICLES: Article[] = [
   {
+    slug: 'the-delegation-tax',
+    title: 'The orchestrator’s paraphrase is the bug',
+    kicker: 'Delegation tax · Field notes',
+    lede: 'An agent that hands work to subagents also hands them its own retelling of the task. I ran ten coding tasks both ways and found the sentences where that retelling broke the code.',
+    summary: 'Ten coding tasks, solo against orchestrator, and three handoffs that broke the work.',
+    date: '2026-10-10',
+    meta: ['FeatureBench · pandas', '10 tasks', 'Opus 5.5, both arms'],
+  },
+  {
     slug: 'what-never-costs',
     title: 'What ‘never’ costs',
     kicker: 'Don’t · Explainer',
