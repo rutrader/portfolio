@@ -12,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 1,
     },
+    {
+      url: `${SITE_URL}/writing`,
+      lastModified: new Date(`${ARTICLES[0].date}T00:00:00Z`),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
     // Articles carry their own publish date rather than the build time: they
     // are finished pieces, and a crawler should not be told they change daily.
     ...ARTICLES.map((article) => ({

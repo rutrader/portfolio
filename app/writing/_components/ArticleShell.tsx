@@ -26,7 +26,7 @@ export default function ArticleShell({ slug, children }: ArticleShellProps) {
           <Link href="/" className="articleWordmark">
             Ruslan Ishemgulov<span className="dot">.</span>
           </Link>
-          <Link href="/#writing" className="articleBack">
+          <Link href="/writing" className="articleBack">
             &larr; writing
           </Link>
         </nav>
@@ -61,7 +61,7 @@ export default function ArticleShell({ slug, children }: ArticleShellProps) {
         </main>
 
         <footer className="articleFooter">
-          <Link href="/#writing" className="articleFooterLink">
+          <Link href="/writing" className="articleFooterLink">
             <ArrowLeft size={13} aria-hidden="true" /> All writing
           </Link>
           <a className="articleFooterLink" href="#top">
