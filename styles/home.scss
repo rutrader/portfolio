@@ -178,6 +178,12 @@
   color: var(--faint);
 }
 
+// The way on from a section that shows only part of a list.
+.homeSectionMore {
+  display: flex;
+  padding-top: 28px;
+}
+
 /* ---- Project / writing rows ---- */
 .homeRows {
   display: block;

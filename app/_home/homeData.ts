@@ -86,9 +86,11 @@ export const HOBBIES: Hobby[] = [
   },
 ];
 
-// Self-hosted pieces lead, then the places I write elsewhere.
-export const WRITINGS: Writing[] = [
-  ...ARTICLE_WRITINGS,
+// The homepage shows the newest self-hosted pieces; /writing lists them all.
+export const LATEST_ARTICLES: Writing[] = ARTICLE_WRITINGS.slice(0, 2);
+
+// Places I write that live off this site.
+export const ELSEWHERE: Writing[] = [
   {
     title: 'AI Infrastructure: Discipline Under Pressure',
     source: 'LinkedIn',
