@@ -11,6 +11,15 @@ import type { Article, Writing } from '@/types';
  */
 export const ARTICLES: Article[] = [
   {
+    slug: 'half-life',
+    title: 'The rule that didn’t fade',
+    kicker: 'Half-life · Field notes',
+    lede: 'Does a “never” rule from a real AGENTS.md fade once the context fills with that repo’s own code? I buried one under 256 KB of source and tested four Claude price tiers.',
+    summary: 'One vitest rule, four Claude tiers, 256 KB of padding, and no decay.',
+    date: '2026-10-16',
+    meta: ['vitest AGENTS.md', '4 Claude tiers', '$106 at list prices'],
+  },
+  {
     slug: 'the-delegation-tax',
     title: 'The orchestrator’s paraphrase is the bug',
     kicker: 'Delegation tax · Field notes',
