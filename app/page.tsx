@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { ArrowUpRight, ArrowUp, ArrowRight } from 'lucide-react';
 
-import { LINK_SECTIONS, PROJECTS, SKILL_GROUPS, WRITINGS } from './_home/homeData';
-import type { Link as LinkType } from '@/types';
+import { ELSEWHERE, LATEST_ARTICLES, LINK_SECTIONS, PROJECTS, SKILL_GROUPS } from './_home/homeData';
+import type { Link as LinkType, Writing } from '@/types';
 
 import { track } from '@vercel/analytics';
 
@@ -48,6 +48,47 @@ function getFlattenedLinks(): LinkType[] {
 
 function langLabel(lang: string): string {
   return lang === 'RU' ? 'Russian' : 'English';
+}
+
+/** One writing row: hosted pieces stay in the tab, outbound ones open a new window. */
+function WritingRow({ writing }: { writing: Writing }) {
+  const label = `${writing.title} — ${writing.source}, ${writing.langs.map(langLabel).join(' and ')}`;
+
+  // Pieces hosted here stay in the tab and take the same-page
+  // arrow; only the outbound ones announce a new window.
+  const Arrow = writing.internal ? ArrowRight : ArrowUpRight;
+  const body = (
+    <>
+      <span className="homeRowMarker" aria-hidden="true" />
+      <span className="homeRowBody">
+        <span className="homeRowTitle">{writing.title}</span>
+        {writing.description && <span className="homeRowDesc">{writing.description}</span>}
+      </span>
+      <span className="homeRowRail">
+        <span className="homeRowTags">
+          <span className="homeRowTag">{writing.source}</span>
+          {writing.langs.map((lang) => (
+            <span key={lang} className="homeRowTag">
+              {lang}
+            </span>
+          ))}
+        </span>
+      </span>
+      <span className="homeRowMeta" aria-hidden="true">
+        <Arrow className="homeRowIcon" size={16} />
+      </span>
+    </>
+  );
+
+  return writing.internal ? (
+    <Link href={writing.href} className="homeRow homeRow--compact" aria-label={label}>
+      {body}
+    </Link>
+  ) : (
+    <ExternalLink href={writing.href} className="homeRow homeRow--compact" ariaLabel={label}>
+      {body}
+    </ExternalLink>
+  );
 }
 
 export default function Home() {
@@ -151,53 +192,30 @@ export default function Home() {
           <section className="homeSection" id="writing" aria-label="Writing">
             <div className="homeSectionHead">
               <h2 className="homeSectionLabel">Writing</h2>
-              <span className="homeSectionDesc">Markets &middot; investing &middot; AI</span>
+              <span className="homeSectionDesc">Experiments on AI coding agents</span>
             </div>
             <div className="homeRows">
-              {WRITINGS.map((writing) => {
-                const label = `${writing.title} — ${writing.source}, ${writing.langs.map(langLabel).join(' and ')}`;
+              {LATEST_ARTICLES.map((writing) => (
+                <WritingRow key={writing.href} writing={writing} />
+              ))}
+            </div>
+            <div className="homeSectionMore">
+              <Link href="/writing" className="homeAction">
+                All writing
+                <ArrowRight className="homeActionIcon" size={16} aria-hidden="true" />
+              </Link>
+            </div>
+          </section>
 
-                // Pieces hosted here stay in the tab and take the same-page
-                // arrow; only the outbound ones announce a new window.
-                const Arrow = writing.internal ? ArrowRight : ArrowUpRight;
-                const body = (
-                  <>
-                    <span className="homeRowMarker" aria-hidden="true" />
-                    <span className="homeRowBody">
-                      <span className="homeRowTitle">{writing.title}</span>
-                      {writing.description && <span className="homeRowDesc">{writing.description}</span>}
-                    </span>
-                    <span className="homeRowRail">
-                      <span className="homeRowTags">
-                        <span className="homeRowTag">{writing.source}</span>
-                        {writing.langs.map((lang) => (
-                          <span key={lang} className="homeRowTag">
-                            {lang}
-                          </span>
-                        ))}
-                      </span>
-                    </span>
-                    <span className="homeRowMeta" aria-hidden="true">
-                      <Arrow className="homeRowIcon" size={16} />
-                    </span>
-                  </>
-                );
-
-                return writing.internal ? (
-                  <Link key={writing.href} href={writing.href} className="homeRow homeRow--compact" aria-label={label}>
-                    {body}
-                  </Link>
-                ) : (
-                  <ExternalLink
-                    key={writing.href}
-                    href={writing.href}
-                    className="homeRow homeRow--compact"
-                    ariaLabel={label}
-                  >
-                    {body}
-                  </ExternalLink>
-                );
-              })}
+          <section className="homeSection" id="elsewhere" aria-label="Elsewhere">
+            <div className="homeSectionHead">
+              <h2 className="homeSectionLabel">Elsewhere</h2>
+              <span className="homeSectionDesc">LinkedIn &middot; investing blog</span>
+            </div>
+            <div className="homeRows">
+              {ELSEWHERE.map((writing) => (
+                <WritingRow key={writing.href} writing={writing} />
+              ))}
             </div>
           </section>
 
