@@ -119,7 +119,7 @@ export const LINK_SECTIONS: LinkSection[] = [
     title: 'Contact',
     links: [
       { label: 'GitHub', href: 'https://github.com/rutrader' },
-      { label: 'LinkedIn', href: 'https://linkedin.com/in/ruslan.ishemgulov' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ishemgulov/' },
       { label: 'Instagram', href: 'https://instagram.com/ruslan.ishemgulov' },
     ],
   },

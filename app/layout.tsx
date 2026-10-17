@@ -25,7 +25,7 @@ const DESCRIPTION =
   'Ruslan Ishemgulov, Web Technical Lead. Web platform decisions, experiments on AI coding agents, and small tools for economics and investing.';
 const SAME_AS = [
   'https://github.com/rutrader',
-  'https://linkedin.com/in/ruslan.ishemgulov',
+  'https://www.linkedin.com/in/ishemgulov/',
   'https://instagram.com/ruslan.ishemgulov',
 ];
 

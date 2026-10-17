@@ -142,7 +142,7 @@ export default function Home() {
               <ExternalLink href="https://github.com/rutrader" className="homeAction">
                 GitHub <ArrowUpRight className="homeActionIcon" size={16} aria-hidden="true" />
               </ExternalLink>
-              <ExternalLink href="https://linkedin.com/in/ruslan.ishemgulov" className="homeAction">
+              <ExternalLink href="https://www.linkedin.com/in/ishemgulov/" className="homeAction">
                 LinkedIn <ArrowUpRight className="homeActionIcon" size={16} aria-hidden="true" />
               </ExternalLink>
               <span className="homeMeta">
