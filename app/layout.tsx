@@ -22,7 +22,7 @@ const sourceSerif = Source_Serif_4({
 const SITE_URL = 'https://ishemgulov.com';
 const TITLE = 'Ruslan Ishemgulov — Web Technical Lead';
 const DESCRIPTION =
-  'I lead web platform decisions. Outside work I ship small products and test how AI coding agents really behave.';
+  'Ruslan Ishemgulov, Web Technical Lead. Web platform decisions, experiments on AI coding agents, and small tools for economics and investing.';
 const SAME_AS = [
   'https://github.com/rutrader',
   'https://linkedin.com/in/ruslan.ishemgulov',
