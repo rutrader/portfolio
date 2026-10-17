@@ -208,11 +208,11 @@
   border-top: 1px solid var(--line-2);
   transition: background 0.2s ease;
 
-  &:first-of-type {
+  &:first-child {
     border-top: none;
   }
 
-  &:hover {
+  &:not(.homeRow--static):hover {
     background: linear-gradient(90deg, var(--wash), transparent 70%);
 
     .homeRowMarker {
@@ -266,6 +266,38 @@
   max-width: 62ch;
 }
 
+// The link line on a row with more than one home (Czechonomics: web and iOS).
+// Same underline as the hero's GitHub and LinkedIn links, one step smaller.
+.homeRowLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 12px;
+}
+
+.homeRowLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  color: var(--text);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.18s ease;
+
+  .homeRowIcon {
+    color: var(--faint);
+  }
+
+  &:hover {
+    border-color: var(--accent);
+
+    .homeRowIcon {
+      color: var(--accent);
+    }
+  }
+}
+
 // The metadata rail. Right-aligned so it reads as a margin note against the
 // body rather than as a second, weaker column of content.
 .homeRowRail {
@@ -306,6 +338,66 @@
       color 0.18s ease,
       transform 0.18s ease;
   }
+}
+
+// The sub-lists under Writing: one line per link, a step below the rows.
+.homeSubList {
+  margin-top: 34px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.homeSubLabel {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 6px;
+}
+
+.homeSubLink {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line-2);
+
+  li:first-child > & {
+    border-top: none;
+  }
+
+  &:hover {
+    .homeSubTitle {
+      color: var(--text);
+    }
+
+    .homeRowIcon {
+      color: var(--text);
+    }
+  }
+}
+
+.homeSubTitle {
+  font-size: 16px;
+  color: var(--muted);
+  transition: color 0.18s ease;
+}
+
+.homeSubMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--faint);
 }
 
 /* ---- Skills: calm grouped rows, not a dot cloud ---- */
@@ -350,13 +442,6 @@
     white-space: nowrap;
   }
 
-  // Primary skills carry weight rather than a second colour — emphasis is the
-  // only distinction the system allows here.
-  .k {
-    color: var(--text);
-    font-weight: 600;
-  }
-
   .sep {
     color: var(--faint);
     opacity: 0.55;
@@ -381,6 +466,13 @@
   .soft {
     color: var(--muted);
   }
+}
+
+.homeContactNote {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 18px 0 0;
 }
 
 .homeChips {
@@ -449,6 +541,49 @@
 
   .homeNavLinks {
     gap: 18px;
+
+    // 44px tap targets. The negative margin hands the padding back, so the nav
+    // keeps its height and only the hit area grows.
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin: -14px 0;
+    }
+  }
+
+  // The underline stays tight under the text; the hit area grows upward and the
+  // negative margin keeps the line where it was.
+  .homeAction {
+    box-sizing: border-box;
+    min-height: 44px;
+    align-items: flex-end;
+    padding-top: 16px;
+    margin-top: -16px;
+  }
+
+  .homeFooterAnchor {
+    min-height: 44px;
+    margin: -14px 0;
+  }
+
+  .homeRowLink {
+    box-sizing: border-box;
+    min-height: 44px;
+    align-items: flex-end;
+    padding-top: 16px;
+    margin-top: -16px;
+  }
+
+  .homeChip {
+    box-sizing: border-box;
+    min-height: 44px;
+  }
+
+  .homeSubLink {
+    box-sizing: border-box;
+    min-height: 44px;
+    align-items: center;
   }
 
   .homeActions {

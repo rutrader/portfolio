@@ -32,7 +32,7 @@ export default function WritingIndex() {
           </Link>
         </nav>
 
-        <main>
+        <main id="main">
           <header className="articleHead writingHead">
             <p className="articleKicker">Research &middot; {ARTICLES.length} pieces</p>
             <h1 className="articleTitle">Writing</h1>

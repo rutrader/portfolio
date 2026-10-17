@@ -31,7 +31,7 @@ export default function ArticleShell({ slug, children }: ArticleShellProps) {
           </Link>
         </nav>
 
-        <main>
+        <main id="main">
           <header className="articleHead">
             <p className="articleKicker">{article.kicker}</p>
             <h1 className="articleTitle">{article.title}</h1>

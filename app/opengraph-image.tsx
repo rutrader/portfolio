@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og';
 import { loadFonts } from './_og/fonts';
 import { OG } from './_og/palette';
 
-export const alt = 'Ruslan Ishemgulov — Software Engineer';
+export const alt = 'Ruslan Ishemgulov — Web Technical Lead';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -32,7 +32,7 @@ export default async function OpengraphImage() {
           marginBottom: 38,
         }}
       >
-        Software Engineer · Web / AI / Investing
+        Web Technical Lead · Web / AI / Investing
       </div>
 
       <div
