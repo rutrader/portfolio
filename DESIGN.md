@@ -337,7 +337,7 @@ The system's core unit, shared by projects and writing.
 Wordmark at 16px/700 in the reading face with a Signal Teal period; links in mono 12px Ink Muted, `30px` gaps, lowercase, a quiet rule beneath the bar. Hover goes to Ink. The bar wraps at 680px; there is no hamburger and no drawer.
 
 ### Skill Row
-A mono uppercase group label in a `9.5rem` column beside a wrapping flex list of names, separated by a middot in Ink Faint at 55% opacity. Primary skills sit in Ink at 600; the rest stay in Ink Muted at 400. Emphasis is the only distinction — no bars, levels, percentages, or years.
+A mono uppercase group label in a `9.5rem` column beside a wrapping flex list of names, separated by a middot in Ink Faint at 55% opacity. Every name sits in Ink Muted at 400. No weights, bars, levels, percentages, or years.
 
 ### Article Figures
 Full-column blocks that escape the prose measure, all built from rules rather than boxes:

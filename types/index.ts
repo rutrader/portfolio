@@ -3,12 +3,13 @@ export interface Project {
   description: string;
   stacks: string[];
   link: string;
+  /** More than one place to open it. The row then carries a link line instead of being one link. */
+  links?: Link[];
   highlights: string[];
 }
 
 export interface Skill {
   name: string;
-  primary?: boolean;
 }
 
 export interface SkillGroup {

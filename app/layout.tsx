@@ -20,8 +20,9 @@ const sourceSerif = Source_Serif_4({
 });
 
 const SITE_URL = 'https://ishemgulov.com';
+const TITLE = 'Ruslan Ishemgulov — Web Technical Lead';
 const DESCRIPTION =
-  'Ruslan Ishemgulov — software engineer building products across web and mobile, with a focus on economics, investing, and AI.';
+  'I lead web platform decisions. Outside work I ship small products and test how AI coding agents really behave.';
 const SAME_AS = [
   'https://github.com/rutrader',
   'https://linkedin.com/in/ruslan.ishemgulov',
@@ -62,11 +63,11 @@ const SAME_AS = [
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Ruslan Ishemgulov — Software Engineer',
+    default: TITLE,
     template: '%s · Ruslan Ishemgulov',
   },
   description: DESCRIPTION,
-  keywords: ['Ruslan Ishemgulov', 'software engineer', 'web developer', 'investing', 'AI', 'Next.js', 'React'],
+  keywords: ['Ruslan Ishemgulov', 'web technical lead', 'web developer', 'investing', 'AI', 'Next.js', 'React'],
   authors: [{ name: 'Ruslan Ishemgulov', url: SITE_URL }],
   creator: 'Ruslan Ishemgulov',
   alternates: { canonical: '/' },
@@ -74,13 +75,13 @@ export const metadata: Metadata = {
     type: 'website',
     url: SITE_URL,
     siteName: 'Ruslan Ishemgulov',
-    title: 'Ruslan Ishemgulov — Software Engineer',
+    title: TITLE,
     description: DESCRIPTION,
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ruslan Ishemgulov — Software Engineer',
+    title: TITLE,
     description: DESCRIPTION,
   },
 };
@@ -101,7 +102,7 @@ const personJsonLd = {
   '@type': 'Person',
   name: 'Ruslan Ishemgulov',
   url: SITE_URL,
-  jobTitle: 'Software Engineer',
+  jobTitle: 'Web Technical Lead',
   description: DESCRIPTION,
   sameAs: SAME_AS,
 };
@@ -115,11 +116,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={`${sourceSerif.className} ${sourceSerif.variable} ${GeistMono.variable}`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+        <a href="#main" className="skipLink">
+          Skip to content
+        </a>
         <div className="general">
-          <main>
-            <div>{children}</div>
-            <Analytics />
-          </main>
+          {children}
+          <Analytics />
         </div>
       </body>
     </html>

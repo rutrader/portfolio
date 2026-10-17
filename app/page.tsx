@@ -3,7 +3,14 @@
 import Link from 'next/link';
 import { ArrowUpRight, ArrowUp, ArrowRight } from 'lucide-react';
 
-import { ELSEWHERE, LATEST_ARTICLES, LINK_SECTIONS, PROJECTS, SKILL_GROUPS } from './_home/homeData';
+import {
+  INVESTING_BLOG,
+  LATEST_ARTICLES,
+  LINKEDIN_POSTS,
+  LINK_SECTIONS,
+  PROJECTS,
+  SKILL_GROUPS,
+} from './_home/homeData';
 import type { Link as LinkType, Writing } from '@/types';
 
 import { track } from '@vercel/analytics';
@@ -91,6 +98,20 @@ function WritingRow({ writing }: { writing: Writing }) {
   );
 }
 
+/** A smaller outbound link for the sub-lists under Writing: title and languages, no description. */
+function SubLink({ writing }: { writing: Writing }) {
+  const label = `${writing.title} — ${writing.source}, ${writing.langs.map(langLabel).join(' and ')}`;
+  return (
+    <ExternalLink href={writing.href} className="homeSubLink" ariaLabel={label}>
+      <span className="homeSubTitle">{writing.title}</span>
+      <span className="homeSubMeta" aria-hidden="true">
+        {writing.langs.join(' / ')}
+        <ArrowUpRight className="homeRowIcon" size={14} />
+      </span>
+    </ExternalLink>
+  );
+}
+
 export default function Home() {
   return (
     <div className="home" id="top">
@@ -101,21 +122,21 @@ export default function Home() {
           </span>
           <div className="homeNavLinks">
             <a href="#projects">projects</a>
-            <a href="#skills">skills</a>
             <a href="#writing">writing</a>
+            <a href="#skills">skills</a>
             <a href="#contact">contact</a>
           </div>
         </nav>
 
-        <main className="homeMain">
+        <main className="homeMain" id="main">
           <header className="homeHero" aria-label="Introduction">
-            <p className="homeKicker">Software Engineer &middot; Web / AI / Investing</p>
+            <p className="homeKicker">Web Technical Lead &middot; Web / AI / Investing</p>
             <h1 className="homeTitle">
               Building useful products, <span className="soft">and studying the systems behind them.</span>
             </h1>
             <p className="homeLede">
-              I&rsquo;m Ruslan &mdash; a software engineer. I like learning new things, shipping small products with
-              real users, and turning market noise into models.
+              I lead web platform decisions. Outside work I ship small products and test how AI coding agents really
+              behave.
             </p>
             <div className="homeActions">
               <ExternalLink href="https://github.com/rutrader" className="homeAction">
@@ -126,7 +147,7 @@ export default function Home() {
               </ExternalLink>
               <span className="homeMeta">
                 <span className="led" aria-hidden="true" />
-                Based in Czechia &middot; EN / RU
+                Based in Czechia &middot; Speaks English, Russian
               </span>
             </div>
           </header>
@@ -137,55 +158,57 @@ export default function Home() {
               <span className="homeSectionDesc">{String(PROJECTS.length).padStart(2, '0')}</span>
             </div>
             <div className="homeRows">
-              {PROJECTS.map((project) => (
-                <ExternalLink key={project.title} href={project.link} className="homeRow">
-                  <span className="homeRowMarker" aria-hidden="true" />
-                  <span className="homeRowBody">
-                    <span className="homeRowTitle">{project.title}</span>
-                    <span className="homeRowDesc">{project.description}</span>
-                  </span>
+              {PROJECTS.map((project) => {
+                const tags = (
                   <span className="homeRowRail">
                     <span className="homeRowTags">
-                      {project.stacks.map((tag) => (
+                      {project.stacks.slice(0, 2).map((tag) => (
                         <span key={tag} className="homeRowTag">
                           {tag}
                         </span>
                       ))}
                     </span>
                   </span>
-                  <span className="homeRowMeta" aria-hidden="true">
-                    <ArrowUpRight className="homeRowIcon" size={16} />
-                  </span>
-                </ExternalLink>
-              ))}
-            </div>
-          </section>
+                );
 
-          <section className="homeSection" id="skills" aria-label="Skills">
-            <div className="homeSectionHead">
-              <h2 className="homeSectionLabel">Skills</h2>
-              <span className="homeSectionDesc">A toolbox I reach for</span>
-            </div>
-            <div className="homeSkills">
-              {SKILL_GROUPS.map((group) => (
-                <div key={group.title} className="homeSkill">
-                  <span className="homeSkillGrp">{group.title}</span>
-                  <span className="homeSkillItems">
-                    {group.skills.map((skill, i) => (
-                      // The separator trails its own item, so a wrapped line always
-                      // starts on a name and the left edge stays flush.
-                      <span key={skill.name} className="homeSkillItem">
-                        <span className={skill.primary ? 'k' : undefined}>{skill.name}</span>
-                        {i < group.skills.length - 1 && (
-                          <span className="sep" aria-hidden="true">
-                            &middot;
-                          </span>
-                        )}
+                // A project with more than one home can't be one link: links
+                // don't nest, so the row turns into a plain block with its own
+                // link line, and loses the row arrow.
+                if (project.links) {
+                  return (
+                    <div key={project.title} className="homeRow homeRow--static">
+                      <span className="homeRowMarker" aria-hidden="true" />
+                      <span className="homeRowBody">
+                        <span className="homeRowTitle">{project.title}</span>
+                        <span className="homeRowDesc">{project.description}</span>
+                        <span className="homeRowLinks">
+                          {project.links.map((l) => (
+                            <ExternalLink key={l.href} href={l.href} className="homeRowLink">
+                              {l.label}
+                              <ArrowUpRight className="homeRowIcon" size={14} aria-hidden="true" />
+                            </ExternalLink>
+                          ))}
+                        </span>
                       </span>
-                    ))}
-                  </span>
-                </div>
-              ))}
+                      {tags}
+                    </div>
+                  );
+                }
+
+                return (
+                  <ExternalLink key={project.title} href={project.link} className="homeRow">
+                    <span className="homeRowMarker" aria-hidden="true" />
+                    <span className="homeRowBody">
+                      <span className="homeRowTitle">{project.title}</span>
+                      <span className="homeRowDesc">{project.description}</span>
+                    </span>
+                    {tags}
+                    <span className="homeRowMeta" aria-hidden="true">
+                      <ArrowUpRight className="homeRowIcon" size={16} />
+                    </span>
+                  </ExternalLink>
+                );
+              })}
             </div>
           </section>
 
@@ -205,16 +228,52 @@ export default function Home() {
                 <ArrowRight className="homeActionIcon" size={16} aria-hidden="true" />
               </Link>
             </div>
+
+            <div className="homeSubList">
+              <h3 className="homeSubLabel">Also on LinkedIn</h3>
+              <ul>
+                {LINKEDIN_POSTS.map((post) => (
+                  <li key={post.href}>
+                    <SubLink writing={post} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="homeSubList">
+              <h3 className="homeSubLabel">Investing blog</h3>
+              <ul>
+                <li>
+                  <SubLink writing={INVESTING_BLOG} />
+                </li>
+              </ul>
+            </div>
           </section>
 
-          <section className="homeSection" id="elsewhere" aria-label="Elsewhere">
+          <section className="homeSection" id="skills" aria-label="Skills">
             <div className="homeSectionHead">
-              <h2 className="homeSectionLabel">Elsewhere</h2>
-              <span className="homeSectionDesc">LinkedIn &middot; investing blog</span>
+              <h2 className="homeSectionLabel">Skills</h2>
+              <span className="homeSectionDesc">A toolbox I reach for</span>
             </div>
-            <div className="homeRows">
-              {ELSEWHERE.map((writing) => (
-                <WritingRow key={writing.href} writing={writing} />
+            <div className="homeSkills">
+              {SKILL_GROUPS.map((group) => (
+                <div key={group.title} className="homeSkill">
+                  <span className="homeSkillGrp">{group.title}</span>
+                  <span className="homeSkillItems">
+                    {group.skills.map((skill, i) => (
+                      // The separator trails its own item, so a wrapped line always
+                      // starts on a name and the left edge stays flush.
+                      <span key={skill.name} className="homeSkillItem">
+                        {skill.name}
+                        {i < group.skills.length - 1 && (
+                          <span className="sep" aria-hidden="true">
+                            &middot;
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </span>
+                </div>
               ))}
             </div>
           </section>
@@ -223,6 +282,7 @@ export default function Home() {
             <h2 className="homeContactTitle">
               Open to interesting problems <span className="soft">&mdash; and good conversation.</span>
             </h2>
+            <p className="homeContactNote">Best way to reach me: LinkedIn or GitHub. No public email, on purpose.</p>
             <div className="homeChips">
               {getFlattenedLinks().map((l) => (
                 <ExternalLink key={l.href} href={l.href} className="homeChip" ariaLabel={l.label}>
